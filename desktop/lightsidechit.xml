@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<windowclass name="lightsidechit">
+		<sizelimits>
+			<maximum>
+				<height>56</height>
+				<width>56</width>
+			</maximum>
+			<minimum>
+				<height>56</height>
+				<width>56</width>
+			</minimum>
+		</sizelimits>
+		<sheetdata>
+			<chit>
+				<chit>momentum</chit>
+				<bounds>0,0,56,56</bounds>
+				<script file="desktop/lightsidechit.lua" />
+				<tooltip>
+					<text>Momentum Token (drag off to remove)</text>
+				</tooltip>						
+			</chit>
+		</sheetdata>
+	</windowclass>	
+</root>

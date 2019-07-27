@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+  <!-- Character Sheet -->
+  <string name="char_label_archetype">Archetype</string>
+  <string name="char_label_profession">Profession</string>
+  <string name="char_label_faterunes">Fate Runes</string>
+  <string name="char_label_body">Body</string>
+  <string name="char_label_strength">Strength</string>
+  <string name="char_label_vigour">Vigour</string>
+  <string name="char_label_agility">Agility</string>
+  <string name="char_label_mind">Mind</string>
+  <string name="char_label_intellect">Intellect</string>
+  <string name="char_label_perception">Perception</string>
+  <string name="char_label_tenacity">Tenacity</string>
+  <string name="char_label_soul">Soul</string>
+  <string name="char_label_charisma">Charisma</string>
+  <string name="char_label_instinct">Instinct</string>
+  <string name="char_label_communication">Communication</string>
+  <string name="char_label_secondarystats">Secondary Characteristics</string>
+  <string name="char_label_gifts">Gifts &amp; Weaknesses</string>
+  <string name="char_label_reaction">Reaction</string>
+  <string name="char_label_pd">Physical Defence</string>
+  <string name="char_label_md">Mental Defence</string>
+  <string name="char_label_move">Movement</string>
+  <string name="char_label_encumbrance">Encumbrance</string>
+  <string name="char_label_encstate">Encumbrance State</string>
+  <string name="char_label_encpenalty">Encumbrance Penalty</string>
+  <string name="char_label_enc">Enc</string>
+  <string name="char_label_hindered">Hindered</string>
+  <string name="char_label_encumbered">Encumbered</string>
+  <string name="char_label_overburdened">Overburdened</string>
+  <string name="char_label_base">Base</string>
+  <string name="char_label_current">Current</string>
+  <string name="char_label_maximum">Maximum</string>
+  <string name="char_label_total">Total</string>
+  <string name="char_label_skills">Skills</string>
+  <string name="char_label_weapons">Weapons</string>
+  <string name="char_label_level">Level</string>
+  <string name="char_label_damage">Damage</string>
+  <string name="char_label_feats">Feats</string>
+  <string name="char_label_combatfeats">Combat Feats</string>
+  <string name="char_label_initiative">Initiative</string>
+  <string name="char_label_armour">Armour</string>
+  <string name="char_label_magic">Magic</string>
+  <string name="char_label_seidr">Seidr</string>
+  <string name="char_label_galdr">Galdr</string>
+  <string name="char_label_runes">Runes</string>
+  <string name="char_label_gear">Gear</string>
+  <string name="char_label_furor">Furor</string>
+  <string name="char_label_furorpool">Furor Pool</string>
+  <string name="char_label_hp">Hit Points</string>
+  <string name="char_label_threshold">Wound Threshold</string>
+  <string name="char_label_condition">Condition Modifier</string>
+  <string name="char_label_bloodied">Bloodied</string>
+  <string name="char_label_wounded">Wounded</string>
+  <string name="char_label_severe">Severely Wounded</string>
+  <string name="char_label_unconscious">Unconscious</string>
+  <string name="char_label_dead">Dead</string>
+  <string name="char_label_action">Actions</string>
+  <string name="char_label_exhausted">Exhausted</string>
+  <string name="char_label_berserk">Indestructible!</string>
+  <string name="char_label_notepad">Notepad</string>
+  <string name="char_label_reknown">Reknown</string>
+  <string name="char_label_deeds">Noteworthy Deeds</string>
+  <string name="char_label_race">Kingdom</string>
+</root>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root version="3.3" release="1.0" logo="logo.png">
+	<!-- Attributes -->
+	<description>
+		<text>Star Trek Adventures Ruleset</text>
+		<author>Statik367</author>
+	</description>
+	
+	<!-- Layers -->
+	<importruleset source="CoreRPG" />
+	
+  <!-- String Resources -->
+
+	<!-- Templates -->
+	<includefile source="desktop/chit.xml" />
+	
+	<!-- Tabletop Chits -->
+	<includefile source="desktop/darksidechit.xml" />
+	<includefile source="desktop/lightsidechit.xml" />
+
+	<!-- Tabletop settings -->
+	<includefile source="gameelements.xml" />
+	<includefile source="desktop/desktop.xml" />
+	
+	<!-- Scripts -->
+  <script name="ChallengeDieHandler" file="scripts/handler_challengedice.lua"/>
+  <script name="SkillDieHandler" file="scripts/handler_skilldice.lua"/>
+  <script name="TableManager2" file="scripts/manager_table2.lua" />
+	
+	<!-- Graphics -->
+	<includefile source="graphics/graphics_frames.xml" />
+	<includefile source="graphics/graphics_icons.xml" />
+	
+	<!-- Character Sheet -->
+	
+</root>

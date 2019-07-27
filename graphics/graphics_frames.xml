@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+	<!--  Desktop background  -->
+	<framedef name="desktop">
+		<bitmap file="graphics/frames/desktop.png"/>
+		<top rect="1,1,324,151"/>
+		<middle rect="1,154,200,200"/>
+		<right rect="450,0,100,144"/>
+		<bottomright rect="450,0,100,144"/>
+		<bottom rect="219,437,567,132"/>
+		<decal rect="830,0,510,510"/>
+	</framedef>
+	<framedef name="shortcuts">
+		<bitmap file="graphics/frames/desktop.png"/>
+		<left rect="450,0,25,144"/>
+		<middle rect="475,0,50,144"/>
+		<right rect="525,0,25,144"/>
+	</framedef>
+  
+	<!-- Chat window -->
+	<framedef name="chatbox">
+		<bitmap file="graphics/frames/chatbox.png" />
+		<topleft rect="0,0,18,15" />
+		<top rect="18,0,487,15" />
+		<topright rect="505,0,18,15" />
+		<left rect="0,15,18,476" />
+		<middle rect="18,15,487,476" />
+		<right rect="505,15,18,476" />
+		<bottomleft rect="0,491,18,12" />
+		<bottom rect="18,491,487,12" />
+		<bottomright rect="505,491,18,12" />
+	</framedef>
+  
+	<!-- Dice Tower -->
+	<framedef name="dicetower_normal">
+		<bitmap>graphics/frames/dicetower_normal.png</bitmap>
+		<middle>0,0,90,90</middle>
+	</framedef>
+	<framedef name="dicetower_drop">
+		<bitmap>graphics/frames/dicetower_drop.png</bitmap>
+		<middle>0,0,90,90</middle>
+	</framedef>
+</root>

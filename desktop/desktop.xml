@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+  <panel name="lightsidechit" modes="host,client">
+		<class>lightsidechit</class>
+		<bounds>
+			<rect>352,-98,56,56</rect>
+		</bounds>
+	</panel>
+	<panel name="darksidechit" modes="host,client">
+		<class>darksidechit</class>
+		<bounds>
+			<rect>412,-98,56,56</rect>
+		</bounds>
+	</panel>
+</root>
+
