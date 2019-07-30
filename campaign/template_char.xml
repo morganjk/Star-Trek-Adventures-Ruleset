@@ -4,5 +4,258 @@
   attribution and copyright information.
 -->
 <root>
+ <!-- Rollable Attribute -->
+	<template name="char_attribute">
+		<basicnumber>
+			<script>
+				function onDragStart(button, x, y, draginfo)
+					local label = getName():gsub("^%l", string.upper);
+					draginfo.setType("skilldice");
+					draginfo.setDescription(label);
+					local dice = {"d20","d20"};
+					draginfo.setDieList(dice);
+					return true;		
+				end
 
+				function onDoubleClick(x, y)
+					local label = getName():gsub("^%l", string.upper);
+					ModifierStack.addSlot(label, getValue());
+				end
+			</script>
+		</basicnumber>
+	</template>
+
+<!-- Link Text Item -->
+	<windowclass name="char_textlistitem">
+		<margins control="0,0,0,2"/>
+		<sheetdata>
+			<genericcontrol name="rightanchor">
+				<anchored width="0" height="0">
+					<top/>
+					<right/>
+				</anchored>
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored>
+					<top/>
+					<right offset="-5" relation="relative" anchor="left" parent="rightanchor"/>
+				</anchored>
+			</button_idelete>
+			<string_textlistitem name="label">
+				<anchored height="20">
+					<top offset="2"/>
+					<left offset="22"/>
+					<right offset="-10" relation="relative" anchor="left" parent="rightanchor"/>
+				</anchored>
+			</string_textlistitem>
+			<linkfield name="link">
+				<bounds>2,2,15,15</bounds>
+				<anchored>
+					<to>label</to>
+					<position>left</position>
+					<offset>3,2</offset>
+				</anchored>
+			</linkfield>
+		</sheetdata>
+	</windowclass>
+
+<!-- Values List -->
+	<template name="list_charvalues">
+		<list_text>
+			<datasource>.values</datasource>
+			<class>char_textlistitem</class>
+			<columns>
+				<fillwidth />
+				<width>145</width>
+			</columns>
+			<sortby>
+				<control>label</control>
+			</sortby>
+			<newfocus>label</newfocus>
+			<script>
+				function onDrop(x,y,draginfo)
+					if draginfo.isType("shortcut") then
+						local class, datasource = draginfo.getShortcutData();
+						if class == "referencetext" or class == "note" then
+							local newentry = createWindow()
+							newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+							newentry.link.setValue(class, datasource);
+							newentry.link.setVisible(true);
+						end
+					end
+					return true;
+				end
+			</script>   
+		</list_text>
+	</template>
+  
+<!-- Weapon List Item -->
+	<windowclass name="char_weaponlistitem">
+		<margins control="0,0,0,2"/>
+		<sheetdata>
+			<genericcontrol name="leftanchor">
+				<anchored height="0" width="0">
+					<top/>
+					<left/>
+				</anchored>
+			</genericcontrol>
+			<genericcontrol name="rightanchor">
+				<anchored height="0" width="0">
+					<top/>
+					<right/>
+				</anchored>
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored>
+					<top/>
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+				</anchored>
+			</button_idelete>
+			<string_textlistitem name="name">
+				<anchored width="120" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<font>sheetlabelmini</font>
+			</string_textlistitem>
+ 			<string_textlistitem name="size">
+				<anchored width="30" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<font>sheetlabelmini</font>
+			</string_textlistitem>
+			<basicdice name="damage">
+				<anchored width="90" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<frame name="fielddark" offset="7,5,7,5" />
+			</basicdice>
+ 			<string_textlistitem name="qualities">
+				<anchored width="140" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<font>sheetlabelmini</font>
+			</string_textlistitem>
+		</sheetdata>
+	</windowclass>
+  
+<!-- Weapons List -->
+	<template name="list_weapon">
+		<list_text>
+			<datasource>.weapons</datasource>
+			<class>char_weaponlistitem</class>
+			<columns>
+				<width>460</width>
+			</columns>
+			<sortby>
+				<control>name</control>
+			</sortby>
+			<newfocus>name</newfocus>
+			<script>
+				function onDrop(x,y,draginfo)
+					if draginfo.isType("shortcut") then
+						local class, datasource = draginfo.getShortcutData();
+						if class == "referencetext" or class == "item" then
+							local newentry = createWindow()
+							newentry.name.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+						end
+					end
+					return true;
+				end
+			</script>   
+		</list_text>
+	</template>
+
+<!-- Traits List -->
+	<template name="list_chartraits">
+		<list_text>
+			<datasource>.traits</datasource>
+			<class>char_textlistitem</class>
+			<columns>
+				<fillwidth />
+				<width>145</width>
+			</columns>
+			<sortby>
+				<control>label</control>
+			</sortby>
+			<newfocus>label</newfocus>
+			<script>
+				function onDrop(x,y,draginfo)
+					if draginfo.isType("shortcut") then
+						local class, datasource = draginfo.getShortcutData();
+						if class == "referencetext" or class == "note" then
+							local newentry = createWindow()
+							newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+							newentry.link.setValue(class, datasource);
+							newentry.link.setVisible(true);
+						end
+					end
+					return true;
+				end
+			</script>   
+		</list_text>
+	</template>
+  
+<!-- Talents List -->
+	<template name="list_chartalents">
+		<list_text>
+			<datasource>.talents</datasource>
+			<class>char_textlistitem</class>
+			<columns>
+				<fillwidth />
+				<width>145</width>
+			</columns>
+			<sortby>
+				<control>label</control>
+			</sortby>
+			<newfocus>label</newfocus>
+			<script>
+				function onDrop(x,y,draginfo)
+					if draginfo.isType("shortcut") then
+						local class, datasource = draginfo.getShortcutData();
+						if class == "referencetext" or class == "note" then
+							local newentry = createWindow()
+							newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+							newentry.link.setValue(class, datasource);
+							newentry.link.setVisible(true);
+						end
+					end
+					return true;
+				end
+			</script>   
+		</list_text>
+	</template>
+
+<!-- Background List -->
+	<template name="list_charbackground">
+		<list_text>
+			<datasource>.background</datasource>
+			<class>char_textlistitem</class>
+			<columns>
+				<fillwidth />
+				<width>145</width>
+			</columns>
+			<sortby>
+				<control>label</control>
+			</sortby>
+			<newfocus>label</newfocus>
+			<script>
+				function onDrop(x,y,draginfo)
+					if draginfo.isType("shortcut") then
+						local class, datasource = draginfo.getShortcutData();
+						if class == "referencetext" or class == "note" then
+							local newentry = createWindow()
+							newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+							newentry.link.setValue(class, datasource);
+							newentry.link.setVisible(true);
+						end
+					end
+					return true;
+				end
+			</script>   
+		</list_text>
+	</template>
 </root>

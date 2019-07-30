@@ -6,10 +6,11 @@
 -->
 
 <root>
+
 	<windowclass name="charsheet">
 		<frame>charsheet</frame>
 		<placement>
-			<size width="525" height="568" />
+			<size width="525" height="800" />
 		</placement>
 		<minimize>minimized_npc</minimize>
 		<tooltip field="name" />
@@ -25,6 +26,7 @@
 				end
 			end
 		</script>
+
 		<sheetdata>
 			<button_charactivate name="speak">
 				<bounds>-41,30,23,22</bounds>
@@ -39,17 +41,20 @@
 				<icon>charlist_base</icon>
 				<disabled />
 			</genericcontrol>
+
 			<portrait_charlocal name="localportrait">
 				<bounds>-137,21,45,45</bounds>
 				<invisible />
 			</portrait_charlocal>
+
 			<portrait_char name="portrait">
 				<bounds>-137,21,45,45</bounds>
 			</portrait_char>
 			
 			<frame_char name="overviewframe">
-				<bounds>15,20,-140,45</bounds>
+				<bounds>15,20,-140,50</bounds>
 			</frame_char>
+
 			<string_labeled name="name">
 				<anchored to="overviewframe" position="insidetopleft" offset="15,10" height="20">
 					<right offset="-15" />
@@ -61,14 +66,17 @@
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_main</class>
 			</subwindow>
+
 			<subwindow name="abilities">
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_abilities</class>
 			</subwindow>
+
 			<subwindow name="inventory">
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_inventory</class>
 			</subwindow>
+
 			<subwindow name="notes">
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_notes</class>
@@ -93,8 +101,11 @@
 				</tab>
 				<activate>1</activate>
 			</tabs_charsheet>
-		
+
 			<close_charsheet />
+
 		</sheetdata>
+
 	</windowclass>
+
 </root>

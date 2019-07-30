@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="species">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<nodelete />
+		<sharable />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				if main and main.subwindow then
+					main.subwindow.update();
+				end
+				if notes and notes.subwindow then
+					notes.subwindow.update();
+				end
+
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				notes.setReadOnly(bReadOnly);
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>species_header</class>
+			</sub_record_header>
+
+			<frame_record_content_tabbed name="contentframe" />
+
+			<subwindow_record name="notes">
+				<class>species_notes</class>
+			</subwindow_record>
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<empty textres="ft_empty" hidereadonly="true" />
+				<invisible />
+			</ft_record>
+
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			<scrollbar_record>
+				<target>notes</target>
+			</scrollbar_record>
+			
+			<tabs_recordsheet>
+				<tab>
+					<icon>tab_main</icon>
+					<subwindow>main</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
+				</tab>
+			</tabs_recordsheet>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="species_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>species</class>
+			</link_record_header>
+			
+			<anchor_record_header_right />
+
+			<icon_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</icon_record_locked>
+			<button_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</button_record_locked>
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_species" />
+			</string_record_name>
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="species_notes">
+		<margins control="0,0,0,7" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				subspecies.update(bReadOnly);
+				traits.update(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+			
+			<header_column name="subspecies_header">
+				<static textres="species_header_subspecies" />
+				<center />
+			</header_column>
+			<button_iedit name="subspecies_iedit">
+				<anchored to="subspecies_header" position="righthigh" offset="-20,0" />
+				<target>subspecies</target>
+			</button_iedit>
+			<button_iadd name="subspecies_iadd">
+				<anchored to="subspecies_iedit" position="lefthigh" offset="5,0" />
+				<target>subspecies</target>
+			</button_iadd>
+			<list_column name="subspecies">
+				<datasource>.subspecies</datasource>
+				<class>species_subspecies</class>
+			</list_column>
+			
+			<header_column name="traits_header">
+				<static textres="species_header_traits" />
+				<center />
+			</header_column>
+			<button_iedit name="traits_iedit">
+				<anchored to="traits_header" position="righthigh" offset="-20,0" />
+				<target>traits</target>
+			</button_iedit>
+			<button_iadd name="traits_iadd">
+				<anchored to="traits_iedit" position="lefthigh" offset="5,0" />
+				<target>traits</target>
+			</button_iadd>
+			<list_column name="traits">
+				<datasource>.traits</datasource>
+				<class>species_trait</class>
+			</list_column>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="species_subspecies">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+			<link_listitem_column name="shortcut">
+				<class>reference_subspecies</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name">
+				<empty textres="library_recordtype_empty_subspecies" />
+			</string_listitem_column_name>
+		</sheetdata>
+	</windowclass>
+	<windowclass name="species_trait">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+			<link_listitem_column name="shortcut">
+				<class>reference_speciestrait</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name">
+				<empty textres="library_recordtype_empty_speciestrait" />
+			</string_listitem_column_name>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="reference_speciestrait">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>speciestrait_header</class>
+			</sub_record_header>
+
+			<frame_record_content />
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<footer>footer_wide</footer>
+			</ft_record>
+			<scrollbar>
+				<anchored to="main" />
+				<target>main</target>
+			</scrollbar>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="speciestrait_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>reference_speciestrait</class>
+			</link_record_header>
+
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_speciestrait" />
+			</string_record_name>
+			<label_reftype name="reftype">
+				<static textres="type_speciestrait" />
+			</label_reftype>	
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="reference_subspecies">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				if notes.subwindow then
+					notes.subwindow.update();
+				end
+				
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>subspecies_header</class>
+			</sub_record_header>
+
+			<frame_record_content_tabbed name="contentframe" />
+
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<invisible />
+			</ft_record>
+			<subwindow_record name="notes">
+				<class>subspecies_notes</class>
+			</subwindow_record>
+
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			<scrollbar_record>
+				<target>notes</target>
+			</scrollbar_record>
+			
+			<tabs_recordsheet>
+				<tab>
+					<icon>tab_main</icon>
+					<subwindow>main</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
+				</tab>
+			</tabs_recordsheet>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="subspecies_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>reference_subspecies</class>
+			</link_record_header>
+
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_subspecies" />
+			</string_record_name>
+			<label_reftype name="reftype">
+				<static textres="type_subspecies" />
+			</label_reftype>	
+		</sheetdata>
+	</windowclass>
+	<windowclass name="subspecies_notes">
+		<margins control="0,0,0,7" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				traits.update(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+			
+			<header_column name="traits_header">
+				<static textres="species_header_traits" />
+				<center />
+			</header_column>
+			<button_iedit name="traits_iedit">
+				<anchored to="traits_header" position="righthigh" offset="-20,0" />
+				<target>traits</target>
+			</button_iedit>
+			<button_iadd name="traits_iadd">
+				<anchored to="traits_iedit" position="lefthigh" offset="5,0" />
+				<target>traits</target>
+			</button_iadd>
+			<list_column name="traits">
+				<datasource>.traits</datasource>
+				<class>subspecies_trait</class>
+			</list_column>
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="subspecies_trait">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+			<link_listitem_column name="shortcut">
+				<class>reference_subspeciestrait</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name">
+				<empty textres="library_recordtype_empty_subspeciestrait" />
+			</string_listitem_column_name>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="reference_subspeciestrait">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>subspeciestrait_header</class>
+			</sub_record_header>
+
+			<frame_record_content />
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<footer>footer_wide</footer>
+			</ft_record>
+			<scrollbar>
+				<anchored to="main" />
+				<target>main</target>
+			</scrollbar>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="subspeciestrait_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>reference_subspeciestrait</class>
+			</link_record_header>
+
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_subspeciestrait" />
+			</string_record_name>
+			<label_reftype name="reftype">
+				<static textres="type_subspeciestrait" />
+			</label_reftype>	
+		</sheetdata>
+	</windowclass>
+</root>

@@ -8,32 +8,33 @@
 <root>
 	<windowclass name="charsheet_notes">
 		<sheetdata>
+
+<!-- Detail Frame -->
 			<frame_char name="detailframe">
-				<bounds>15,0,-29,45</bounds>
+				<bounds>15,0,-30,50</bounds>
 			</frame_char>
-			<string_labeled name="race">
-				<anchored to="detailframe" position="insidetopleft" offset="15,10" width="150" height="20" />
-				<labelres>char_label_race</labelres>
-			</string_labeled>
 			<string_labeled name="gender">
-				<anchored to="race" position="right" offset="5,0" width="70" />
+				<anchored to="detailframe" position="insidetopleft" offset="15,10" width="140" height="20" />
 				<labelres>char_label_gender</labelres>
 			</string_labeled>
 			<string_labeled name="age">
-				<anchored to="gender" position="right" offset="5,0" width="70" />
+				<anchored to="gender" position="right" offset="5,0" width="95" />
 				<labelres>char_label_age</labelres>
 			</string_labeled>
 			<string_labeled name="height">
-				<anchored to="age" position="right" offset="5,0" width="70" />
+				<anchored to="age" position="right" offset="5,0" width="100" />
 				<labelres>char_label_height</labelres>
 			</string_labeled>
 			<string_labeled name="weight">
-				<anchored to="height" position="right" offset="5,0" width="70" />
+				<anchored to="height" position="right" offset="5,0" width="100" />
 				<labelres>char_label_weight</labelres>
 			</string_labeled>
 
+<!-- Appearance Frame -->
 			<frame_char name="appearanceframe">
-				<bounds>15,45,320,190</bounds>
+				<anchored to="detailframe" position="belowleft" offset="0,0" height="190">
+					<right offset="-155" />
+				</anchored>
 			</frame_char>
 			<label_frametop>
 				<anchored to="appearanceframe" />
@@ -53,8 +54,9 @@
 				<target>appearance</target>
 			</scrollbar_list>
 			
+<!-- Language Frame -->
 			<frame_char name="languageframe">
-				<bounds>335,45,-29,190</bounds>
+				<anchored to="appearanceframe" position="right" offset="0,0" width="155" height="190" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="languageframe" />
@@ -81,12 +83,16 @@
 				<target>languages</target>
 			</button_iadd>
 
+<!-- Career Notes Frame -->
 			<frame_char name="notesframe">
-				<bounds>15,235,-29,-5</bounds>
+				<anchored to="appearanceframe" position="belowleft" offset="0,0">
+					<right offset="155" />
+					<bottom offset="480" />
+				</anchored>
 			</frame_char>
 			<label_frametop>
 				<anchored to="notesframe" />
-				<static textres="char_label_notes" />
+				<static textres="char_label_career" />
 			</label_frametop>
 			<stringu name="notes">
 				<anchored to="notesframe">

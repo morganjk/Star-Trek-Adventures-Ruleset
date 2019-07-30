@@ -1,70 +1,157 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!-- 
-  Please see the license.html file included with this distribution for 
-  attribution and copyright information.
--->
+	Please see the license.html file included with this distribution for attribution
+	and copyright information. -->
 <root>
-  <!-- Character Sheet -->
-  <string name="char_label_archetype">Archetype</string>
-  <string name="char_label_profession">Profession</string>
-  <string name="char_label_faterunes">Fate Runes</string>
-  <string name="char_label_body">Body</string>
-  <string name="char_label_strength">Strength</string>
-  <string name="char_label_vigour">Vigour</string>
-  <string name="char_label_agility">Agility</string>
-  <string name="char_label_mind">Mind</string>
-  <string name="char_label_intellect">Intellect</string>
-  <string name="char_label_perception">Perception</string>
-  <string name="char_label_tenacity">Tenacity</string>
-  <string name="char_label_soul">Soul</string>
-  <string name="char_label_charisma">Charisma</string>
-  <string name="char_label_instinct">Instinct</string>
-  <string name="char_label_communication">Communication</string>
-  <string name="char_label_secondarystats">Secondary Characteristics</string>
-  <string name="char_label_gifts">Gifts &amp; Weaknesses</string>
-  <string name="char_label_reaction">Reaction</string>
-  <string name="char_label_pd">Physical Defence</string>
-  <string name="char_label_md">Mental Defence</string>
-  <string name="char_label_move">Movement</string>
-  <string name="char_label_encumbrance">Encumbrance</string>
-  <string name="char_label_encstate">Encumbrance State</string>
-  <string name="char_label_encpenalty">Encumbrance Penalty</string>
-  <string name="char_label_enc">Enc</string>
-  <string name="char_label_hindered">Hindered</string>
-  <string name="char_label_encumbered">Encumbered</string>
-  <string name="char_label_overburdened">Overburdened</string>
-  <string name="char_label_base">Base</string>
-  <string name="char_label_current">Current</string>
-  <string name="char_label_maximum">Maximum</string>
-  <string name="char_label_total">Total</string>
-  <string name="char_label_skills">Skills</string>
-  <string name="char_label_weapons">Weapons</string>
-  <string name="char_label_level">Level</string>
-  <string name="char_label_damage">Damage</string>
-  <string name="char_label_feats">Feats</string>
-  <string name="char_label_combatfeats">Combat Feats</string>
-  <string name="char_label_initiative">Initiative</string>
-  <string name="char_label_armour">Armour</string>
-  <string name="char_label_magic">Magic</string>
-  <string name="char_label_seidr">Seidr</string>
-  <string name="char_label_galdr">Galdr</string>
-  <string name="char_label_runes">Runes</string>
-  <string name="char_label_gear">Gear</string>
-  <string name="char_label_furor">Furor</string>
-  <string name="char_label_furorpool">Furor Pool</string>
-  <string name="char_label_hp">Hit Points</string>
-  <string name="char_label_threshold">Wound Threshold</string>
-  <string name="char_label_condition">Condition Modifier</string>
-  <string name="char_label_bloodied">Bloodied</string>
-  <string name="char_label_wounded">Wounded</string>
-  <string name="char_label_severe">Severely Wounded</string>
-  <string name="char_label_unconscious">Unconscious</string>
-  <string name="char_label_dead">Dead</string>
-  <string name="char_label_action">Actions</string>
-  <string name="char_label_exhausted">Exhausted</string>
-  <string name="char_label_berserk">Indestructible!</string>
-  <string name="char_label_notepad">Notepad</string>
-  <string name="char_label_reknown">Reknown</string>
-  <string name="char_label_deeds">Noteworthy Deeds</string>
-  <string name="char_label_race">Kingdom</string>
+
+<!-- Character Sheet -->
+	<string name="char_label_species">Species</string>
+	<string name="char_label_rank">Rank</string>
+	
+	<string name="char_label_details">Details</string>
+	<string name="char_label_environment">Environment</string>
+	<string name="char_label_upbringing">Upbringing</string>
+	<string name="char_label_assignment">Assignment</string>
+	<string name="char_label_career">Career Notes</string>
+	<string name="char_label_trait">Traits</string>
+  
+	<string name="char_label_attributes">Attributes</string>        
+	<string name="char_label_attr_control">Control</string>        
+	<string name="char_label_attr_daring">Daring</string>        
+	<string name="char_label_attr_fitness">Fitness</string>        
+	<string name="char_label_attr_insight">Insight</string>        
+	<string name="char_label_attr_presence">Presence</string>        
+	<string name="char_label_attr_reason">Reason</string>        
+  
+	<string name="char_label_disciplines">Disciplines</string>
+	<string name="char_label_disc_command">Command</string>
+	<string name="char_label_disc_conn">Conn</string>
+	<string name="char_label_disc_security">Security</string>
+	<string name="char_label_disc_engineering">Engineering</string>
+	<string name="char_label_disc_science">Science</string>
+	<string name="char_label_disc_medicine">Medicine</string>
+  
+	<string name="char_label_values">Values</string>
+	<string name="char_label_determination">Determination</string>
+	<string name="char_label_talents">Talents</string>
+	<string name="char_label_background">Background</string>
+	<string name="char_label_focuses">Focuses</string>
+	<string name="char_label_stress">Stress</string>
+	<string name="char_label_injuries">Injuries</string>
+  
+	<string name="char_label_weapons">Weapons</string>
+	<string name="char_label_weapon_name">Name / Type</string>
+	<string name="char_label_weapon_size">Size</string>
+	<string name="char_label_weapon_damage">Damage</string>
+	<string name="char_label_weapon_qualities">Qualities</string>
+
+<!-- NPC -->
+	<string name="npc_label_max_stress">Stress (Max)</string>
+  
+<!-- Ship -->
+	<string name="ship_label_engines">Engines</string>
+	<string name="ship_label_structure">Structure</string>
+	<string name="ship_label_computers">Computers</string>
+	<string name="ship_label_sensors">Sensors</string>
+	<string name="ship_label_weapons">Weapons</string>
+	<string name="ship_label_comms">Communications</string>
+  
+	<string name="ship_label_scale">Scale</string>
+	<string name="ship_label_resistance">Resistance</string>
+	<string name="ship_label_breaches">Breaches</string>
+	<string name="ship_label_shields">Shields</string>
+	<string name="ship_label_max_shields">Shields (Max)</string>
+	<string name="ship_label_power">Power</string>
+	<string name="ship_label_max_power">Power (Max)</string>
+	<string name="ship_label_crew">Crew Support</string>
+	<string name="ship_label_max_crew">Crew (Max)</string>
+	<string name="ship_label_attr_crew">Crew (Attributes)</string>
+	<string name="ship_label_disc_crew">Crew (Disciplines)</string>
+  
+<!-- Species -->
+	<string name="species_header_subspecies">SUB-SPECIES</string>
+	<string name="species_header_traits">TRAITS</string>
+  
+<!-- Combat Tracker -->
+	<string name="ct_label_max_stress">Max</string>
+  
+<!-- Game Elements -->
+	<string name="modstack_label_modifier">Target</string>
+ 	
+<!-- Sidebar -->
+	<string name="library_recordtype_label_ship">Ships</string>
+	<string name="library_recordtype_empty_ship">&#171; New Ship &#187;</string>
+	<string name="library_recordtype_label_species">Species</string>
+	<string name="library_recordtype_empty_species">&#171; New Species &#187;</string>
+	
+<!-- Character Attributes -->
+	<string name="char_abilities_message_speciesadd">Species '%s' added to '%s'.</string>
+
+
+
+
+<!--
+	<string name="char_label_archetype">Archetype</string>
+	<string name="char_label_profession">Profession</string>
+	<string name="char_label_faterunes">Fate Runes</string>
+	<string name="char_label_body">Body</string>
+	<string name="char_label_strength">Strength</string>
+	<string name="char_label_vigour">Vigour</string>
+	<string name="char_label_agility">Agility</string>
+	<string name="char_label_mind">Mind</string>
+	<string name="char_label_intellect">Intellect</string>
+	<string name="char_label_perception">Perception</string>
+	<string name="char_label_tenacity">Tenacity</string>
+	<string name="char_label_soul">Soul</string>
+	<string name="char_label_charisma">Charisma</string>
+	<string name="char_label_instinct">Instinct</string>
+	<string name="char_label_communication">Communication</string>
+	<string name="char_label_secondarystats">Secondary Characteristics</string>
+	<string name="char_label_gifts">Gifts &amp; Weaknesses</string>
+	<string name="char_label_reaction">Reaction</string>
+	<string name="char_label_pd">Physical Defence</string>
+	<string name="char_label_md">Mental Defence</string>
+	<string name="char_label_move">Movement</string>
+	<string name="char_label_encumbrance">Encumbrance</string>
+	<string name="char_label_encstate">Encumbrance State</string>
+	<string name="char_label_encpenalty">Encumbrance Penalty</string>
+	<string name="char_label_enc">Enc</string>
+	<string name="char_label_hindered">Hindered</string>
+	<string name="char_label_encumbered">Encumbered</string>
+	<string name="char_label_overburdened">Overburdened</string>
+	<string name="char_label_base">Base</string>
+	<string name="char_label_current">Current</string>
+	<string name="char_label_maximum">Maximum</string>
+	<string name="char_label_total">Total</string>
+	<string name="char_label_skills">Skills</string>
+	<string name="char_label_level">Level</string>
+	<string name="char_label_damage">Damage</string>
+	<string name="char_label_feats">Feats</string>
+	<string name="char_label_combatfeats">Combat Feats</string>
+	<string name="char_label_initiative">Initiative</string>
+	<string name="char_label_armour">Armour</string>
+	<string name="char_label_magic">Magic</string>
+	<string name="char_label_seidr">Seidr</string>
+	<string name="char_label_galdr">Galdr</string>
+	<string name="char_label_runes">Runes</string>
+	<string name="char_label_gear">Gear</string>
+	<string name="char_label_furor">Furor</string>
+	<string name="char_label_furorpool">Furor Pool</string>
+	<string name="char_label_hp">Hit Points</string>
+	<string name="char_label_threshold">Wound Threshold</string>
+	<string name="char_label_condition">Condition Modifier</string>
+	<string name="char_label_bloodied">Bloodied</string>
+	<string name="char_label_wounded">Wounded</string>
+	<string name="char_label_severe">Severely Wounded</string>
+	<string name="char_label_unconscious">Unconscious</string>
+	<string name="char_label_dead">Dead</string>
+	<string name="char_label_action">Actions</string>
+	<string name="char_label_exhausted">Exhausted</string>
+	<string name="char_label_berserk">Indestructible!</string>
+	<string name="char_label_notepad">Notepad</string>
+	<string name="char_label_reknown">Reknown</string>
+	<string name="char_label_deeds">Noteworthy Deeds</string>
+	<string name="char_label_race">Kingdom</string>
+-->
+
 </root>

@@ -3,38 +3,97 @@
   Please see the license.html file included with this distribution for 
   attribution and copyright information.
 -->
+
 <root version="3.3" release="1.0" logo="logo.png">
-	<!-- Attributes -->
+
+<!-- Attributes -->
 	<description>
-		<text>Star Trek Adventures Ruleset</text>
+		<text>
+			Star Trek Adventures Ruleset
+			A fan made ruleset for the Star Trek Adventures RPG. Borrowed heavilly from extension built by Ian M Kirby
+		</text>
+		<version>1</version>
 		<author>Statik367</author>
 	</description>
 	
-	<!-- Layers -->
+<!-- Layers -->
 	<importruleset source="CoreRPG" />
 	
-  <!-- String Resources -->
+<!-- String Resources -->
+	<includefile source="strings/strings_campaign.xml" />
 
-	<!-- Templates -->
+<!-- Templates -->
 	<includefile source="desktop/chit.xml" />
+    <includefile source="campaign/template_char.xml" />
 	
-	<!-- Tabletop Chits -->
+<!-- Tabletop Chits -->
 	<includefile source="desktop/darksidechit.xml" />
 	<includefile source="desktop/lightsidechit.xml" />
 
-	<!-- Tabletop settings -->
+<!-- Tabletop settings -->
 	<includefile source="gameelements.xml" />
 	<includefile source="desktop/desktop.xml" />
 	
-	<!-- Scripts -->
-  <script name="ChallengeDieHandler" file="scripts/handler_challengedice.lua"/>
-  <script name="SkillDieHandler" file="scripts/handler_skilldice.lua"/>
-  <script name="TableManager2" file="scripts/manager_table2.lua" />
+<!-- Scripts -->
+	<script name="ChallengeDieHandler" file="scripts/handler_challengedice.lua"/>
+	<script name="SkillDieHandler" file="scripts/handler_skilldice.lua"/>
+	<script name="TableManager2" file="scripts/manager_table2.lua" />
+	<script name="Languages_Extension" file="scripts/languages_extension.lua" /> 
+	<script name="LibraryDataSTA" file="scripts/data_library_sta.lua" />
 	
-	<!-- Graphics -->
+<!-- Graphics -->
 	<includefile source="graphics/graphics_frames.xml" />
 	<includefile source="graphics/graphics_icons.xml" />
 	
-	<!-- Character Sheet -->
+<!-- Character Sheet -->
+    <includefile source="campaign/record_char.xml" />
+    <includefile source="campaign/record_char_main.xml" />
+    <includefile source="campaign/record_char_abilities.xml" />
+    <includefile source="campaign/record_char_inventory.xml" />
+    <includefile source="campaign/record_char_notes.xml" />
+ 
+<!-- Language Fonts -->
+	<font name="Vulcan">
+		<fgffile name="fonts/vulcan.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Andorian">
+		<fgffile name="fonts/andorian.fgf" />
+			<color value="#000000" />
+	</font>
+	<font name="Tellarite">
+		<fgffile name="fonts/tellarite.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Klingon">
+		<fgffile name="fonts/klingon.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Romulan">
+		<fgffile name="fonts/romulan.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Cardassian">
+		<fgffile name="fonts/cardassian.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Bajoran">
+		<fgffile name="fonts/bajoran.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="noneoftheabove">/
+		<fgffile name="fonts/visitor.fgf" />
+		<color value="#000000" />
+	</font>
+	
+<!-- Campaign Records -->
+	<includefile source="campaign/record_npc.xml" />    
+	<includefile source="campaign/record_ship.xml" />   
+	<includefile source="campaign/record_species.xml" />
+	
+<!-- Combat tracker -->
+	<includefile source="ct/template_ct.xml" />
+	<includefile source="ct/ct_host.xml" />
+	<includefile source="ct/ct_client.xml" />
 	
 </root>

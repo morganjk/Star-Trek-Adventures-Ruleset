@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+
+	<windowclass name="npc">
+
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="525" height="600" />
+		</placement>
+<!--
+		<sizelimits>
+			<minimum width="350" height="500" />
+			<dynamic />
+		</sizelimits>
+-->
+		<minimize>minimized_npc</minimize>
+		<tooltip field="name" />
+		<nodelete />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				if main and main.subwindow then
+					main.subwindow.update();
+				end
+
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				notes.setReadOnly(bReadOnly);
+			end
+		</script>
+
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>npc_header</class>
+			</sub_record_header>
+
+			<frame_record_content_tabbed name="contentframe" />
+
+			<subwindow_record name="main">
+				<class>npc_main</class>
+			</subwindow_record>
+			<ft_record name="notes">
+				<anchored to="contentframe" position="over" />
+				<empty textres="ft_empty" hidereadonly="true" />
+				<invisible />
+			</ft_record>
+
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			<scrollbar_record>
+				<target>notes</target>
+			</scrollbar_record>
+
+			<tabs_recordsheet>
+				<tab>
+					<icon>tab_main</icon>
+					<subwindow>main</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
+				</tab>
+			</tabs_recordsheet>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="npc_header">
+		<margins control="0,0,0,7" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+				token.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>npc</class>
+			</link_record_header>
+			
+			<anchor_record_header_right name="rightanchor" />
+			<button_activateid>
+				<anchored to="rightanchor" width="23" height="22">
+					<top offset="-2" />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_activateid>
+
+			<tokenfield name="token">
+				<anchored to="rightanchor" width="25" height="25">
+					<top offset="-2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-3" />
+				</anchored>
+				<empty>token_empty</empty>
+				<script>
+					function onDoubleClick(x, y)
+						CombatManager.openMap(window.getDatabaseNode());
+					end
+				</script>
+			</tokenfield>
+
+			<icon_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</icon_record_locked>
+
+			<button_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</button_record_locked>
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_npc" />
+			</string_record_name>
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="npc_main">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+
+--[[			
+				space.setReadOnly(bReadOnly);
+				reach.setReadOnly(bReadOnly);
+				focus.setReadOnly(bReadOnly);
+--]]
+
+				local bSection2 = false;
+				if weapons.update(bReadOnly) then bSection2 = true; end;
+				if items.update(bReadOnly) then bSection2 = true; end;
+				if languages.update(bReadOnly) then bSection2 = true; end;
+				divider2.setVisible(bSection2);
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+
+<!-- Attributes -->
+			<label_column name="control_label">
+				<static textres="char_label_attr_control" />
+			</label_column>
+			<number_column name="control">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>7</default>
+			</number_column>
+
+			<label_column name="daring_label">
+				<static textres="char_label_attr_daring" />
+			</label_column>
+			<number_column name="daring">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>7</default>
+			</number_column>
+
+			<label_column name="fitness_label">
+				<static textres="char_label_attr_fitness" />
+			</label_column>
+			<number_column name="fitness">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>7</default>
+			</number_column>
+
+			<label_column name="control_insight">
+				<static textres="char_label_attr_insight" />
+			</label_column>
+			<number_column name="insight">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>7</default>
+			</number_column>
+
+			<label_column name="presence_label">
+				<static textres="char_label_attr_presence" />
+			</label_column>
+			<number_column name="presence">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>7</default>
+			</number_column>
+
+			<label_column name="reason_label">
+				<static textres="char_label_attr_reason" />
+			</label_column>
+			<number_column name="reason">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>7</default>
+			</number_column>
+
+<!-- Disciplines -->
+			<label_column_right name="command_label">
+				<anchored to="control" />
+				<static textres="char_label_disc_command" />
+			</label_column_right>
+			<number_column_right name="command">
+				<anchored to="control" />
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>1</default>
+			</number_column_right>
+			
+			<label_column_right name="conn_label">
+				<anchored to="daring" />
+				<static textres="char_label_disc_conn" />
+			</label_column_right>
+			<number_column_right name="conn">
+				<anchored to="daring" />
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>1</default>
+			</number_column_right>
+			
+			<label_column_right name="security_label">
+				<anchored to="fitness" />
+				<static textres="char_label_disc_security" />
+			</label_column_right>
+			<number_column_right name="security">
+				<anchored to="fitness" />
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>1</default>
+			</number_column_right>
+			
+			<label_column_right name="engineering_label">
+				<anchored to="insight" />
+				<static textres="char_label_disc_engineering" />
+			</label_column_right>
+			<number_column_right name="engineering">
+				<anchored to="insight" />
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>1</default>
+			</number_column_right>
+			
+			<label_column_right name="science_label">
+				<anchored to="presence" />
+				<static textres="char_label_disc_science" />
+			</label_column_right>
+			<number_column_right name="science">
+				<anchored to="presence" />
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+			
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>1</default>
+			</number_column_right>
+			
+			<label_column_right name="medicine_label">
+				<anchored to="reason" />
+				<static textres="char_label_disc_medicine" />
+			</label_column_right>
+			<number_column_right name="medicine">
+				<anchored to="reason" />
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20","d20"};
+						draginfo.setDieList(dice);
+						return true;
+					end
+		  
+					function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					end
+				</script>
+				<default>1</default>
+			</number_column_right>
+			
+			<label_column name="focus_label">
+				<static textres="char_label_focuses" />
+			</label_column>
+			<string_columnh name="focus" />
+			
+			<line_column name="divider" />
+			
+			<label_column name="stress_label">
+				<static textres="char_label_stress" />
+			</label_column>
+			<number_column name="stress_current">
+				<default>0</default>
+			</number_column>
+			
+			<label_column_right name="max_stress_label">
+				<anchored to="stress_current" />
+				<static textres="npc_label_max_stress" />
+			</label_column_right>
+			<number_column_right name="stress_max">
+				<anchored to="stress_current" />
+				<default>1</default>
+			</number_column_right>
+
+			<label_column name="injuries_label">
+				<static textres="char_label_injuries" />
+			</label_column>
+			<string_columnh name="injuries" />
+			
+			<line_column name="divider2" />
+
+			<label_column name="weapons_label">
+				<static textres="char_label_weapons" />
+			</label_column>
+			<string_columnh name="weapons">
+				<!-- Roll identification not yet working
+				<nodragselect />
+				<script file="campaign/scripts/npc_roll.lua" />
+				-->
+			</string_columnh>
+			
+			<label_column name="items_label">
+				<static textres="npc_label_items" />
+			</label_column>
+			<string_columnh name="items" />
+
+			<label_column name="languages_label">
+				<static textres="npc_label_languages" />
+			</label_column>
+			<string_columnh name="languages" />
+
+			<line_column name="divider_bottom" />
+
+<!--
+			<label_column name="space_label">
+				<static textres="npc_label_size" />
+			</label_column>
+			<number_column name="space">
+				<default>1</default>
+			</number_column>
+			
+			<label_column_right name="reach_label">
+				<anchored to="space" />
+				<static textres="npc_label_reach" />
+			</label_column_right>
+			<number_column_right name="reach">
+				<anchored to="space" />
+				<default>1</default>
+			</number_column_right>
+-->
+			
+		</sheetdata>
+	</windowclass>
+</root>
