@@ -23,7 +23,7 @@
 		
 <!-- Details -->
 			<frame_char name="detailsframe">
-				<bounds>15,0,-30, 180,</bounds>
+				<bounds>15,0,-30,180</bounds>
 			</frame_char>
 			<label_frametop>
 				<anchored to="detailsframe" />

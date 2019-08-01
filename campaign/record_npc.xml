@@ -11,14 +11,8 @@
 
 		<frame>recordsheet</frame>
 		<placement>
-			<size width="525" height="600" />
+			<size width="525" height="800" />
 		</placement>
-<!--
-		<sizelimits>
-			<minimum width="350" height="500" />
-			<dynamic />
-		</sizelimits>
--->
 		<minimize>minimized_npc</minimize>
 		<tooltip field="name" />
 		<nodelete />
@@ -155,300 +149,241 @@
 			end
 		</script>
 		<sheetdata>
-			<anchor_column name="columnanchor" />
 
+			<frame_char name="detailsframe">
+				<bounds>0,5,-1,165</bounds>
+			</frame_char>
+			<string_labeled name="rank">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,15" width="205" height="20" />
+				<labelres>char_label_rank</labelres>
+			</string_labeled>
+			<string_labeled name="species">
+				<anchored to="rank" position="righthigh" offset="5,0" width="205" height="20" />
+				<labelres>char_label_species</labelres>
+			</string_labeled>
+			<string_labeled name="environment">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,50" width="205" height="20" />
+				<labelres>char_label_environment</labelres>
+			</string_labeled>
+			<string_labeled name="upbringing">
+				<anchored to="environment" position="righthigh" offset="5,0" width="205" height="20" />
+				<labelres>char_label_upbringing</labelres>
+			</string_labeled>
+			<string_labeled name="assignment">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,85" width="410" height="20" />
+				<labelres>char_label_assignment</labelres>
+			</string_labeled>
+			<string_labeled name="trait">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,120" width="410" height="20" />
+				<labelres>char_label_trait</labelres>
+			</string_labeled>
+			
 <!-- Attributes -->
-			<label_column name="control_label">
-				<static textres="char_label_attr_control" />
-			</label_column>
-			<number_column name="control">
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			<frame_char name="attributeframe">
+					<anchored to="detailsframe" position="belowleft" offset="0,0" height="200" >
+					<right parent="" anchor="center" offset="0,0" />
+				</anchored>
+			</frame_char>
+			<label_frametop>
+				<anchored to="attributeframe" />
+				<static textres="char_label_attributes" />
+			</label_frametop>
+			
+			<char_attribute name="control">
+				<anchored to="attributeframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>7</default>
-			</number_column>
+			</char_attribute>
+			<label name="control_label">
+				<anchored to="control" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_attr_control"/>
+			</label>
 
-			<label_column name="daring_label">
-				<static textres="char_label_attr_daring" />
-			</label_column>
-			<number_column name="daring">
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			<char_attribute name="daring">
+				<anchored to="control" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</number_column>
+			</char_attribute>
+			<label name="daring_label">
+				<anchored to="daring" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_attr_daring"/>
+			</label>
 
-			<label_column name="fitness_label">
-				<static textres="char_label_attr_fitness" />
-			</label_column>
-			<number_column name="fitness">
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			<char_attribute name="fitness">
+				<anchored to="daring" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</number_column>
+			</char_attribute>
+			<label name="fitness_label">
+				<anchored to="fitness" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_attr_fitness"/>
+			</label>
+			
+			<char_attribute name="insight">
+				<anchored to="fitness" position="belowleft" offset="0,5" width="30" height="20"/>
+				<default>7</default>
+			</char_attribute>
+			<label name="insight_label">
+				<anchored to="insight" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_attr_insight"/>
+			</label>
 
-			<label_column name="control_insight">
-				<static textres="char_label_attr_insight" />
-			</label_column>
-			<number_column name="insight">
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			<char_attribute name="presence">
+				<anchored to="insight" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</number_column>
+			</char_attribute>
+			<label name="presence_label">
+				<anchored to="presence" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_attr_presence"/>
+			</label>
 
-			<label_column name="presence_label">
-				<static textres="char_label_attr_presence" />
-			</label_column>
-			<number_column name="presence">
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			<char_attribute name="reason">
+				<anchored to="presence" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</number_column>
-
-			<label_column name="reason_label">
-				<static textres="char_label_attr_reason" />
-			</label_column>
-			<number_column name="reason">
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
-				<default>7</default>
-			</number_column>
+			</char_attribute>
+			<label name="reason_label">
+				<anchored to="reason" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_attr_reason"/>
+			</label>
 
 <!-- Disciplines -->
-			<label_column_right name="command_label">
-				<anchored to="control" />
-				<static textres="char_label_disc_command" />
-			</label_column_right>
-			<number_column_right name="command">
-				<anchored to="control" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			<frame_char name="disciplineframe">
+					<anchored to="attributeframe" position="righthigh" offset="0,0" height="200" >
+					<right parent="" anchor="right" offset="0,0" />
+				</anchored>
+			</frame_char>
+			<label_frametop>
+				<anchored to="disciplineframe" />
+				<static textres="char_label_disciplines" />
+			</label_frametop>
+
+			<char_attribute name="command">
+				<anchored to="disciplineframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>1</default>
-			</number_column_right>
-			
-			<label_column_right name="conn_label">
-				<anchored to="daring" />
-				<static textres="char_label_disc_conn" />
-			</label_column_right>
-			<number_column_right name="conn">
-				<anchored to="daring" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			</char_attribute>
+			<label name="command_label">
+				<anchored to="command" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_disc_command"/>
+			</label>
+
+			<char_attribute name="conn">
+				<anchored to="command" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</number_column_right>
-			
-			<label_column_right name="security_label">
-				<anchored to="fitness" />
-				<static textres="char_label_disc_security" />
-			</label_column_right>
-			<number_column_right name="security">
-				<anchored to="fitness" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			</char_attribute>
+			<label name="conn_label">
+				<anchored to="conn" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_disc_conn"/>
+			</label>
+
+			<char_attribute name="security">
+				<anchored to="conn" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</number_column_right>
+			</char_attribute>
+			<label name="security_label">
+				<anchored to="security" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_disc_security"/>
+			</label>
 			
-			<label_column_right name="engineering_label">
-				<anchored to="insight" />
-				<static textres="char_label_disc_engineering" />
-			</label_column_right>
-			<number_column_right name="engineering">
-				<anchored to="insight" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			<char_attribute name="engineering">
+				<anchored to="security" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</number_column_right>
-			
-			<label_column_right name="science_label">
-				<anchored to="presence" />
-				<static textres="char_label_disc_science" />
-			</label_column_right>
-			<number_column_right name="science">
-				<anchored to="presence" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-			
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			</char_attribute>
+			<label name="engineering_label">
+				<anchored to="engineering" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_disc_engineering"/>
+			</label>
+
+			<char_attribute name="science">
+				<anchored to="engineering" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</number_column_right>
-			
-			<label_column_right name="medicine_label">
-				<anchored to="reason" />
-				<static textres="char_label_disc_medicine" />
-			</label_column_right>
-			<number_column_right name="medicine">
-				<anchored to="reason" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20","d20"};
-						draginfo.setDieList(dice);
-						return true;
-					end
-		  
-					function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					end
-				</script>
+			</char_attribute>
+			<label name="science_label">
+				<anchored to="science" position="lefthigh" offset="50,0" width="90"/>
+				<static textres="char_label_disc_science"/>
+			</label>
+
+			<char_attribute name="medicine">
+				<anchored to="science" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</number_column_right>
-			
-			<label_column name="focus_label">
+			</char_attribute>
+			<label name="medicine_label">
+				<anchored to="medicine" position="lefthigh" offset="50,0" width="90" />
+				<static textres="char_label_disc_medicine"/>
+			</label>
+
+
+<!-- Values -->
+			<frame_char name="valuesframe">
+				<anchored to="attributeframe" position="belowleft" offset="0,0" width="149" height="170"/>
+			</frame_char>
+			<label_frametop>
+				<anchored to="valuesframe" />
+				<static textres="char_label_values" />
+			  </label_frametop>
+			  <list_charvalues name="values">
+				<anchored to="valuesframe">
+				  <left offset="15"/>
+				  <top offset="35"/>
+				  <right offset="-15"/>
+				  <bottom offset="-20"/>
+				</anchored>
+			  </list_charvalues>
+			  
+<!-- Focuses -->
+			<frame_char name="focusframe">
+				<anchored to="valuesframe" position="righthigh" offset="0,0" width="149" height="170"/>
+			</frame_char>
+			<label_frametop>
+				<anchored to="focusframe" />
 				<static textres="char_label_focuses" />
-			</label_column>
-			<string_columnh name="focus" />
+			</label_frametop>
+			<stringu name="focuses">
+				<anchored to="focusframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar_list>
+				<anchored to="focuses" />
+				<target>focuses</target>
+			</scrollbar_list>
+	
+<!-- Injuries -->
+			<frame_char name="injuryframe">
+				<anchored to="focusframe" position="righthigh" offset="0,0" width="149" height="170"/>
+			</frame_char>
+			<label_frametop>
+				<anchored to="injuryframe" />
+				<static textres="char_label_injuries" />
+			</label_frametop>
+			<stringu name="injuries">
+				<anchored to="injuryframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar_list>
+				<anchored to="injuries" />
+				<target>injuries</target>
+			</scrollbar_list>
+
+			<anchor_column name="columnanchor">
+				<anchored to="valuesframe" position="belowleft" offset="0,0" />
+			</anchor_column>
 			
-			<line_column name="divider" />
-			
+			<line_column name="divider2" />
+
 			<label_column name="stress_label">
 				<static textres="char_label_stress" />
 			</label_column>
 			<number_column name="stress_current">
+				<anchored to="stress_label" />
 				<default>0</default>
 			</number_column>
-			
+
 			<label_column_right name="max_stress_label">
 				<anchored to="stress_current" />
 				<static textres="npc_label_max_stress" />
@@ -457,13 +392,6 @@
 				<anchored to="stress_current" />
 				<default>1</default>
 			</number_column_right>
-
-			<label_column name="injuries_label">
-				<static textres="char_label_injuries" />
-			</label_column>
-			<string_columnh name="injuries" />
-			
-			<line_column name="divider2" />
 
 			<label_column name="weapons_label">
 				<static textres="char_label_weapons" />
@@ -474,7 +402,7 @@
 				<script file="campaign/scripts/npc_roll.lua" />
 				-->
 			</string_columnh>
-			
+
 			<label_column name="items_label">
 				<static textres="npc_label_items" />
 			</label_column>
@@ -485,26 +413,6 @@
 			</label_column>
 			<string_columnh name="languages" />
 
-			<line_column name="divider_bottom" />
-
-<!--
-			<label_column name="space_label">
-				<static textres="npc_label_size" />
-			</label_column>
-			<number_column name="space">
-				<default>1</default>
-			</number_column>
-			
-			<label_column_right name="reach_label">
-				<anchored to="space" />
-				<static textres="npc_label_reach" />
-			</label_column_right>
-			<number_column_right name="reach">
-				<anchored to="space" />
-				<default>1</default>
-			</number_column_right>
--->
-			
 		</sheetdata>
 	</windowclass>
 </root>
