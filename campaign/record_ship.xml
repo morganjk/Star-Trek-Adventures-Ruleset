@@ -138,7 +138,8 @@
 			end
 		</script>
 		<sheetdata>
-		
+
+<!-- Details -->		
 			<frame_char name="detailsframe">
 				<bounds>0,5,-1,165</bounds>
 			</frame_char>
@@ -167,19 +168,19 @@
 				<labelres>ship_label_traits</labelres>
 			</string_labeled>
 
-<!-- Attributes -->
-			<frame_char name="attributeframe">
+<!-- Systems -->
+			<frame_char name="systemsframe">
 					<anchored to="detailsframe" position="belowleft" offset="0,0" height="110" >
 					<right parent="" anchor="center" offset="100,0" />
 				</anchored>
 			</frame_char>
 			<label_frametop>
-				<anchored to="attributeframe" />
-				<static textres="char_label_attributes" />
+				<anchored to="systemsframe" />
+				<static textres="ship_label_systems" />
 			</label_frametop>
 			
 			<label name="engines_label">
-				<anchored to="attributeframe" position="insidetopleft" offset="20,35" width="100" height="20" />
+				<anchored to="systemsframe" position="insidetopleft" offset="20,35" width="100" height="20" />
 				<static textres="ship_label_engines"/>
 			</label>
 			<char_attribute name="engines">
@@ -322,19 +323,19 @@
 				</script>
 			</char_attribute>
 
-<!-- Disciplines -->
-			<frame_char name="disciplineframe">
-					<anchored to="attributeframe" position="belowleft" offset="0,0" height="110" >
+<!-- Departments -->
+			<frame_char name="departmentsframe">
+					<anchored to="systemsframe" position="belowleft" offset="0,0" height="110" >
 					<right parent="" anchor="center" offset="100,0" />
 				</anchored>
 			</frame_char>
 			<label_frametop>
-				<anchored to="disciplineframe" />
-				<static textres="char_label_disciplines" />
+				<anchored to="departmentsframe" />
+				<static textres="ship_label_departments" />
 			</label_frametop>
 			
 			<label name="command_label">
-				<anchored to="disciplineframe" position="insidetopleft" offset="20,35" width="100" height="20" />
+				<anchored to="departmentsframe" position="insidetopleft" offset="20,35" width="100" height="20" />
 				<static textres="char_label_disc_command"/>
 			</label>
 			<char_attribute name="command">
@@ -478,18 +479,18 @@
 			</char_attribute>
 			
 <!-- Shields -->
-			<frame_char name="stressframe">
-				<anchored to="attributeframe" position="righthigh" offset="0,0" width="110" height="220"/>
+			<frame_char name="shieldframe">
+				<anchored to="systemsframe" position="righthigh" offset="0,0" width="110" height="220"/>
 			</frame_char>
 			<basicnumber name="maxstress">
-				<anchored to="stressframe" position="insidetopright" offset="20,15" width="30" height="20"/>
+				<anchored to="shieldframe" position="insidetopright" offset="20,15" width="30" height="20"/>
 			</basicnumber>
 			<label>
 				<anchored to="maxstress" position="left" offset="0,0" width="50"/>
-				<static textres="char_label_stress"/>
+				<static textres="ship_label_shields"/>
 			</label>
 			<buttongroup_counter name="stresscounter">
-				<anchored to="stressframe" position="insidetopleft" offset="15,45" width="140" height="120"/>
+				<anchored to="shieldframe" position="insidetopleft" offset="15,45" width="140" height="120"/>
 				<stateicons>
 					<on>stress_tick</on>
 					<off>stress_empty</off>
@@ -503,13 +504,9 @@
 				</sourcefields>
 			</buttongroup_counter>
 
-			<anchor_column name="columnanchor">
-				<anchored to="disciplineframe" position="belowleft" offset="0,0" />
-			</anchor_column>
-
 <!-- Launch Bay -->
 			<frame_char name="launch_bayframe">
-				<anchored to="stressframe" position="righthigh" offset="0,0" width="150" height="220"/>
+				<anchored to="shieldframe" position="righthigh" offset="0,0" width="150" height="220"/>
 			</frame_char>
 			<label_frametop>
 				<anchored to="launch_bayframe" />
@@ -529,64 +526,72 @@
 				<target>launch_bay</target>
 			</scrollbar_list>
 			
-			
-			
-			
-			
-			<label_column name="talents_label">
-				<static textres="char_label_talents" />
-			</label_column>
-			<string_columnh name="talents" />
-			
-			<line_column name="divider" />
-			
-			<label_column name="scale_label">
+<!-- Talents -->
+			<frame_char name="talentsframe">
+				<anchored to="departmentsframe" position="belowleft" offset="0,0" height="220" >
+					<right parent="" anchor="center" offset="100,0" />
+				</anchored>
+			</frame_char>
+			<label_frametop>
+				<anchored to="talentsframe" />
+				<static textres="ship_label_talents" />
+			</label_frametop>
+			<stringu name="talents">
+				<anchored to="talentsframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar_list>
+				<anchored to="talents" />
+				<target>talents</target>
+			</scrollbar_list>
+
+<!-- Other Stuff -->
+			<frame_char name="otherframe">
+				<anchored to="talentsframe" position="righthigh" offset="0,0" width="260" height="220"/>
+			</frame_char>
+			<label name="scale_label">
+				<anchored to="otherframe" position="insidetopleft" offset="15,15" width="60" height="20" />
 				<static textres="ship_label_scale" />
-			</label_column>
-			<number_column name="scale">
+			</label>
+			<char_attribute name="scale">
+				<anchored to="scale_label" position="righthigh" offset="0,0" width="30" />
+			</char_attribute>
+			<char_attribute name="resistance">
+				<anchored to="otherframe" position="insidetopright" offset="20,15" width="30" height="20"/>
 				<default>1</default>
-			</number_column>
-			
-			<label_column_right name="resistance_label">
-				<anchored to="scale" />
+			</char_attribute>
+			<label name="resistance_label">
+				<anchored to="resistance" position="lefthigh" offset="15,0" width="60" />
 				<static textres="ship_label_resistance" />
-			</label_column_right>
-			<number_column_right name="resistance">
-				<anchored to="scale" />
-				<default>1</default>
-			</number_column_right>
-
-			<label_column name="power_label">
+			</label>
+			<label name="power_label">
+				<anchored to="scale_label" position="belowleft" offset="0,0" width="60" height="20" />
 				<static textres="ship_label_power" />
-			</label_column>
-			<number_column name="power_current">
+			</label>
+			<char_attribute name="power">
+				<anchored to="power_label" position="righthigh" offset="0,0" width="30" />
 				<default>0</default>
-			</number_column>
-			
-			<label_column_right name="max_power_label">
-				<anchored to="power_current" />
+			</char_attribute>
+			<char_attribute name="max_power">
+				<anchored to="resistance" position="belowleft" offset="15,0" width="30" height="20"/>`
+				<default>1</default>
+			</char_attribute>
+			<label name="max_power_label">
+				<anchored to="max_power" position="lefthigh" offset="15,0" width="60" />
 				<static textres="ship_label_max_power" />
-			</label_column_right>
-			<number_column_right name="power_max">
-				<anchored to="power_current" />
-				<default>1</default>
-			</number_column_right>
-
-			<label_column name="shields_label">
-				<static textres="ship_label_shields" />
-			</label_column>
-			<number_column name="shields_current">
-				<default>0</default>
-			</number_column>
+			</label>
 			
-			<label_column_right name="max_shields_label">
-				<anchored to="shields_current" />
-				<static textres="ship_label_max_shields" />
-			</label_column_right>
-			<number_column_right name="shields_max">
-				<anchored to="shields_current" />
-				<default>1</default>
-			</number_column_right>
+			
+			
+			<anchor_column name="columnanchor">
+				<anchored to="talentsframe" position="belowleft" offset="0,0" />
+			</anchor_column>
+
 
 			<label_column name="breaches_label">
 				<static textres="ship_label_breaches" />

@@ -55,8 +55,11 @@
 	<string name="ship_label_mission_profile">Mission Profile</string>
 	<string name="ship_label_refit">Refit</string>
 	<string name="ship_label_traits">Traits</string>
+	<string name="ship_label_talents">Talents</string>
 	
 	
+	<string name="ship_label_systems">Systems</string>
+	<string name="ship_label_departments">Departments</string>
 	<string name="ship_label_engines">Engines</string>
 	<string name="ship_label_structure">Structure</string>
 	<string name="ship_label_computers">Computers</string>
@@ -68,7 +71,6 @@
 	<string name="ship_label_resistance">Resistance</string>
 	<string name="ship_label_breaches">Breaches</string>
 	<string name="ship_label_shields">Shields</string>
-	<string name="ship_label_max_shields">Shields (Max)</string>
 	<string name="ship_label_power">Power</string>
 	<string name="ship_label_max_power">Power (Max)</string>
 	<string name="ship_label_crew">Crew Support</string>
