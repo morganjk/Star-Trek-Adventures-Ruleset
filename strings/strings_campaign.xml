@@ -49,6 +49,17 @@
 	<string name="npc_label_max_stress">Stress (Max)</string>
   
 <!-- Ship -->
+	<string name="ship_label_designation">Designation</string>
+	<string name="ship_label_service_date">Service Date</string>
+	<string name="ship_label_space_frame">Space Frame</string>
+	<string name="ship_label_mission_profile">Mission Profile</string>
+	<string name="ship_label_refit">Refit</string>
+	<string name="ship_label_traits">Traits</string>
+	<string name="ship_label_talents">Talents</string>
+	
+	
+	<string name="ship_label_systems">Systems</string>
+	<string name="ship_label_departments">Departments</string>
 	<string name="ship_label_engines">Engines</string>
 	<string name="ship_label_structure">Structure</string>
 	<string name="ship_label_computers">Computers</string>
@@ -60,7 +71,6 @@
 	<string name="ship_label_resistance">Resistance</string>
 	<string name="ship_label_breaches">Breaches</string>
 	<string name="ship_label_shields">Shields</string>
-	<string name="ship_label_max_shields">Shields (Max)</string>
 	<string name="ship_label_power">Power</string>
 	<string name="ship_label_max_power">Power (Max)</string>
 	<string name="ship_label_crew">Crew Support</string>
@@ -68,6 +78,8 @@
 	<string name="ship_label_attr_crew">Crew (Attributes)</string>
 	<string name="ship_label_disc_crew">Crew (Disciplines)</string>
   
+	<string name="ship_label_launch_bay">Launch Bays</string>
+	
 <!-- Species -->
 	<string name="species_header_subspecies">SUB-SPECIES</string>
 	<string name="species_header_traits">TRAITS</string>

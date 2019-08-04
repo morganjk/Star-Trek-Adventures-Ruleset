@@ -9,12 +9,8 @@
 	<windowclass name="ship">
 		<frame>recordsheet</frame>
 		<placement>
-			<size width="350" height="500" />
+			<size width="800" height="800" />
 		</placement>
-		<sizelimits>
-			<minimum width="350" height="500" />
-			<dynamic />
-		</sizelimits>
 		<minimize>minimized_npc</minimize>
 		<tooltip field="name" />
 		<sharable />
@@ -135,365 +131,569 @@
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
 
 				talents.setReadOnly(bReadOnly);
-				
-				local bSection2 = false;
-				if ship_weapons.update(bReadOnly) then bSection2 = true; end;
-				divider2.setVisible(bSection2);
 			end
 		</script>
 		<sheetdata>
-			<anchor_column name="columnanchor" />
 
-			<!-- Attributes -->
-			<label_column name="engines_label">
-				<static textres="ship_label_engines" />
-			</label_column>
-			<number_column name="engines">
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+<!-- Details -->		
+			<frame_char name="detailsframe">
+				<bounds>0,5,-1,165</bounds>
+			</frame_char>
+			<string_labeled name="designation">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,15" width="343" height="20" />
+				<labelres>ship_label_designation</labelres>
+			</string_labeled>
+			<string_labeled name="service date">
+				<anchored to="designation" position="righthigh" offset="5,0" width="343" height="20" />
+				<labelres>ship_label_service_date</labelres>
+			</string_labeled>
+			<string_labeled name="space frame">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,50" width="343" height="20" />
+				<labelres>ship_label_space_frame</labelres>
+			</string_labeled>
+			<string_labeled name="refit">
+				<anchored to="space frame" position="righthigh" offset="5,0" width="343" height="20" />
+				<labelres>ship_label_refit</labelres>
+			</string_labeled>
+			<string_labeled name="mission profile">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,85" width="686" height="20" />
+				<labelres>ship_label_mission_profile</labelres>
+			</string_labeled>
+			<string_labeled name="traits">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,120" width="686" height="20" />
+				<labelres>ship_label_traits</labelres>
+			</string_labeled>
+
+<!-- Systems -->
+			<frame_char name="systemsframe">
+				<anchored to="detailsframe" position="belowleft" offset="0,0" height="110" >
+					<right parent="" anchor="center" offset="100,0" />
+				</anchored>
+			</frame_char>
+			<label_frametop name="systemframe_label">
+				<anchored to="systemsframe" />
+				<static textres="ship_label_systems" />
+			</label_frametop>
+			
+			<label name="engines_label">
+				<anchored to="systemsframe" position="insidetopleft" offset="20,22" width="100" height="20" />
+				<static textres="ship_label_engines"/>
+			</label>
+			<char_attribute name="engines">
+				<anchored to="engines_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-			</number_column>
-
-			<label_column name="structure_label">
-				<static textres="ship_label_structure" />
-			</label_column>
-			<number_column name="structure">
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
-				<default>7</default>
-			</number_column>
-
-			<label_column name="computers_label">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
+			
+			<label name="computers_label">
+				<anchored to="engines" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="ship_label_computers" />
-			</label_column>
-			<number_column name="computers">
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+			</label>
+			<char_attribute name="computers">
+				<anchored to="computers_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-			</number_column>
-
-			<label_column name="sensors_label">
-				<static textres="ship_label_sensors" />
-			</label_column>
-			<number_column name="sensors">
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
-				<default>7</default>
-			</number_column>
-
-			<label_column name="weapons_label">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
+			
+			<label name="weapons_label">
+				<anchored to="computers" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="ship_label_weapons" />
-			</label_column>
-			<number_column name="weapons">
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+			</label>
+			<char_attribute name="weapons">
+				<anchored to="weapons_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-			</number_column>
-
-			<label_column name="comms_label">
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
+			
+			<label name="structure_label">
+				<anchored to="engines_label" position="belowleft" offset="0,18" width="100" height="20" />
+				<static textres="ship_label_structure" />
+			</label>
+			<char_attribute name="structure">
+				<anchored to="structure_label" position="righthigh" offset="0,0" width="30" />
+				<default>7</default>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
+			
+			<label name="sensors_label">
+				<anchored to="structure" position="righthigh" offset="15,0" width="100" height="20" />
+				<static textres="ship_label_sensors" />
+			</label>
+			<char_attribute name="sensors">
+				<anchored to="sensors_label" position="righthigh" offset="0,0" width="30" />
+				<default>7</default>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
+			
+			<label name="comms_label">
+				<anchored to="sensors" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="ship_label_comms" />
-			</label_column>
-			<number_column name="comms">
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+			</label>
+			<char_attribute name="comms">
+				<anchored to="comms_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-			</number_column>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
 
-			<!-- Disciplines -->
-			<label_column_right name="command_label">
-				<anchored to="engines" />
-				<static textres="char_label_disc_command" />
-			</label_column_right>
-			<number_column_right name="command">
-				<anchored to="engines" />
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
-				<default>1</default>
-			</number_column_right>
+<!-- Breaches -->
+			<buttongroup_counter name="engines_breach">
+				<anchored to="engines_label" position="belowleft" offset="0,0" />
+				<spacing>10</spacing>
+				<allowsinglespacing/>
+				<maxslotperrow>7</maxslotperrow>
+				<sourcefields>
+					<maximum>scale</maximum>
+					<current>curengine</current>
+				</sourcefields>
+			</buttongroup_counter>
+			<buttongroup_counter name="computers_breach">
+				<anchored to="computers_label" position="belowleft" offset="0,0" />
+				<spacing>10</spacing>
+				<allowsinglespacing/>
+				<maxslotperrow>7</maxslotperrow>
+				<sourcefields>
+					<maximum>scale</maximum>
+					<current>curcomputers</current>
+				</sourcefields>
+			</buttongroup_counter>
+			<buttongroup_counter name="weapons_breach">
+				<anchored to="weapons_label" position="belowleft" offset="0,0" />
+				<spacing>10</spacing>
+				<allowsinglespacing/>
+				<maxslotperrow>7</maxslotperrow>
+				<sourcefields>
+					<maximum>scale</maximum>
+					<current>curweapons</current>
+				</sourcefields>
+			</buttongroup_counter>
+			<buttongroup_counter name="structure_breach">
+				<anchored to="structure_label" position="belowleft" offset="0,0" />
+				<spacing>10</spacing>
+				<allowsinglespacing/>
+				<maxslotperrow>7</maxslotperrow>
+				<sourcefields>
+					<maximum>scale</maximum>
+					<current>curstructure</current>
+				</sourcefields>
+			</buttongroup_counter>
+			<buttongroup_counter name="sensors_breach">
+				<anchored to="sensors_label" position="belowleft" offset="0,0" />
+				<spacing>10</spacing>
+				<allowsinglespacing/>
+				<maxslotperrow>7</maxslotperrow>
+				<sourcefields>
+					<maximum>scale</maximum>
+					<current>cursensors</current>
+				</sourcefields>
+			</buttongroup_counter>
+			<buttongroup_counter name="comms_breach">
+				<anchored to="comms_label" position="belowleft" offset="0,0" />
+				<spacing>10</spacing>
+				<allowsinglespacing/>
+				<maxslotperrow>7</maxslotperrow>
+				<sourcefields>
+					<maximum>scale</maximum>
+					<current>curcomms</current>
+				</sourcefields>
+			</buttongroup_counter>
+
+<!-- Departments -->
+			<frame_char name="departmentsframe">
+				<anchored to="systemsframe" position="belowleft" offset="0,0" height="110" >
+					<right parent="" anchor="center" offset="100,0" />
+				</anchored>
+			</frame_char>
+			<label_frametop name="departmentsframe_label">
+				<anchored to="departmentsframe" />
+				<static textres="ship_label_departments" />
+			</label_frametop>
 			
-			<label_column_right name="conn_label">
-				<anchored to="structure" />
-				<static textres="char_label_disc_conn" />
-			</label_column_right>
-			<number_column_right name="conn">
-				<anchored to="structure" />
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+			<label name="command_label">
+				<anchored to="departmentsframe" position="insidetopleft" offset="20,35" width="100" height="20" />
+				<static textres="char_label_disc_command"/>
+			</label>
+			<char_attribute name="command">
+				<anchored to="command_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-			</number_column_right>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
 			
-			<label_column_right name="security_label">
-				<anchored to="computers" />
+			<label name="security_label">
+				<anchored to="command" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_security" />
-			</label_column_right>
-			<number_column_right name="security">
-				<anchored to="computers" />
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+			</label>
+			<char_attribute name="security">
+				<anchored to="security_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-			</number_column_right>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
 			
-			<label_column_right name="engineering_label">
-				<anchored to="sensors" />
-				<static textres="char_label_disc_engineering" />
-			</label_column_right>
-			<number_column_right name="engineering">
-				<anchored to="sensors" />
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
-				<default>1</default>
-			</number_column_right>
-			
-			<label_column_right name="science_label">
-				<anchored to="weapons" />
+			<label name="science_label">
+				<anchored to="security" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_science" />
-			</label_column_right>
-			<number_column_right name="science">
-				<anchored to="weapons" />
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+			</label>
+			<char_attribute name="science">
+				<anchored to="science_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-			</number_column_right>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
 			
-			<label_column_right name="medicine_label">
-				<anchored to="comms" />
+			<label name="conn_label">
+				<anchored to="command_label" position="belowleft" offset="0,15" width="100" height="20" />
+				<static textres="char_label_disc_conn" />
+			</label>
+			<char_attribute name="conn">
+				<anchored to="conn_label" position="righthigh" offset="0,0" width="30" />
+				<default>1</default>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
+			
+			<label name="engineering_label">
+				<anchored to="conn" position="righthigh" offset="15,0" width="100" height="20" />
+				<static textres="char_label_disc_engineering" />
+			</label>
+			<char_attribute name="engineering">
+				<anchored to="engineering_label" position="righthigh" offset="0,0" width="30" />
+				<default>1</default>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
+			
+			<label name="medicine_label">
+				<anchored to="engineering" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_medicine" />
-			</label_column_right>
-			<number_column_right name="medicine">
-				<anchored to="comms" />
-        <script>
-          function onDragStart(button, x, y, draginfo)
-            local label = getName():gsub("^%l", string.upper);
-            draginfo.setType("skilldice");
-            draginfo.setDescription(label);
-            local dice = {"d20"};
-            draginfo.setDieList(dice);
-            return true;
-          end
-  
-          function onDoubleClick(x, y)
-            local label = getName():gsub("^%l", string.upper);
-            ModifierStack.addSlot(label, getValue());
-          end
-        </script>
+			</label>
+			<char_attribute name="medicine">
+				<anchored to="medicine_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-			</number_column_right>
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						local label = getName():gsub("^%l", string.upper);
+						draginfo.setType("skilldice");
+						draginfo.setDescription(label);
+						local dice = {"d20"};
+						draginfo.setDieList(dice);
+						return true;
+					  end
+			  
+					  function onDoubleClick(x, y)
+						local label = getName():gsub("^%l", string.upper);
+						ModifierStack.addSlot(label, getValue());
+					  end
+				</script>
+			</char_attribute>
 			
-			<label_column name="talents_label">
-				<static textres="char_label_talents" />
-			</label_column>
-			<string_columnh name="talents" />
+<!-- Shields -->
+			<frame_char name="shieldframe">
+				<anchored to="systemsframe" position="righthigh" offset="0,0" width="110" height="220"/>
+			</frame_char>
+			<basicnumber name="maxshield">
+				<anchored to="shieldframe" position="insidetopright" offset="20,15" width="30" height="20"/>
+			</basicnumber>
+			<label name="maxshield_label">
+				<anchored to="maxshield" position="lefthigh" offset="0,0" width="50"/>
+				<static textres="ship_label_shields"/>
+			</label>
+			<buttongroup_counter name="shieldcounter">
+				<anchored to="shieldframe" position="insidetopleft" offset="15,45" width="140" height="120"/>
+				<stateicons>
+					<on>stress_tick</on>
+					<off>stress_empty</off>
+				</stateicons>
+				<spacing>20</spacing>
+				<allowsinglespacing/>
+				<maxslotperrow>4</maxslotperrow>
+				<sourcefields>
+					<maximum>maxshield</maximum>
+					<current>curshield</current>
+				</sourcefields>
+			</buttongroup_counter>
+
+<!-- Launch Bay -->
+			<frame_char name="launch_bayframe">
+				<anchored to="shieldframe" position="righthigh" offset="0,0" width="150" height="220"/>
+			</frame_char>
+			<label_frametop name="launch_bayframe_label">
+				<anchored to="launch_bayframe" />
+				<static textres="ship_label_launch_bay" />
+			</label_frametop>
+			<stringu name="launch_bay">
+				<anchored to="launch_bayframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar_list name="launch_bay_scroll">
+				<anchored to="launch_bay" />
+				<target>launch_bay</target>
+			</scrollbar_list>
 			
-			<line_column name="divider" />
-			
-			<label_column name="scale_label">
+<!-- Other Stuff -->
+			<frame_char name="otherframe">
+				<anchored to="departmentsframe" position="belowleft" offset="0,0" width="460" height="45"/>
+			</frame_char>
+			<label name="scale_label">
+				<anchored to="otherframe" position="insidetopleft" offset="20,15" width="40" height="20" />
 				<static textres="ship_label_scale" />
-			</label_column>
-			<number_column name="scale">
-				<default>1</default>
-			</number_column>
-			
-			<label_column_right name="resistance_label">
-				<anchored to="scale" />
+			</label>
+			<char_attribute name="scale">
+				<anchored to="scale_label" position="righthigh" offset="0,0" width="30" />
+			</char_attribute>
+			<label name="resistance_label">
+				<anchored to="scale" position="righthigh" offset="15,0" width="70" />
 				<static textres="ship_label_resistance" />
-			</label_column_right>
-			<number_column_right name="resistance">
-				<anchored to="scale" />
+			</label>
+			<char_attribute name="resistance">
+				<anchored to="resistance_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-			</number_column_right>
-
-			<label_column name="power_label">
+			</char_attribute>
+			<label name="power_label">
+				<anchored to="resistance" position="righthigh" offset="15,0" width="50" />
 				<static textres="ship_label_power" />
-			</label_column>
-			<number_column name="power_current">
+			</label>
+			<char_attribute name="power">
+				<anchored to="power_label" position="righthigh" offset="0,0" width="30" />
 				<default>0</default>
-			</number_column>
-			
-			<label_column_right name="max_power_label">
-				<anchored to="power_current" />
+			</char_attribute>
+			<label name="max_power_label">
+				<anchored to="power" position="righthigh" offset="10,0" width="73" />
 				<static textres="ship_label_max_power" />
-			</label_column_right>
-			<number_column_right name="power_max">
-				<anchored to="power_current" />
+			</label>
+			<char_attribute name="max_power">
+				<anchored to="max_power_label" position="righthigh" offset="15,0" width="30" />
 				<default>1</default>
-			</number_column_right>
-
-			<label_column name="shields_label">
-				<static textres="ship_label_shields" />
-			</label_column>
-			<number_column name="shields_current">
-				<default>0</default>
-			</number_column>
+			</char_attribute>
 			
-			<label_column_right name="max_shields_label">
-				<anchored to="shields_current" />
-				<static textres="ship_label_max_shields" />
-			</label_column_right>
-			<number_column_right name="shields_max">
-				<anchored to="shields_current" />
-				<default>1</default>
-			</number_column_right>
+<!-- Talents -->
+			<frame_char name="talentsframe">
+				<anchored to="shieldframe" position="belowleft" offset="0,0" width="260" height="300" />
+			</frame_char>
+			<label_frametop name="talentsframe_label">
+				<anchored to="talentsframe" />
+				<static textres="ship_label_talents" />
+			</label_frametop>
+			<stringu name="talents">
+				<anchored to="talentsframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar_list name="talents_scroll">
+				<anchored to="talents" />
+				<target>talents</target>
+			</scrollbar_list>
 
-			<label_column name="breaches_label">
-				<static textres="ship_label_breaches" />
-			</label_column>
-			<string_columnh name="breaches" />
-			
-			<line_column name="divider2" />
-
-			<label_column name="weapons_label">
+<!-- Weapons -->
+			<frame_char name="weaponsframe">
+				<anchored to="otherframe" position="belowleft" offset="0,0" height="220" >
+					<right parent="" anchor="center" offset="100,0" />
+				</anchored>
+			</frame_char>
+			<label_frametop>
+				<anchored to="weaponsframe" />
 				<static textres="char_label_weapons" />
-			</label_column>
-			<string_columnh name="ship_weapons">
-				<!-- Roll identification not yet working
-				<nodragselect />
-				<script file="campaign/scripts/npc_roll.lua" />
-				-->
-			</string_columnh>
-			
+			</label_frametop>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="25,28"/>
+				<font>sheetlabelmini</font>
+				<static textres="char_label_weapon_name" />
+			</label>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="155,28"/>
+				<font>sheetlabelmini</font>
+				<static textres="char_label_weapon_size" />
+			</label>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="192,28"/>
+				<font>sheetlabelmini</font>
+				<static textres="char_label_weapon_damage" />
+			</label>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="295,28"/>
+				<font>sheetlabelmini</font>
+				<static textres="char_label_weapon_qualities" />
+			</label>
+		  
+			<list_weapon name="weapons_list">
+				<anchored to="weaponsframe">
+					<left offset="15"/>
+					<top offset="45"/>
+					<right offset="-15"/>
+					<bottom offset="-20"/>
+				</anchored>
+			</list_weapon>
+			<scrollbar_list>
+				<anchored to="weapons_list"/>
+				<target>weapons</target>
+			</scrollbar_list>
+			<button_iedit name="weapons_iedit">
+				<anchored to="weapons_list" position="aboveright" offset="5,10"/>
+				<target>weapons</target>
+			</button_iedit>
+			<button_iadd name="weapons_iadd">
+				<anchored to="weapons_iedit" position="lefthigh" offset="5,0"/>
+				<target>weapons</target>
+			</button_iadd>
+
 		</sheetdata>
 	</windowclass>
 </root>
