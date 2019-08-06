@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+	<template name="number_shieldtotal">
+		<number_modifier>
+			<frame name="fieldlight" offset="7,5,7,5" />
+			<showemptywidget />
+		</number_modifier>
+	</template>
+
+<!-- Shields -->
+	<template name="number_shieldsmax">
+		<number_shieldtotal>
+			<modifiersize>mini</modifiersize>
+			<description textres="ship_label_shields" />
+			<modifierfield>shield.max.temporary</modifierfield>
+			<source><name>systems.structure</name><op>+</op></source>
+			<source><name>departments.security</name><op>+</op></source>
+		</number_shieldtotal>
+	</template>
+</root>

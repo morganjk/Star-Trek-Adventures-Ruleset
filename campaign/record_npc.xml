@@ -189,7 +189,7 @@
 				<static textres="char_label_attributes" />
 			</label_frametop>
 			
-			<char_attribute name="control">
+			<char_attribute name="control" source="attribute.control">
 				<anchored to="attributeframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
@@ -198,7 +198,7 @@
 				<static textres="char_label_attr_control"/>
 			</label>
 
-			<char_attribute name="daring">
+			<char_attribute name="daring" source="attribute.daring">
 				<anchored to="control" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
@@ -207,7 +207,7 @@
 				<static textres="char_label_attr_daring"/>
 			</label>
 
-			<char_attribute name="fitness">
+			<char_attribute name="fitness" source="attribute.fitness">
 				<anchored to="daring" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
@@ -216,7 +216,7 @@
 				<static textres="char_label_attr_fitness"/>
 			</label>
 			
-			<char_attribute name="insight">
+			<char_attribute name="insight" source="attribute.insight">
 				<anchored to="fitness" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
@@ -225,7 +225,7 @@
 				<static textres="char_label_attr_insight"/>
 			</label>
 
-			<char_attribute name="presence">
+			<char_attribute name="presence" source="attribute.presence">
 				<anchored to="insight" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
@@ -234,7 +234,7 @@
 				<static textres="char_label_attr_presence"/>
 			</label>
 
-			<char_attribute name="reason">
+			<char_attribute name="reason" source="attribute.reason">
 				<anchored to="presence" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
@@ -254,7 +254,7 @@
 				<static textres="char_label_disciplines" />
 			</label_frametop>
 
-			<char_attribute name="command">
+			<char_attribute name="command" source="discipline.command">
 				<anchored to="disciplineframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
@@ -263,7 +263,7 @@
 				<static textres="char_label_disc_command"/>
 			</label>
 
-			<char_attribute name="conn">
+			<char_attribute name="conn" source="discipline.conn">
 				<anchored to="command" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
@@ -272,7 +272,7 @@
 				<static textres="char_label_disc_conn"/>
 			</label>
 
-			<char_attribute name="security">
+			<char_attribute name="security" source="discipline.security">
 				<anchored to="conn" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
@@ -281,7 +281,7 @@
 				<static textres="char_label_disc_security"/>
 			</label>
 			
-			<char_attribute name="engineering">
+			<char_attribute name="engineering" source="discipline.engineering">
 				<anchored to="security" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
@@ -290,7 +290,7 @@
 				<static textres="char_label_disc_engineering"/>
 			</label>
 
-			<char_attribute name="science">
+			<char_attribute name="science" source="discipline.science">
 				<anchored to="engineering" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
@@ -299,7 +299,7 @@
 				<static textres="char_label_disc_science"/>
 			</label>
 
-			<char_attribute name="medicine">
+			<char_attribute name="medicine" source="discipline.medicine">
 				<anchored to="science" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
@@ -388,10 +388,13 @@
 				<anchored to="stress_current" />
 				<static textres="npc_label_max_stress" />
 			</label_column_right>
-			<number_column_right name="stress_max">
-				<anchored to="stress_current" />
-				<default>1</default>
-			</number_column_right>
+			<number_npc_stress_max name="maxshield" source="stress.max.total">
+				<anchored to="max_stress_label" position="righthigh" offset="15,0" width="40" height="20" />
+				<sourcefields>
+					<maximum>stress.max.total</maximum>
+					<current>curshield</current>
+				</sourcefields>
+			</number_npc_stress_max>
 
 			<label_column name="weapons_label">
 				<static textres="char_label_weapons" />

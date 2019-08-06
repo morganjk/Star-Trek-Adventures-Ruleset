@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+	<template name="number_npcstresstotal">
+		<number_modifier>
+			<frame name="fieldlight" offset="7,5,7,5" />
+			<showemptywidget />
+		</number_modifier>
+	</template>
+
+<!-- Shields -->
+	<template name="number_npc_stress_max">
+		<number_npcstresstotal>
+			<modifiersize>mini</modifiersize>
+			<description textres="npc_label_max_stress" />
+			<modifierfield>stress.max.temporary</modifierfield>
+			<source><name>attribute.fitness</name><op>+</op></source>
+			<source><name>discipline.security</name><op>+</op></source>
+		</number_npcstresstotal>
+	</template>
+</root>

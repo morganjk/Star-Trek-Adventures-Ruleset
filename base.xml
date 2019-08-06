@@ -25,6 +25,8 @@
 <!-- Templates -->
 	<includefile source="desktop/chit.xml" />
     <includefile source="campaign/template_char.xml" />
+	<includefile source="campaign/template_ship.xml" />
+	<includefile source="campaign/template_npc.xml" />
 	
 <!-- Tabletop Chits -->
 	<includefile source="desktop/darksidechit.xml" />

@@ -62,27 +62,27 @@
 				<anchored to="attributesframe" />
 				<static textres="char_label_attributes" />
 			</label_frametop>
-			<char_attribute name="control">
+			<char_attribute name="control" source="attribute.control">
 				<anchored to="attributesframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
-			<char_attribute name="daring">
+			<char_attribute name="daring" source="attribute.daring">
 				<anchored to="control" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
-			<char_attribute name="fitness">
+			<char_attribute name="fitness" source="attribute.fitness">
 				<anchored to="daring" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
-			<char_attribute name="insight">
+			<char_attribute name="insight" source="attribute.insight">
 				<anchored to="fitness" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
-			<char_attribute name="presence">
+			<char_attribute name="presence" source="attribute.presence">
 				<anchored to="insight" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
-			<char_attribute name="reason">
+			<char_attribute name="reason" source="attribute.reason">
 				<anchored to="presence" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
 			</char_attribute>
@@ -119,27 +119,27 @@
 				<anchored to="disciplinesframe" />
 				<static textres="char_label_disciplines" />
 			</label_frametop>
-			<char_attribute name="command">
+			<char_attribute name="command" source="discipline.command">
 				<anchored to="disciplinesframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
-			<char_attribute name="conn">
+			<char_attribute name="conn" source="discipline.conn">
 				<anchored to="command" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
-			<char_attribute name="security">
+			<char_attribute name="security" source="discipline.security">
 				<anchored to="conn" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
-			<char_attribute name="engineering">
+			<char_attribute name="engineering" source="discipline.engineering">
 				<anchored to="security" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
-			<char_attribute name="science">
+			<char_attribute name="science" source="discipline.science">
 				<anchored to="engineering" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
-			<char_attribute name="medicine">
+			<char_attribute name="medicine" source="discipline.medicine">
 				<anchored to="science" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
 			</char_attribute>
@@ -172,9 +172,9 @@
 			<frame_char name="stressframe">
 				<bounds>345,175,150,140</bounds>
 			</frame_char>
-			<basicnumber name="maxstress">
+			<number_stressmax name="maxstress" source="stress.max.total">
 				<anchored to="stressframe" position="insidetopright" offset="25,15" width="30" height="20"/>
-			</basicnumber>
+			</number_stressmax>
 			<label>
 				<anchored to="maxstress" position="left" offset="10,0" width="60"/>
 				<static textres="char_label_stress"/>
@@ -189,7 +189,7 @@
 				<allowsinglespacing/>
 				<maxslotperrow>6</maxslotperrow>
 				<sourcefields>
-					<maximum>maxstress</maximum>
+					<maximum>stress.max.total</maximum>
 					<current>curstress</current>
 				</sourcefields>
 			</buttongroup_counter>

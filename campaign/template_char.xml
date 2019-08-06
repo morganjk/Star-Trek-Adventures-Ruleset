@@ -4,6 +4,14 @@
   attribution and copyright information.
 -->
 <root>
+
+	<template name="number_chartotal">
+		<number_modifier>
+			<frame name="fieldlight" offset="7,5,7,5" />
+			<showemptywidget />
+		</number_modifier>
+	</template>
+
  <!-- Rollable Attribute -->
 	<template name="char_attribute">
 		<basicnumber>
@@ -258,4 +266,16 @@
 			</script>   
 		</list_text>
 	</template>
+	
+<!-- Stress -->
+	<template name="number_stressmax">
+		<number_chartotal>
+			<modifiersize>mini</modifiersize>
+			<description textres="char_label_stress" />
+			<modifierfield>stress.max.temporary</modifierfield>
+			<source><name>attribute.fitness</name><op>+</op></source>
+			<source><name>discipline.security</name><op>+</op></source>
+		</number_chartotal>
+	</template>
+
 </root>

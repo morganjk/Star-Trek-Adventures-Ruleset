@@ -13,7 +13,7 @@
 	<string name="char_label_upbringing">Upbringing</string>
 	<string name="char_label_assignment">Assignment</string>
 	<string name="char_label_career">Career Notes</string>
-	<string name="char_label_trait">Traits</string>
+	<string name="char_label_traits">Traits</string>
   
 	<string name="char_label_attributes">Attributes</string>        
 	<string name="char_label_attr_control">Control</string>        

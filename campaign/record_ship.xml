@@ -251,7 +251,7 @@
 				<anchored to="engines_label" position="belowleft" offset="0,18" width="100" height="20" />
 				<static textres="ship_label_structure" />
 			</label>
-			<char_attribute name="structure">
+			<char_attribute name="structure" source="systems.structure">
 				<anchored to="structure_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
 				<script>
@@ -416,11 +416,11 @@
 				</script>
 			</char_attribute>
 			
-			<label name="security_label">
+			<label name="security_label" source="departments.security">
 				<anchored to="command" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_security" />
 			</label>
-			<char_attribute name="security">
+			<char_attribute name="security" source="departments.security">
 				<anchored to="security_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
 				<script>
@@ -540,9 +540,9 @@
 			<frame_char name="shieldframe">
 				<anchored to="systemsframe" position="righthigh" offset="0,0" width="110" height="220"/>
 			</frame_char>
-			<basicnumber name="maxshield">
+			<number_shieldsmax name="maxshield" source="shield.max.total">
 				<anchored to="shieldframe" position="insidetopright" offset="20,15" width="30" height="20"/>
-			</basicnumber>
+			</number_shieldsmax>
 			<label name="maxshield_label">
 				<anchored to="maxshield" position="lefthigh" offset="0,0" width="50"/>
 				<static textres="ship_label_shields"/>
@@ -557,7 +557,7 @@
 				<allowsinglespacing/>
 				<maxslotperrow>4</maxslotperrow>
 				<sourcefields>
-					<maximum>maxshield</maximum>
+					<maximum>shield.max.total</maximum>
 					<current>curshield</current>
 				</sourcefields>
 			</buttongroup_counter>
