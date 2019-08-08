@@ -81,7 +81,7 @@
 	<string name="ship_label_launch_bay">Launch Bays</string>
 	
 <!-- Species -->
-	<string name="species_header_subspecies">SUB-SPECIES</string>
+	<string name="species_header_talents">TALENTS</string>
 	<string name="species_header_traits">TRAITS</string>
   
 <!-- Combat Tracker -->

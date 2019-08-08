@@ -118,29 +118,12 @@
 			end
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				subspecies.update(bReadOnly);
+				talents.update(bReadOnly);
 				traits.update(bReadOnly);
 			end
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-			
-			<header_column name="subspecies_header">
-				<static textres="species_header_subspecies" />
-				<center />
-			</header_column>
-			<button_iedit name="subspecies_iedit">
-				<anchored to="subspecies_header" position="righthigh" offset="-20,0" />
-				<target>subspecies</target>
-			</button_iedit>
-			<button_iadd name="subspecies_iadd">
-				<anchored to="subspecies_iedit" position="lefthigh" offset="5,0" />
-				<target>subspecies</target>
-			</button_iadd>
-			<list_column name="subspecies">
-				<datasource>.subspecies</datasource>
-				<class>species_subspecies</class>
-			</list_column>
 			
 			<header_column name="traits_header">
 				<static textres="species_header_traits" />
@@ -158,23 +141,26 @@
 				<datasource>.traits</datasource>
 				<class>species_trait</class>
 			</list_column>
+			
+			<header_column name="talents_header">
+				<static textres="species_header_talents" />
+				<center />
+			</header_column>
+			<button_iedit name="talents_iedit">
+				<anchored to="talents_header" position="righthigh" offset="-20,0" />
+				<target>talents</target>
+			</button_iedit>
+			<button_iadd name="talents_iadd">
+				<anchored to="talents_iedit" position="lefthigh" offset="5,0" />
+				<target>talents</target>
+			</button_iadd>
+			<list_column name="talents">
+				<datasource>.talents</datasource>
+				<class>species_talents</class>
+			</list_column>
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="species_subspecies">
-		<margins control="0,0,0,2" />
-		<sheetdata>
-			<anchor_listitem_column_right name="rightanchor" />
-			<link_listitem_column name="shortcut">
-				<class>reference_subspecies</class>
-			</link_listitem_column>
-			<button_listitem_column_delete name="idelete" />
-
-			<string_listitem_column_name name="name">
-				<empty textres="library_recordtype_empty_subspecies" />
-			</string_listitem_column_name>
-		</sheetdata>
-	</windowclass>
 	<windowclass name="species_trait">
 		<margins control="0,0,0,2" />
 		<sheetdata>
@@ -189,6 +175,21 @@
 			</string_listitem_column_name>
 		</sheetdata>
 	</windowclass>
+	<windowclass name="species_talents">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+			<link_listitem_column name="shortcut">
+				<class>reference_talents</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name">
+				<empty textres="library_recordtype_empty_talents" />
+			</string_listitem_column_name>
+		</sheetdata>
+	</windowclass>
+	
 
 	<windowclass name="reference_speciestrait">
 		<frame>recordsheet</frame>
@@ -258,145 +259,8 @@
 			</label_reftype>	
 		</sheetdata>
 	</windowclass>
-	
-	<windowclass name="reference_subspecies">
-		<frame>recordsheet</frame>
-		<placement>
-			<size width="350" height="350" />
-		</placement>
-		<sizelimits>
-			<minimum width="300" height="300" />
-			<dynamic />
-		</sizelimits>
-		<minimize>minimized_reference</minimize>
-		<tooltip field="name" />
-		<script>
-			function onLockChanged()
-				if header.subwindow then
-					header.subwindow.update();
-				end
-				if notes.subwindow then
-					notes.subwindow.update();
-				end
-				
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				main.setReadOnly(bReadOnly);
-			end
-		</script>
-		<sheetdata>
-			<sub_record_header name="header">
-				<class>subspecies_header</class>
-			</sub_record_header>
 
-			<frame_record_content_tabbed name="contentframe" />
-
-			<ft_record name="main">
-				<anchored to="contentframe" position="over" />
-				<invisible />
-			</ft_record>
-			<subwindow_record name="notes">
-				<class>subspecies_notes</class>
-			</subwindow_record>
-
-			<scrollbar_record>
-				<target>main</target>
-			</scrollbar_record>
-			<scrollbar_record>
-				<target>notes</target>
-			</scrollbar_record>
-			
-			<tabs_recordsheet>
-				<tab>
-					<icon>tab_main</icon>
-					<subwindow>main</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_notes</icon>
-					<subwindow>notes</subwindow>
-				</tab>
-			</tabs_recordsheet>
-			
-			<resize_recordsheet />
-			<close_recordsheet />
-		</sheetdata>
-	</windowclass>
-	<windowclass name="subspecies_header">
-		<margins control="0,0,0,2" />
-		<script>
-			function onInit()
-				update();
-			end
-			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				name.setReadOnly(bReadOnly);
-			end
-		</script>
-		<sheetdata>
-			<link_record_header>
-				<class>reference_subspecies</class>
-			</link_record_header>
-
-			<anchor_record_header_right />
-			<icon_record_locked />
-			<button_record_locked />
-
-			<string_record_name name="name">
-				<empty textres="library_recordtype_empty_subspecies" />
-			</string_record_name>
-			<label_reftype name="reftype">
-				<static textres="type_subspecies" />
-			</label_reftype>	
-		</sheetdata>
-	</windowclass>
-	<windowclass name="subspecies_notes">
-		<margins control="0,0,0,7" />
-		<script>
-			function onInit()
-				update();
-			end
-			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				traits.update(bReadOnly);
-			end
-		</script>
-		<sheetdata>
-			<anchor_column name="columnanchor" />
-			
-			<header_column name="traits_header">
-				<static textres="species_header_traits" />
-				<center />
-			</header_column>
-			<button_iedit name="traits_iedit">
-				<anchored to="traits_header" position="righthigh" offset="-20,0" />
-				<target>traits</target>
-			</button_iedit>
-			<button_iadd name="traits_iadd">
-				<anchored to="traits_iedit" position="lefthigh" offset="5,0" />
-				<target>traits</target>
-			</button_iadd>
-			<list_column name="traits">
-				<datasource>.traits</datasource>
-				<class>subspecies_trait</class>
-			</list_column>
-		</sheetdata>
-	</windowclass>
-	
-	<windowclass name="subspecies_trait">
-		<margins control="0,0,0,2" />
-		<sheetdata>
-			<anchor_listitem_column_right name="rightanchor" />
-			<link_listitem_column name="shortcut">
-				<class>reference_subspeciestrait</class>
-			</link_listitem_column>
-			<button_listitem_column_delete name="idelete" />
-
-			<string_listitem_column_name name="name">
-				<empty textres="library_recordtype_empty_subspeciestrait" />
-			</string_listitem_column_name>
-		</sheetdata>
-	</windowclass>
-
-	<windowclass name="reference_subspeciestrait">
+	<windowclass name="reference_talents">
 		<frame>recordsheet</frame>
 		<placement>
 			<size width="350" height="350" />
@@ -419,7 +283,7 @@
 		</script>
 		<sheetdata>
 			<sub_record_header name="header">
-				<class>subspeciestrait_header</class>
+				<class>talents_header</class>
 			</sub_record_header>
 
 			<frame_record_content />
@@ -436,7 +300,7 @@
 			<close_recordsheet />
 		</sheetdata>
 	</windowclass>
-	<windowclass name="subspeciestrait_header">
+	<windowclass name="talents_header">
 		<margins control="0,0,0,2" />
 		<script>
 			function onInit()
@@ -449,7 +313,7 @@
 		</script>
 		<sheetdata>
 			<link_record_header>
-				<class>reference_subspeciestrait</class>
+				<class>reference_talents</class>
 			</link_record_header>
 
 			<anchor_record_header_right />
@@ -457,11 +321,12 @@
 			<button_record_locked />
 
 			<string_record_name name="name">
-				<empty textres="library_recordtype_empty_subspeciestrait" />
+				<empty textres="library_recordtype_empty_talents" />
 			</string_record_name>
 			<label_reftype name="reftype">
-				<static textres="type_subspeciestrait" />
+				<static textres="type_talents" />
 			</label_reftype>	
 		</sheetdata>
 	</windowclass>
+
 </root>
