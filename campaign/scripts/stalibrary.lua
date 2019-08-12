@@ -43,7 +43,7 @@ function taskcheck(winFrame)
 	
 	resetdice(winFrame);
 	
-	processRoll(rolling20.."d20x" .. TN .."y"..FC);
+	sta.processRoll("sta", rolling20.."d20x" .. TN .."y"..FC);
 	return true;
 end
 function CombatDice(type, bonus, name)
