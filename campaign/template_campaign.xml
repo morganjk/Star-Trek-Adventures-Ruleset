@@ -267,6 +267,26 @@
 		</stringcontrol>
 	</template>
 
+	<template name="button_roll">
+		<button_vari_icon>
+			<parameters>
+				<icons>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta</icons>
+				<values>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta</values>
+				<tooltips>Rolls|Modifier|Table|Chat|Damage|Heal|Attack|Saving|Spell|Cleric|Hitos|Legend|Harn|Traveller|BlackCrusade|Cypher|PBTA|MyHand|Animal|Helmet|Bomb|Dragon|Talislanta</tooltips>
+				<defaulttooltip>Roll Type</defaulttooltip>
+				<defaulticon>rolls</defaulticon>
+			</parameters>
+			<readonly />
+		</button_vari_icon>
+	</template>
+	
+	<template name="button_vari_icon">
+		<genericcontrol>
+			<!--<anchored height="20" />-->
+			<script file="common/scripts/button_vari_icon.lua" />
+		</genericcontrol>
+	</template>
+
 <!-- Master Index -->
 	<template name="masterindex_anchor_button">
 		<genericcontrol insertbefore="filter_category">

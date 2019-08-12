@@ -23,7 +23,7 @@
 		
 <!-- Details -->
 			<frame_char name="detailsframe">
-				<bounds>15,0,-30,180</bounds>
+				<bounds>15,0,488,180</bounds>
 			</frame_char>
 			<label_frametop>
 				<anchored to="detailsframe" />
@@ -34,7 +34,7 @@
 				<labelres>char_label_rank</labelres>
 			</string_labeled>
 			<string_labeled name="species">
-				<anchored to="rank" position="right" offset="5,0" width="220" height="20" />
+				<anchored to="rank" position="righthigh" offset="5,0" width="220" height="20" />
 				<labelres>char_label_species</labelres>
 			</string_labeled>
 			<string_labeled name="environment">
@@ -42,7 +42,7 @@
 				<labelres>char_label_environment</labelres>
 			</string_labeled>
 			<string_labeled name="upbringing">
-				<anchored to="environment" position="right" offset="5,0" width="220" height="20" />
+				<anchored to="environment" position="righthigh" offset="5,0" width="220" height="20" />
 				<labelres>char_label_upbringing</labelres>
 			</string_labeled>
 			<string_labeled name="assignment">
@@ -53,10 +53,77 @@
 				<anchored to="detailsframe" position="insidetopleft" offset="15,135" width="440" height="20" />
 				<labelres>char_label_trait</labelres>
 			</string_labeled>
-			
+
+<!-- Rolling Window -->
+			<frame_char name="rollingframe">
+				<anchored to="detailsframe" position="belowleft" offset="0,0" width="488" height="80" />
+			</frame_char>
+			<label name="targetroll_label">
+				<anchored to="rollingframe" position="insidetopleft" offset="15,15" width="20"/>
+				<font>startrek-14</font>
+				<static textres="char_label_roll_tn"/>
+			</label>
+			<basicnumber name="target_roll" source="rollable.targetroll">
+				<anchored to="targetroll_label" position="righthigh" offset="0,0" width="30" height="20"/>
+				<sourcefields>
+					<maximum>targetroll</maximum>
+				</sourcefields>
+			</basicnumber>
+			<label name="dicetoroll_label">
+				<anchored to="target_roll" position="righthigh" offset="25,0" width="70"/>
+				<font>startrek-14</font>
+				<static textres="char_label_roll_dicetouse"/>
+			</label>
+			<basicnumber name="dicetoroll" source="rollable.dicetoroll">
+				<anchored to="dicetoroll_label" position="righthigh" offset="0,0" width="30" height="20"/>
+				<script>
+					function onInit()
+						setValue (2);
+					end
+				</script>
+			</basicnumber>
+			<label name="comprange_label">
+				<anchored to="dicetoroll" position="righthigh" offset="30,0" width="70"/>
+				<font>startrek-14</font>
+				<static textres="char_label_roll_comprange"/>
+			</label>
+			<basicnumber name="comprange" source="rollable.comprange">
+				<anchored to="comprange_label" position="righthigh" offset="0,0" width="30" height="20"/>
+				<script>
+					function onInit()
+						setValue (1);
+					end
+				</script>
+			</basicnumber>
+			<label name="focus_label">
+				<anchored to="comprange" position="righthigh" offset="30,0" width="60"/>
+				<font>startrek-14</font>
+				<static textres="char_label_roll_focus"/>
+			</label>
+			<button_checkbox name="focusselector" source="rollable.focusused">
+				<anchored  to="focus_label" position="righthigh" width="20" height="20" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+					
+					--function onValueChanged ()
+					--end 
+					
+				</script>
+			</button_checkbox>
+			<button_roll name="rolling">
+			<anchored to="focusselector" position="righthigh" offset="20,0" width="15" height="15" />
+			<script>
+				function onDoubleClick(x, y)
+					stalibrary.taskcheck(window);
+				end
+			</script>
+		</button_roll>
+
 <!-- Attributes -->
 			<frame_char name="attributesframe">			
-				<bounds>15,175,170,200</bounds>
+				<anchored to="rollingframe" position="belowleft" offset="0,0" width="170" height="195" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="attributesframe" />
@@ -87,33 +154,34 @@
 				<default>7</default>
 			</char_attribute>
 			<label>
-				<anchored to="control" position="left" offset="10,0" width="90"/>
+				<anchored to="control" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_attr_control"/>
+				<font>startrek-14</font>
 			</label>
 			<label>
-				<anchored to="daring" position="left" offset="10,0" width="90"/>
+				<anchored to="daring" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_attr_daring"/>
 			</label>
 			<label>
-				<anchored to="fitness" position="left" offset="10,0" width="90"/>
+				<anchored to="fitness" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_attr_fitness"/>
 			</label>
 			<label>
-				<anchored to="insight" position="left" offset="10,0" width="90"/>
+				<anchored to="insight" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_attr_insight"/>
 			</label>
 			<label>
-				<anchored to="presence" position="left" offset="10,0" width="90"/>
+				<anchored to="presence" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_attr_presence"/>
 			</label>
 			<label>
-				<anchored to="reason" position="left" offset="10,0" width="90"/>
+				<anchored to="reason" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_attr_reason"/>
 			</label>
       
 <!-- Disciplines -->
 			<frame_char name="disciplinesframe">
-				<bounds>180,175,170,200</bounds>
+				<anchored to="attributesframe" position="righthigh" offset="0,0" width="170" height="195" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="disciplinesframe" />
@@ -144,39 +212,39 @@
 				<default>1</default>
 			</char_attribute>
 			<label>
-				<anchored to="command" position="left" offset="10,0" width="90"/>
+				<anchored to="command" position="lefthigh" offset="10,0" width="90"/>
 			<static textres="char_label_disc_command"/>
 			</label>
 			<label>
-				<anchored to="conn" position="left" offset="10,0" width="90"/>
+				<anchored to="conn" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_disc_conn"/>
 			</label>
 			<label>
-				<anchored to="security" position="left" offset="10,0" width="90"/>
+				<anchored to="security" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_disc_security"/>
 			</label>
 			<label>
-				<anchored to="engineering" position="left" offset="10,0" width="90"/>
+				<anchored to="engineering" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_disc_engineering"/>
 			</label>
 			<label>
-				<anchored to="science" position="left" offset="10,0" width="90"/>
+				<anchored to="science" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_disc_science"/>
 			</label>
 			<label>
-				<anchored to="medicine" position="left" offset="10,0" width="90"/>
+				<anchored to="medicine" position="lefthigh" offset="10,0" width="90"/>
 				<static textres="char_label_disc_medicine"/>
 			</label>
       
 <!-- Stress -->
 			<frame_char name="stressframe">
-				<bounds>345,175,150,140</bounds>
+				<anchored to="disciplinesframe" position="righthigh" offset="0,0" width="150" height="130" />
 			</frame_char>
 			<number_stressmax name="maxstress" source="stress.max.total">
 				<anchored to="stressframe" position="insidetopright" offset="25,15" width="30" height="20"/>
 			</number_stressmax>
 			<label>
-				<anchored to="maxstress" position="left" offset="10,0" width="60"/>
+				<anchored to="maxstress" position="lefthigh" offset="10,0" width="60"/>
 				<static textres="char_label_stress"/>
 			</label>
 			<buttongroup_counter name="stresscounter">
@@ -196,7 +264,7 @@
 
 <!-- Determination -->
 			<frame_char name="determinationframe">
-				<bounds>345,310,150,65</bounds>
+				<anchored to="stressframe" position="belowleft" offset="0,0" width="150" height="65" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="determinationframe" />
@@ -225,7 +293,7 @@
 
  <!-- Values -->
 			<frame_char name="valuesframe">
-				<bounds>15,370,170,170</bounds>
+				<anchored to="attributesframe" position="belowleft" offset="0,0" width="170" height="170" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="valuesframe" />
@@ -242,7 +310,7 @@
       
  <!-- Focuses -->
 			<frame_char name="focusframe">
-				<bounds>180,370,170,170</bounds>
+				<anchored to="valuesframe" position="righthigh" offset="0,0" width="170" height="170" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="focusframe" />
@@ -264,7 +332,7 @@
       
 <!-- Injuries -->
 			<frame_char name="injuryframe">
-				<bounds>345,370,150,170</bounds>
+				<anchored to="focusframe" position="righthigh" offset="0,0" width="150" height="170" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="injuryframe" />
@@ -286,7 +354,7 @@
 
 <!-- Weapons -->
 			<frame_char name="weaponsframe">
-				<bounds>15,535,480,-1</bounds>
+				<anchored to="valuesframe" position="belowleft" offset="0,0" width="488" height="170" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="weaponsframe" />

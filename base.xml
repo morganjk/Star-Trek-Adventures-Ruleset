@@ -27,6 +27,7 @@
     <includefile source="campaign/template_char.xml" />
 	<includefile source="campaign/template_ship.xml" />
 	<includefile source="campaign/template_npc.xml" />
+<!--	<includefile source="campaign/template_item.xml" /> -->
 	
 <!-- Tabletop Chits -->
 	<includefile source="desktop/darksidechit.xml" />
@@ -39,9 +40,10 @@
 <!-- Scripts -->
 	<script name="ChallengeDieHandler" file="scripts/handler_challengedice.lua"/>
 	<script name="SkillDieHandler" file="scripts/handler_skilldice.lua"/>
-	<script name="TableManager2" file="scripts/manager_table2.lua" />
+<!--	<script name="TableManager2" file="scripts/manager_table2.lua" /> -->
 	<script name="Languages_Extension" file="scripts/languages_extension.lua" /> 
 	<script name="LibraryDataSTA" file="scripts/data_library_sta.lua" />
+	<script name="stalibrary" file="campaign/scripts/stalibrary.lua" />
 	
 <!-- Graphics -->
 	<includefile source="graphics/graphics_frames.xml" />
@@ -56,35 +58,35 @@
  
 <!-- Language Fonts -->
 	<font name="Vulcan">
-		<fgffile name="fonts/vulcan.fgf" />
+		<fgffile name="graphics/fonts/vulcan.fgf" />
 		<color value="#000000" />
 	</font>
 	<font name="Andorian">
-		<fgffile name="fonts/andorian.fgf" />
+		<fgffile name="graphics/fonts/andorian.fgf" />
 			<color value="#000000" />
 	</font>
 	<font name="Tellarite">
-		<fgffile name="fonts/tellarite.fgf" />
+		<fgffile name="graphics/fonts/tellarite.fgf" />
 		<color value="#000000" />
 	</font>
 	<font name="Klingon">
-		<fgffile name="fonts/klingon.fgf" />
+		<fgffile name="graphics/fonts/klingon.fgf" />
 		<color value="#000000" />
 	</font>
 	<font name="Romulan">
-		<fgffile name="fonts/romulan.fgf" />
+		<fgffile name="graphics/fonts/romulan.fgf" />
 		<color value="#000000" />
 	</font>
 	<font name="Cardassian">
-		<fgffile name="fonts/cardassian.fgf" />
+		<fgffile name="graphics/fonts/cardassian.fgf" />
 		<color value="#000000" />
 	</font>
 	<font name="Bajoran">
-		<fgffile name="fonts/bajoran.fgf" />
+		<fgffile name="graphics/fonts/bajoran.fgf" />
 		<color value="#000000" />
 	</font>
 	<font name="noneoftheabove">/
-		<fgffile name="fonts/visitor.fgf" />
+		<fgffile name="graphics/fonts/visitor.fgf" />
 		<color value="#000000" />
 	</font>
 	
@@ -92,10 +94,14 @@
 	<includefile source="campaign/record_npc.xml" />    
 	<includefile source="campaign/record_ship.xml" />   
 	<includefile source="campaign/record_species.xml" />
+	<includefile source="campaign/record_item.xml" />
 	
 <!-- Combat tracker -->
 	<includefile source="ct/template_ct.xml" />
 	<includefile source="ct/ct_host.xml" />
 	<includefile source="ct/ct_client.xml" />
-	
+
+<!-- STA specific fonts -->
+	<includefile source="graphics/graphics_fonts_sta.xml" />
+
 </root>
