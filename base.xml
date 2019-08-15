@@ -62,7 +62,7 @@
 	<includefile source="campaign/record_ship.xml" />   
 	<includefile source="campaign/record_species.xml" />
 	<includefile source="campaign/record_item.xml" />
-	<includefile source="campaign/record_values.xml" />
+	<includefile source="campaign/record_talents.xml" />
 	
 <!-- Combat tracker -->
 	<includefile source="ct/template_ct.xml" />

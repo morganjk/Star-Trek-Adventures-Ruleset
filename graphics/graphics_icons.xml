@@ -84,8 +84,8 @@
 	<icon name="button_vehicles_down" file="graphics/sidebar/button_vehicles_down.png" />
 	<icon name="button_species" file="graphics/sidebar/button_species.png" />
 	<icon name="button_species_down" file="graphics/sidebar/button_species_down.png" />
-	<icon name="button_values" file="graphics/sidebar/button_values.png" />
-	<icon name="button_values_down" file="graphics/sidebar/button_values_down.png" />
+	<icon name="button_values" file="graphics/sidebar/button_talents.png" />
+	<icon name="button_values_down" file="graphics/sidebar/button_talents_down.png" />
 
 	<icon name="button_library" file="graphics/sidebar/button_library.png" />
 	<icon name="button_library_down" file="graphics/sidebar/button_library_down.png" />

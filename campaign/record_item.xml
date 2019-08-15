@@ -103,7 +103,7 @@
 			
 			<line_column name="divider3" />
 
-			<ft_columnh name="description" />
+			<ft_columnh name="notes" />
 		</sheetdata>
 	</windowclass>
 </root>

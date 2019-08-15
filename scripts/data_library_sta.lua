@@ -70,10 +70,10 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_species", "button_species_down" },
 		-- sRecordDisplayClass = "species", 
 	},
-	["values"] = { 
+	["talents"] = { 
 		bExport = true,
-		aDataMap = { "values", "reference.values" }, 
-		aDisplayIcon = { "button_values", "button_values_down" },
+		aDataMap = { "talents", "reference.talents" }, 
+		aDisplayIcon = { "button_talents", "button_talents_down" },
 		-- sRecordDisplayClass = "values", 
 	},
 };
@@ -110,23 +110,32 @@ aListViews = {
 			aGroupValueOrder = { },
 		},
 	},
-	["values"] = {
+	["talents"] = {
 		["byletter"] = {
-			sTitleRes = "values_grouped_title_byletter",
+			sTitleRes = "talents_grouped_title_byletter",
 			aColumns = {
-				{ sName = "name", sType = "string", sHeadingRes = "values_grouped_label_name", nWidth=250 },
+				{ sName = "name", sType = "string", sHeadingRes = "talents_grouped_label_name", nWidth=250 },
 			},
 			aFilters = { },
 			aGroups = { { sDBField = "name", nLength = 1 } },
 			aGroupValueOrder = { },
 		},
 		["bydept"] = {
-			sTitleRes = "values_grouped_title_bydept",
+			sTitleRes = "talents_grouped_title_bydept",
 			aColumns = {
-				{ sName = "name", sType = "string", sHeadingRes = "values_grouped_label_name", nWidth=250 },
+				{ sName = "name", sType = "string", sHeadingRes = "talents_grouped_label_name", nWidth=250 },
 			},
 			aFilters = { },
 			aGroups = { { sDBField = "type", sCustom="values_dept" } },
+			aGroupValueOrder = { },
+		},
+		["byreq"] = {
+			sTitleRes = "talents_grouped_title_byreq",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "talents_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "type", sCustom="values_req" } },
 			aGroupValueOrder = { },
 		},
 	},

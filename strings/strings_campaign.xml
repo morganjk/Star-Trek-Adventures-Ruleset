@@ -100,8 +100,8 @@
 	<string name="library_recordtype_empty_ship">New Ship</string>
 	<string name="library_recordtype_label_species">Species</string>
 	<string name="library_recordtype_empty_species">New Species</string>
-	<string name="library_recordtype_label_values">Values</string>
-	<string name="library_recordtype_empty_values">New Value</string>
+	<string name="library_recordtype_label_talents">Talents</string>
+	<string name="library_recordtype_empty_talents">New Talent</string>
 	
 <!-- Character Attributes -->
 	<string name="char_abilities_message_speciesadd">Species '%s' added to '%s'.</string>
@@ -114,7 +114,8 @@
 	<string name="item_label_effect">Effect</string>
 	<string name="item_label_qualities">Qualities</string>
 	
-<!-- Values -->
-	<string name="values_grouped_title_byletter">By Letter</string>
+<!-- Talents -->
+	<string name="talents_grouped_title_byletter">By Letter</string>
+	<string name="talents_label_req">Requirements</string>
 
 </root>
