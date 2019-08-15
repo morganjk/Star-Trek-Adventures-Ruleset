@@ -97,9 +97,11 @@
  	
 <!-- Sidebar -->
 	<string name="library_recordtype_label_ship">Ships</string>
-	<string name="library_recordtype_empty_ship">&#171; New Ship &#187;</string>
+	<string name="library_recordtype_empty_ship">New Ship</string>
 	<string name="library_recordtype_label_species">Species</string>
-	<string name="library_recordtype_empty_species">&#171; New Species &#187;</string>
+	<string name="library_recordtype_empty_species">New Species</string>
+	<string name="library_recordtype_label_values">Values</string>
+	<string name="library_recordtype_empty_values">New Value</string>
 	
 <!-- Character Attributes -->
 	<string name="char_abilities_message_speciesadd">Species '%s' added to '%s'.</string>
@@ -111,5 +113,8 @@
 	<string name="item_label_size">Size</string>
 	<string name="item_label_effect">Effect</string>
 	<string name="item_label_qualities">Qualities</string>
+	
+<!-- Values -->
+	<string name="values_grouped_title_byletter">By Letter</string>
 
 </root>

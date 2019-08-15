@@ -70,6 +70,12 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_species", "button_species_down" },
 		-- sRecordDisplayClass = "species", 
 	},
+	["values"] = { 
+		bExport = true,
+		aDataMap = { "values", "reference.values" }, 
+		aDisplayIcon = { "button_values", "button_values_down" },
+		-- sRecordDisplayClass = "values", 
+	},
 };
 
 aListViews = {
@@ -101,6 +107,26 @@ aListViews = {
 			},
 			aFilters = { },
 			aGroups = { { sDBField = "name", nLength = 1 } },
+			aGroupValueOrder = { },
+		},
+	},
+	["values"] = {
+		["byletter"] = {
+			sTitleRes = "values_grouped_title_byletter",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "values_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "name", nLength = 1 } },
+			aGroupValueOrder = { },
+		},
+		["bydept"] = {
+			sTitleRes = "values_grouped_title_bydept",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "values_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "type", sCustom="values_dept" } },
 			aGroupValueOrder = { },
 		},
 	},

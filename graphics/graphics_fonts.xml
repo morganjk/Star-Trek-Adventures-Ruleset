@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+
+	<!-- Reference -->
+
+	<font name="reference-section">
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="22" />
+		<color value="3B2C21" />
+	</font>
+	<font name="reference-chapter">
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="18" />
+		<color value="3B2C21" />
+	</font>
+	<font name="reference-title">
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="26" />
+		<color value="000000" />
+		<bold />
+	</font>
+	<font name="reference-subtitle">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="10" />
+		<color value="000000" />
+		<bold />
+	</font>
+	<font name="reference-header">
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="26" />
+		<color value="FFFFFF" />
+		<bold />
+	</font>
+	
+		<!-- Formatted text fields -->
+	<font name="reference-h">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="24" />
+		<color value="660000" />
+	</font>
+	<font name="reference-r">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="24" />
+		<color value="#000000" />
+	</font>
+	<font name="reference-i">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="24" />
+		<color value="#000000" />
+		<italic />
+	</font>
+	<font name="reference-b">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="24" />
+		<color value="#000000" />
+		<bold />
+	</font>
+	<font name="reference-bi">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="24" />
+		<color value="#000000" />
+		<bold />
+		<italic />
+	</font>
+	<font name="reference-b-large">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="24" />
+		<color value="#000000" />
+		<bold />
+	</font>
+
+	<!-- Chat fonts - REQUIRED -->
+	<font name="chatfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#261A12" />
+	</font>
+	<font name="emotefont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#880000" />
+	</font>
+	<font name="narratorfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#261A12" />
+		<bold />
+	</font>
+	<font name="systemfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#660066" />
+	</font>
+	<font name="msgfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#660066" />
+	</font>
+	<font name="oocfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#005500" />
+	</font>
+	
+	<!-- Chat fonts -->
+	<font name="chatnpcfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#000066" />
+	</font>
+	<font name="chatgmfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#000000" />
+		<bold />
+		<italic />
+	</font>
+	<font name="whisperfont">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
+		<color value="#660066" />
+		<bold />
+	</font>
+	
+	<!-- Standard text fields -->
+	<font name="sheetlabel">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="13" />
+		<color value="#000000" />
+		<bold />
+	</font>
+	<font name="sheettext">
+		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="16" />
+		<color value="#000000" />
+		<bold />
+	</font>
+	
+<!-- Language Fonts -->
+	<font name="Vulcan">
+		<fgffile name="graphics/fonts/vulcan.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Andorian">
+		<fgffile name="graphics/fonts/andorian.fgf" />
+			<color value="#000000" />
+	</font>
+	<font name="Tellarite">
+		<fgffile name="graphics/fonts/tellarite.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Klingon">
+		<fgffile name="graphics/fonts/klingon.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Romulan">
+		<fgffile name="graphics/fonts/romulan.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Cardassian">
+		<ttf file="graphics/fonts/cardassian.ttf" size="20" />
+		<color value="#000000" />
+	</font>
+	<font name="Bajoran">
+		<fgffile name="graphics/fonts/bajoran.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="noneoftheabove">/
+		<fgffile name="graphics/fonts/visitor.fgf" />
+		<color value="#000000" />
+	</font>
+
+	</root>
