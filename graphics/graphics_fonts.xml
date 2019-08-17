@@ -149,8 +149,14 @@
 		<fgffile name="graphics/fonts/bajoran.fgf" />
 		<color value="#000000" />
 	</font>
-	<font name="noneoftheabove">/
+	<font name="noneoftheabove">
 		<fgffile name="graphics/fonts/visitor.fgf" />
+		<color value="#000000" />
+	</font>
+	
+<!-- Challenge Die -->
+	<font name="challengedie_font">
+		<ttf file="graphics/fonts/TrekArrowheads.ttf" name="TrekArrowheads" size="18" />
 		<color value="#000000" />
 	</font>
 

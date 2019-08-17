@@ -1,8 +1,8 @@
 function onInit()
   -- Grabbing the action handler to process my onRoll command to give me control over the results of Damned's Conan roller.
   -- Keith Johnson
-  GameSystem.actions["conan"] = { bUseModStack = true, sTargeting = "all" };
-	ActionsManager.registerResultHandler("conan", onRoll);
+  GameSystem.actions["sta"] = { bUseModStack = true, sTargeting = "all" };
+	ActionsManager.registerResultHandler("sta", onRoll);
 
 
 end
@@ -46,6 +46,34 @@ function taskcheck(winFrame)
 	sta.processRoll("sta", rolling20.."d20x" .. TN .."y"..FC);
 	return true;
 end
+
+function repcheck(winFrame)
+	local rRoll="dCD";
+	Debug.console(dCD);
+	
+	local rActor = ActorManager.getActor("pc", winFrame.getDatabaseNode());
+	Debug.console("rActor: ");
+	Debug.console(rActor);
+					
+	local nodeWin = winFrame.getDatabaseNode();
+	Debug.console("nodeWin: ");
+	Debug.console(nodeWin);
+						
+	local CD = nodeWin.getChild("reputation.challengedie").getValue();
+	Debug.console("CD: ");
+	Debug.console(CD);
+					
+	local msg = {font = "chatfont"};
+	msg.text = rActor.sName .. " rolls for reputation"
+	Comm.deliverChatMessage(msg);
+	
+	resetdice(winFrame);
+	
+	sta.processRoll("sta", CD.."dCDx");
+	return true;
+end
+
+--[[
 function CombatDice(type, bonus, name)
 	if control then
 		local dice = {};
@@ -195,17 +223,16 @@ function skilldicebuy(window,purchasetype,dice)
 	end
 
 end
+--]]
 
 function resetdice(winFrame)
 	local nodeWin = winFrame.getDatabaseNode();
 	nodeWin.getChild("rollable.dicetoroll").setValue(2);
 	nodeWin.getChild("rollable.comprange").setValue(1);
 	nodeWin.getChild("rollable.focusused").setValue(0);
-	
-
-	
 end
 
+--[[
 function spendmomentum(winFrame)
 		local nodeWin = winFrame.getDatabaseNode();
 		local CD = nodeWin.getChild("currentdoom").getValue();
@@ -270,5 +297,4 @@ function onRoll(rSource, rTarget, rRoll)
 	Comm.deliverChatMessage(rMessage);
 	Debug.console(rMessage);
 end
-
-
+--]]

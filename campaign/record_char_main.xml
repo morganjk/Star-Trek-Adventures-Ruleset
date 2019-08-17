@@ -29,7 +29,7 @@
 				<anchored to="detailsframe" />
 				<static textres="char_label_details" />
 			</label_frametop>
-			<string_labeled name="rank">
+			<string_labeled name="rank" source="details.rank">
 				<anchored to="detailsframe" position="insidetopleft" offset="15,30" width="220" height="20" />
 				<labelres>char_label_rank</labelres>
 			</string_labeled>
@@ -109,13 +109,13 @@
 				</script>
 			</button_checkbox>
 			<button_roll name="rolling">
-			<anchored to="focusselector" position="righthigh" offset="20,0" width="15" height="15" />
-			<script>
-				function onDoubleClick(x, y)
-					stalibrary.taskcheck(window);
-				end
-			</script>
-		</button_roll>
+				<anchored to="focusselector" position="righthigh" offset="20,0" width="15" height="15" />
+				<script>
+					function onDoubleClick(x, y)
+						stalibrary.taskcheck(window);
+					end
+				</script>
+			</button_roll>
 
 <!-- Attributes -->
 			<frame_char name="attributesframe">			

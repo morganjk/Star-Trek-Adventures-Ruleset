@@ -49,6 +49,16 @@
 	<string name="char_label_weapon_size">Size</string>
 	<string name="char_label_weapon_damage">Damage</string>
 	<string name="char_label_weapon_qualities">Qualities</string>
+	
+	<string name="char_label_traits">Traits</string>
+	<string name="char_label_milestones">Milestones</string>
+	<string name="char_label_normal">Normal</string>
+	<string name="char_label_spotlight">Spotlight</string>
+	<string name="char_label_arc">Arc</string>
+	
+	<string name="char_label_reputation">Reputation</string>
+	<string name="char_label_privilege">Privilege</string>
+	<string name="char_label_responsibility">Responsibility</string>
 
 <!-- NPC -->
 	<string name="npc_label_max_stress">Stress (Max)</string>

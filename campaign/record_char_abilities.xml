@@ -92,30 +92,88 @@
 				<anchored to="background_iedit" position="lefthigh" offset="5,0"/>
 				<target>background</target>
 			</button_iadd>
-								
-<!-- Career Notes to be changed to Milestone and other things -->
-			<frame_char name="careerframe">
+			
+<!-- Milestones -->
+			<frame_char name="milestoneframe">
 				<anchored to="backgroundframe" position="belowleft" offset="0,0"
-				width="480" height="335" />
+				width="480" height="90" />
 			</frame_char>
-			<label_frametop>
-				<anchored to="careerframe" />
-				<static textres="char_label_career" />
+			<label_frametop name="milestones">
+				<anchored to="milestoneframe" />
+				<static textres="char_label_milestones" />
 			</label_frametop>
-			<stringu name="careernotes">
-				<anchored to="careerframe">
-					<top offset="30" />
-					<left offset="15" />
-					<right offset="-20" />
-					<bottom offset="-15" />
-				</anchored>
-				<multilinespacing>20</multilinespacing>
-			</stringu>
-			<scrollbar_list>
-				<anchored to="careernotes" />
-				<target>careernotes</target>
-			</scrollbar_list>
-
+			<label name="normal_label">
+				<anchored to="milestoneframe" position="insidetopleft" offset="50,40" width="50"/>
+				<static textres="char_label_normal"/>
+			</label>
+			<basicnumber name="normal" source="milestone.normal">
+				<anchored to="normal_label" position="righthigh" offset="0,0" width="30" height="20"/>
+			</basicnumber>
+			<label name="spotlight_label">
+				<anchored to="normal" position="righthigh" offset="50,0" width="50"/>
+				<static textres="char_label_spotlight"/>
+			</label>
+			<basicnumber name="spotlight" source="milestone.spotlight">
+				<anchored to="spotlight_label" position="righthigh" offset="0,0" width="30" height="20"/>
+			</basicnumber>
+			<label name="arc_label">
+				<anchored to="spotlight" position="righthigh" offset="50,0" width="50"/>
+				<static textres="char_label_arc"/>
+			</label>
+			<basicnumber name="arc" source="milestone.arc">
+				<anchored to="arc_label" position="righthigh" offset="0,0" width="30" height="20"/>
+			</basicnumber>
+								
+<!-- Reputation -->
+			<frame_char name="reputationframe">
+				<anchored to="milestoneframe" position="belowleft" offset="0,0"
+				width="480" height="90" />
+			</frame_char>
+			<label_frametop name="reputation_frame_label">
+				<anchored to="reputationframe" />
+				<static textres="char_label_reputation" />
+			</label_frametop>
+			<label name="reputation_label">
+				<anchored to="reputationframe" position="insidetopleft" offset="15,35" width="60"/>
+				<static textres="char_label_reputation"/>
+			</label>
+			<basicnumber name="reputation" source="reputation.reputation">
+				<anchored to="reputation_label" position="righthigh" offset="0,0" width="20" height="20"/>
+			</basicnumber>
+			<label name="privilege_label">
+				<anchored to="reputation" position="righthigh" offset="15,0" width="60"/>
+				<static textres="char_label_privilege"/>
+			</label>
+			<basicnumber name="privilege" source="reputation.privilege">
+				<anchored to="privilege_label" position="righthigh" offset="0,0" width="20" height="20"/>
+			</basicnumber>
+			<label name="responsibility_label">
+				<anchored to="privilege" position="righthigh" offset="15,0" width="70"/>
+				<static textres="char_label_responsibility"/>
+			</label>
+			<basicnumber name="responsibility" source="reputation.responsibility">
+				<anchored to="responsibility_label" position="righthigh" offset="0,0" width="20" height="20"/>
+			</basicnumber>
+			<label name="rank_label">
+				<anchored to="responsibility" position="righthigh" offset="15,0" width="30"/>
+				<static textres="char_label_rank"/>
+			</label>
+			<basicnumber name="rank" source="reputation.rank">
+				<anchored to="rank_label" position="righthigh" offset="0,0" width="20" height="20"/>
+			</basicnumber>
+			<label name="challengedie_label">
+				<anchored to="rank" position="righthigh" offset="15,0" width="20"/>
+				<font>challengedie_font</font>
+				<static text="A"/>
+			</label>
+			<basicnumber name="challengedie" source="reputation.challengedie">
+				<anchored to="challengedie_label" position="righthigh" offset="0,0" width="20" height="20"/>
+				<script>
+					function onDoubleClick(x, y)
+						stalibrary.repcheck(window);
+					end
+				</script>
+			</basicnumber>
 		</sheetdata>
 	</windowclass>
 </root>
