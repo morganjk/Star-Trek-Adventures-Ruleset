@@ -24,7 +24,7 @@ function handleDiceLanded(rSource, rTarget, rRoll)
     local total = 0;
     
     -- Get Target Info from Modifier Stack
-    local target = rRoll.nMod;
+    local target = rRoll.nModz;
     local diffMessage = "[TN=" .. target .. "]";
     
     local dicetable = rRoll.aDice;

@@ -111,9 +111,7 @@
 			<button_roll name="rolling">
 				<anchored to="focusselector" position="righthigh" offset="20,0" width="15" height="15" />
 				<script>
-					function onDoubleClick(x, y)
-						stalibrary.taskcheck(window);
-					end
+					
 				</script>
 			</button_roll>
 

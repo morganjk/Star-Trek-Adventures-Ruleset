@@ -20,14 +20,15 @@
 					local label = getName():gsub("^%l", string.upper);
 					draginfo.setType("skilldice");
 					draginfo.setDescription(label);
-					local dice = {"d20"};
+					local dice = {"d20","d20"};
 					draginfo.setDieList(dice);
-					return true;		
+					return true;
 				end
 
 				function onDoubleClick(x, y)
 					local label = getName():gsub("^%l", string.upper);
 					ModifierStack.addSlot(label, getValue());
+					Debug.chat(label);
 				end
 			</script>
 		</basicnumber>

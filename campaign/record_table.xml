@@ -9,10 +9,10 @@
 	<windowclass name="table">
 		<frame>recordsheet</frame>
 		<placement>
-			<size width="400" height="400" />
+			<size width="400" height="20" />
 		</placement>
 		<sizelimits>
-			<minimum width="400" height="400" />
+			<minimum width="400" height="20" />
 			<dynamic />
 		</sizelimits>
 		<minimize>minimized_utility</minimize>

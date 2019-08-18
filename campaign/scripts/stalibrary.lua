@@ -1,50 +1,74 @@
 function onInit()
   -- Grabbing the action handler to process my onRoll command to give me control over the results of Damned's Conan roller.
   -- Keith Johnson
-  GameSystem.actions["sta"] = { bUseModStack = true, sTargeting = "all" };
+	GameSystem.actions["sta"] = { bUseModStack = true, sTargeting = "all" };
 	ActionsManager.registerResultHandler("sta", onRoll);
+end
 
+function processRoll(sCommand, sParams)
+	if not sParams or sParams == "" then 
+		createHelpMessage();
+		return;
+	end
 
+	if sParams == "?" or string.lower(sParams) == "help" then
+		createHelpMessage();		
+	else
+		local rRoll = createRoll(sParams);
+		ActionsManager.roll(nil, nil, rRoll);
+	end		
 end
 
 
-function taskcheck(winFrame)
-	local rRoll="2d20";
+function taskcheck(winFrame, label)
+	local type = "dice";
+	local rRoll = { sType = "dice", sDesc = label, aDice = dice.getDice(), nMod = bonus.getValue() };
+	Debug.chat("label:")
+	Debug.chat(label)
+	Debug.chat("rRoll:")
+	Debug.chat(rRoll)
 	local rActor = ActorManager.getActor("pc", winFrame.getDatabaseNode());
-	Debug.console("rActor: ");
-	Debug.console(rActor);
+	Debug.chat("rActor: ");
+	Debug.chat(rActor);
 					
 	local nodeWin = winFrame.getDatabaseNode();
-	Debug.console("nodeWin: ");
-	Debug.console(nodeWin);
-						
+	Debug.chat("nodeWin: ");
+	Debug.chat(nodeWin);
+
 	local TN = nodeWin.getChild("rollable.targetroll").getValue();
-	Debug.console("TN: ");
-	Debug.console(TN);
+	Debug.chat("TN: ");
+	Debug.chat(TN);
 					
 	local FC = nodeWin.getChild("rollable.focusused").getValue();
-	Debug.console("FC: ");
-	Debug.console(FC);
+	Debug.chat("FC: ");
+	Debug.chat(FC);
 					
 	local rolling20 = nodeWin.getChild("rollable.dicetoroll").getValue();
-	Debug.console("rolling20: ");
-	Debug.console(rolling20);
+	Debug.chat("rolling20: ");
+	Debug.chat(rolling20);
 	
 	local comp = nodeWin.getChild("rollable.comprange").getValue();
-	Debug.console(comp);
+	Debug.chat("comp");
+	Debug.chat(comp);
 	
-	local msg = {font = "startrek-14"};
-	msg.text = rActor.sName .. "\nrolls a task"
+	local msg = {font = "sheetlabel"};
+	msg.text = rActor.sName .. " rolls a task"
 	Comm.deliverChatMessage(msg);
 	
-	local msg = {font = "startrek-14"};
+	local msg = {font = "sheetlabel"};
 	msg.text= "TN.." .. TN.." / FC.."..FC.."\nRolling "..rolling20.. "d20\n"
 	Comm.deliverChatMessage(msg);
 	
+	for i = 1, rolling20, 1 do	
+		table.insert(rRoll, "d20");
+	end
+	Debug.chat("rRoll");
+	Debug.chat(rRoll);
+
+
 	resetdice(winFrame);
-	
-	sta.processRoll("sta", rolling20.."d20x" .. TN .."y"..FC);
-	return true;
+	SkillDieHandler.handleDiceLanded(rSource, TN, rRoll);
+		return true;
 end
 
 function repcheck(winFrame)
@@ -69,6 +93,47 @@ function repcheck(winFrame)
 	
 	sta.processRoll("sta", CD.."dCDx");
 	return true;
+end
+
+function addSlot(description, number)
+	if #slots < 6 then
+		table.insert(slots, { ['description'] = description, ['number'] = number });
+	end
+	
+	updateControl();
+end
+
+function updateControl()
+	if control then
+		if adjustmentedit then
+			control.label.setValue(Interface.getString("modstack_label_adjusting"));
+		else
+			control.label.setValue(Interface.getString("modstack_label_modifier"));
+			
+			if freeadjustment > 0 then
+				control.label.setValue("(+" .. freeadjustment .. ")");
+			elseif freeadjustment < 0 then
+				control.label.setValue("(" .. freeadjustment .. ")");
+			end
+			
+			control.modifier.setValue(getSum());
+			
+			control.base.resetCounters();
+			for i = 1, #slots do
+				control.base.addCounter();
+			end
+			
+			if hoverslot and hoverslot ~= 0 and slots[hoverslot] then
+				control.label.setValue(slots[hoverslot].description);
+			end
+		end
+		
+		if math.abs(control.modifier.getValue()) > 999 then
+			control.modifier.setFont("modcollectorlabel");
+		else
+			control.modifier.setFont("modcollector");
+		end
+	end
 end
 
 --[[

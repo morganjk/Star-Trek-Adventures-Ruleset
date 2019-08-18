@@ -43,7 +43,6 @@
 <!--	<script name="TableManager2" file="scripts/manager_table2.lua" /> -->
 	<script name="Languages_Extension" file="scripts/languages_extension.lua" /> 
 	<script name="LibraryDataSTA" file="scripts/data_library_sta.lua" />
-	<script name="stalibrary" file="campaign/scripts/stalibrary.lua" />
 	
 <!-- Graphics -->
 	<includefile source="graphics/graphics_frames.xml" />
