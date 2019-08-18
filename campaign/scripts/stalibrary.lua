@@ -67,8 +67,6 @@ function repcheck(winFrame)
 	msg.text = rActor.sName .. " rolls for reputation"
 	Comm.deliverChatMessage(msg);
 	
-	resetdice(winFrame);
-	
 	sta.processRoll("sta", CD.."dCDx");
 	return true;
 end
