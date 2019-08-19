@@ -11,7 +11,7 @@
 		</number_modifier>
 	</template>
 
-<!-- Shields -->
+<!-- Stress -->
 	<template name="number_npc_stress_max">
 		<number_npcstresstotal>
 			<modifiersize>mini</modifiersize>
