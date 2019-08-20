@@ -134,15 +134,15 @@
 				</anchored>
 				<font>sheetlabelmini</font>
 			</string_textlistitem>
-			<basicdice name="damage">
-				<anchored width="90" height="15">
+			<basicnumber name="damage">
+				<anchored width="20" height="15">
 					<top offset="2"/>
 					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
 				</anchored>
 				<frame name="fielddark" offset="7,5,7,5" />
-			</basicdice>
+			</basicnumber>
  			<string_textlistitem name="qualities">
-				<anchored width="140" height="15">
+				<anchored width="210" height="15">
 					<top offset="2"/>
 					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
 				</anchored>

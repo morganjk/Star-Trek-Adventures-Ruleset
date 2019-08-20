@@ -168,11 +168,6 @@
 			</label>
 			<basicnumber name="challengedie" source="reputation.challengedie">
 				<anchored to="challengedie_label" position="righthigh" offset="0,0" width="20" height="20"/>
-				<script>
-					function onDoubleClick(x, y)
-						stalibrary.repcheck(window);
-					end
-				</script>
 			</basicnumber>
 		</sheetdata>
 	</windowclass>

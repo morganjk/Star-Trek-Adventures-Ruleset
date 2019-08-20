@@ -64,7 +64,7 @@
 			
 			<line_column name="divider" />
 			
-			<label_column name="cost_type">
+			<label_column name="type_label">
 				<static textres="item_label_type" />
 			</label_column>
 			<string_columnh name="type" />
@@ -75,9 +75,10 @@
 			<string_columnh name="ranges" />
 
 			<label_column name="damagerating_label">
-				<static textres="item_label_damagerating" />
+				<font>challengedie_font</font>
+				<static text="A"/>
 			</label_column>
-			<string_columnh name="damagerating" />
+			<number_column name="damagerating" />
 				
 			<label_column name="effect_label">
 				<static textres="item_label_effect" />

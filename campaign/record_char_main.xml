@@ -11,7 +11,7 @@
 				if draginfo.isType("shortcut") then
 					local sClass, sRecord = draginfo.getShortcutData();
 
-					if StringManager.contains({"species", "reference_values", "reference_weapons"}, sClass) then
+					if StringManager.contains({"species", "environment", "upbringing", "traits"}, sClass) then
 						CharManager.addInfoDB(getDatabaseNode(), sClass, sRecord);
 						return true;
 					end
@@ -56,24 +56,21 @@
 
 <!-- Rolling Window -->
 			<frame_char name="rollingframe">
-				<anchored to="detailsframe" position="belowleft" offset="0,0" width="488" height="80" />
+				<anchored to="detailsframe" position="belowleft" offset="0,0" width="488" height="60" />
 			</frame_char>
 			<label name="targetroll_label">
 				<anchored to="rollingframe" position="insidetopleft" offset="15,15" width="20"/>
 				<static textres="char_label_roll_tn"/>
 			</label>
 			<basicnumber name="target_roll" source="rollable.targetroll">
-				<anchored to="targetroll_label" position="righthigh" offset="0,0" width="30" height="20"/>
-				<sourcefields>
-					<maximum>targetroll</maximum>
-				</sourcefields>
+				<anchored to="targetroll_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
 			<label name="dicetoroll_label">
 				<anchored to="target_roll" position="righthigh" offset="25,0" width="70"/>
 				<static textres="char_label_roll_dicetouse"/>
 			</label>
 			<basicnumber name="dicetoroll" source="rollable.dicetoroll">
-				<anchored to="dicetoroll_label" position="righthigh" offset="0,0" width="30" height="20"/>
+				<anchored to="dicetoroll_label" position="righthigh" offset="0,0" width="20" height="20"/>
 				<script>
 					function onInit()
 						setValue (2);
@@ -85,7 +82,7 @@
 				<static textres="char_label_roll_comprange"/>
 			</label>
 			<basicnumber name="comprange" source="rollable.comprange">
-				<anchored to="comprange_label" position="righthigh" offset="0,0" width="30" height="20"/>
+				<anchored to="comprange_label" position="righthigh" offset="0,0" width="20" height="20"/>
 				<script>
 					function onInit()
 						setValue (1);
@@ -102,14 +99,10 @@
 					function onInit()
 						setValue (0);
 					end
-					
-					--function onValueChanged ()
-					--end 
-					
 				</script>
 			</button_checkbox>
 			<button_roll name="rolling">
-				<anchored to="focusselector" position="righthigh" offset="20,0" width="15" height="15" />
+				<anchored to="focusselector" position="righthigh" offset="20,0" width="20" height="20" />
 				<script>
 					
 				</script>
@@ -364,12 +357,12 @@
 				<static textres="char_label_weapon_size" />
 			</label>
 			<label>
-				<anchored to="weaponsframe" position="insidetopleft" offset="192,28"/>
-				<font>sheetlabelmini</font>
-				<static textres="char_label_weapon_damage" />
+				<anchored to="weaponsframe" position="insidetopleft" offset="200,28"/>
+				<font>challengedie_font</font>
+				<static text="A"/>
 			</label>
 			<label>
-				<anchored to="weaponsframe" position="insidetopleft" offset="295,28"/>
+				<anchored to="weaponsframe" position="insidetopleft" offset="230,28"/>
 				<font>sheetlabelmini</font>
 				<static textres="char_label_weapon_qualities" />
 			</label>
