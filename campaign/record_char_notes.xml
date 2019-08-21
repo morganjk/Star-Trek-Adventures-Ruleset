@@ -9,86 +9,10 @@
 	<windowclass name="charsheet_notes">
 		<sheetdata>
 
-<!-- Detail Frame -->
-			<frame_char name="detailframe">
-				<bounds>15,0,-30,50</bounds>
-			</frame_char>
-			<string_labeled name="gender">
-				<anchored to="detailframe" position="insidetopleft" offset="15,10" width="140" height="20" />
-				<labelres>char_label_gender</labelres>
-			</string_labeled>
-			<string_labeled name="age">
-				<anchored to="gender" position="right" offset="5,0" width="95" />
-				<labelres>char_label_age</labelres>
-			</string_labeled>
-			<string_labeled name="height">
-				<anchored to="age" position="right" offset="5,0" width="100" />
-				<labelres>char_label_height</labelres>
-			</string_labeled>
-			<string_labeled name="weight">
-				<anchored to="height" position="right" offset="5,0" width="100" />
-				<labelres>char_label_weight</labelres>
-			</string_labeled>
-
-<!-- Appearance Frame -->
-			<frame_char name="appearanceframe">
-				<anchored to="detailframe" position="belowleft" offset="0,0" height="190">
-					<right offset="-155" />
-				</anchored>
-			</frame_char>
-			<label_frametop>
-				<anchored to="appearanceframe" />
-				<static textres="char_label_appearance" />
-			</label_frametop>
-			<stringu name="appearance">
-				<anchored to="appearanceframe">
-					<top offset="30" />
-					<left offset="15" />
-					<right offset="-20" />
-					<bottom offset="-15" />
-				</anchored>
-				<multilinespacing>20</multilinespacing>
-			</stringu>
-			<scrollbar_list>
-				<anchored to="appearance" />
-				<target>appearance</target>
-			</scrollbar_list>
-			
-<!-- Language Frame -->
-			<frame_char name="languageframe">
-				<anchored to="appearanceframe" position="right" offset="0,0" width="155" height="190" />
-			</frame_char>
-			<label_frametop>
-				<anchored to="languageframe" />
-				<static textres="char_label_languages" />
-			</label_frametop>
-			<list_language name="languages">
-				<anchored to="languageframe">
-					<top offset="35" />
-					<left offset="15" />
-					<right offset="-20" />
-					<bottom offset="-15" />
-				</anchored>
-			</list_language>
-			<scrollbar_list>
-				<anchored to="languages" />
-				<target>languages</target>
-			</scrollbar_list>
-			<button_iedit name="languages_iedit">
-				<anchored to="languages" position="aboveright" offset="5,5" />
-				<target>languages</target>
-			</button_iedit>
-			<button_iadd name="languages_iadd">
-				<anchored to="languages" position="aboveleft" offset="10,5" />
-				<target>languages</target>
-			</button_iadd>
 
 <!-- Career Notes Frame -->
 			<frame_char name="notesframe">
-				<anchored to="appearanceframe" position="belowleft" offset="0,0">
-					<right offset="155" />
-					<bottom offset="480" />
-				</anchored>
+				<bounds>15,10,-20,-10</bounds>
 			</frame_char>
 			<label_frametop>
 				<anchored to="notesframe" />

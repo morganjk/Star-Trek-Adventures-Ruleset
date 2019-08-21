@@ -134,13 +134,6 @@
 			
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-
---[[			
-				space.setReadOnly(bReadOnly);
-				reach.setReadOnly(bReadOnly);
-				focus.setReadOnly(bReadOnly);
---]]
-
 				local bSection2 = false;
 				if weapons.update(bReadOnly) then bSection2 = true; end;
 				if items.update(bReadOnly) then bSection2 = true; end;
@@ -153,12 +146,21 @@
 			<frame_char name="detailsframe">
 				<bounds>0,5,-1,165</bounds>
 			</frame_char>
-			<string_labeled name="rank">
-				<anchored to="detailsframe" position="insidetopleft" offset="15,15" width="205" height="20" />
-				<labelres>char_label_rank</labelres>
-			</string_labeled>
+			<button_stringcycler name="rank" source="details.rank">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,10" width="205" height="20" />
+				<parameters>
+					<labelsres>details_rank_lieutenantjg|details_rank_lieutanent|details_rank_lieutenant_commander|details_rank_commander|details_rank_captain</labelsres>
+					<values>lieutenantjg|lieutanent|lieutenant_commander|commander|captain</values>
+					<defaultlabelres>details_rank_ensign</defaultlabelres>
+				</parameters>
+			</button_stringcycler>
+			<label name="label_rank">
+				<anchored to="rank" position="belowleft" width="40" />
+				<static textres="char_label_rank" />
+			</label>
+			
 			<string_labeled name="species">
-				<anchored to="rank" position="righthigh" offset="5,0" width="205" height="20" />
+				<anchored to="rank" position="righthigh" offset="5,5" width="205" height="20" />
 				<labelres>char_label_species</labelres>
 			</string_labeled>
 			<string_labeled name="environment">
@@ -242,6 +244,66 @@
 				<anchored to="reason" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_reason"/>
 			</label>
+			<buttonfield name="controlselector" source="select.control">
+				<anchored  to="control" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="daringselector" source="select.daring">
+				<anchored  to="daring" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="fitnessselector" source="select.fitness">
+				<anchored  to="fitness" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="insightselector" source="select.insight">
+				<anchored  to="insight" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="presenceselector" source="select.presence">
+				<anchored  to="presence" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="reasonselector" source="select.reason">
+				<anchored  to="reason" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
 
 <!-- Disciplines -->
 			<frame_char name="disciplineframe">
@@ -254,59 +316,119 @@
 				<static textres="char_label_disciplines" />
 			</label_frametop>
 
-			<char_attribute name="command" source="discipline.command">
+			<char_discipline name="command" source="discipline.command">
 				<anchored to="disciplineframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>1</default>
-			</char_attribute>
+			</char_discipline>
 			<label name="command_label">
 				<anchored to="command" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_command"/>
 			</label>
 
-			<char_attribute name="conn" source="discipline.conn">
+			<char_discipline name="conn" source="discipline.conn">
 				<anchored to="command" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_attribute>
+			</char_discipline>
 			<label name="conn_label">
 				<anchored to="conn" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_conn"/>
 			</label>
 
-			<char_attribute name="security" source="discipline.security">
+			<char_discipline name="security" source="discipline.security">
 				<anchored to="conn" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_attribute>
+			</char_discipline>
 			<label name="security_label">
 				<anchored to="security" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_security"/>
 			</label>
 			
-			<char_attribute name="engineering" source="discipline.engineering">
+			<char_discipline name="engineering" source="discipline.engineering">
 				<anchored to="security" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_attribute>
+			</char_discipline>
 			<label name="engineering_label">
 				<anchored to="engineering" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_engineering"/>
 			</label>
 
-			<char_attribute name="science" source="discipline.science">
+			<char_discipline name="science" source="discipline.science">
 				<anchored to="engineering" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_attribute>
+			</char_discipline>
 			<label name="science_label">
 				<anchored to="science" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_science"/>
 			</label>
 
-			<char_attribute name="medicine" source="discipline.medicine">
+			<char_discipline name="medicine" source="discipline.medicine">
 				<anchored to="science" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_attribute>
+			</char_discipline>
 			<label name="medicine_label">
 				<anchored to="medicine" position="lefthigh" offset="50,0" width="90" />
 				<static textres="char_label_disc_medicine"/>
 			</label>
+			<buttonfield name="commandselector" source="select.command">
+				<anchored  to="command" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="connselector" source="select.conn">
+				<anchored  to="conn" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="securityselector" source="select.security">
+				<anchored  to="security" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="engineeringselector" source="select.engineering">
+				<anchored  to="engineering" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scienceselector" source="select.science">
+				<anchored  to="science" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="medicineelector" source="select.medicine">
+				<anchored  to="medicine" position="lefthigh" offset="15,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
 
 
 <!-- Values -->

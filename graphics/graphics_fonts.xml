@@ -8,7 +8,7 @@
 <root>
 
 	<!-- Reference -->
-
+<!--
 	<font name="reference-section">
 		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="22" />
 		<color value="3B2C21" />
@@ -32,8 +32,10 @@
 		<color value="FFFFFF" />
 		<bold />
 	</font>
+-->
 	
 		<!-- Formatted text fields -->
+<!--
 	<font name="reference-h">
 		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="24" />
 		<color value="660000" />
@@ -63,8 +65,10 @@
 		<color value="#000000" />
 		<bold />
 	</font>
+-->
 
 	<!-- Chat fonts - REQUIRED -->
+<!--
 	<font name="chatfont">
 		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
 		<color value="#261A12" />
@@ -90,8 +94,10 @@
 		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
 		<color value="#005500" />
 	</font>
+-->
 	
 	<!-- Chat fonts -->
+<!--	
 	<font name="chatnpcfont">
 		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="20" />
 		<color value="#000066" />
@@ -107,8 +113,10 @@
 		<color value="#660066" />
 		<bold />
 	</font>
+-->
 	
 	<!-- Standard text fields -->
+<!--
 	<font name="sheetlabel">
 		<ttf file="graphics/fonts/trek_regular.ttf" name="Trek" size="13" />
 		<color value="#000000" />
@@ -119,6 +127,7 @@
 		<color value="#000000" />
 		<bold />
 	</font>
+-->
 	
 <!-- Language Fonts -->
 	<font name="Vulcan">

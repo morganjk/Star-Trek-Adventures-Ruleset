@@ -10,7 +10,7 @@
 	<windowclass name="charsheet">
 		<frame>charsheet</frame>
 		<placement>
-			<size width="525" height="865" />
+			<size width="525" height="835" />
 		</placement>
 		<minimize>minimized_npc</minimize>
 		<tooltip field="name" />

@@ -12,7 +12,7 @@
 		<right rect="450,0,100,144"/>
 		<bottomright rect="450,0,100,144"/>
 		<bottom rect="219,437,567,132"/>
-		<decal rect="830,0,510,510"/>
+<!--		<decal rect="830,0,510,510"/> -->
 	</framedef>
 	<framedef name="shortcuts">
 		<bitmap file="graphics/frames/desktop.png"/>

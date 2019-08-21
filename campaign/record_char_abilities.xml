@@ -6,9 +6,30 @@
 	<windowclass name="charsheet_abilities">
 		<sheetdata>
 
+<!-- Detail Frame -->
+			<frame_char name="detailframe">
+				<bounds>15,0,-30,50</bounds>
+			</frame_char>
+			<string_labeled name="gender">
+				<anchored to="detailframe" position="insidetopleft" offset="15,10" width="140" height="20" />
+				<labelres>char_label_gender</labelres>
+			</string_labeled>
+			<string_labeled name="age">
+				<anchored to="gender" position="right" offset="5,0" width="95" />
+				<labelres>char_label_age</labelres>
+			</string_labeled>
+			<string_labeled name="height">
+				<anchored to="age" position="right" offset="5,0" width="100" />
+				<labelres>char_label_height</labelres>
+			</string_labeled>
+			<string_labeled name="weight">
+				<anchored to="height" position="right" offset="5,0" width="100" />
+				<labelres>char_label_weight</labelres>
+			</string_labeled>
+			
 <!-- Traits -->
 			<frame_char name="traitsframe">
-				<bounds>15,0,-30,125</bounds>
+				<anchored to="detailframe" position="belowleft" offset="0,0" width="160" height="125" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="traitsframe" />
@@ -37,7 +58,7 @@
 			
 <!-- Talents -->
 			<frame_char name="talentsframe">
-				<anchored to="traitsframe" position="belowleft" offset="0,0" width="480" height="125" />
+				<anchored to="traitsframe" position="righthigh" offset="0,0" width="320" height="125" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="talentsframe" />
@@ -66,7 +87,7 @@
 
 <!-- Career Background -->
 			<frame_char name="backgroundframe">
-				<anchored to="talentsframe" position="belowleft" offset="0,0" width="480" height="125" />
+				<anchored to="traitsframe" position="belowleft" offset="0,0" width="480" height="125" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="backgroundframe" />
@@ -110,7 +131,7 @@
 				<anchored to="normal_label" position="righthigh" offset="0,0" width="30" height="20"/>
 			</basicnumber>
 			<label name="spotlight_label">
-				<anchored to="normal" position="righthigh" offset="50,0" width="50"/>
+				<anchored to="normal" position="righthigh" offset="50,0" width="70"/>
 				<static textres="char_label_spotlight"/>
 			</label>
 			<basicnumber name="spotlight" source="milestone.spotlight">
@@ -134,7 +155,7 @@
 				<static textres="char_label_reputation" />
 			</label_frametop>
 			<label name="reputation_label">
-				<anchored to="reputationframe" position="insidetopleft" offset="15,35" width="60"/>
+				<anchored to="reputationframe" position="insidetopleft" offset="15,35" width="70"/>
 				<static textres="char_label_reputation"/>
 			</label>
 			<basicnumber name="reputation" source="reputation.reputation">
@@ -148,14 +169,14 @@
 				<anchored to="privilege_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
 			<label name="responsibility_label">
-				<anchored to="privilege" position="righthigh" offset="15,0" width="70"/>
+				<anchored to="privilege" position="righthigh" offset="15,0" width="85"/>
 				<static textres="char_label_responsibility"/>
 			</label>
 			<basicnumber name="responsibility" source="reputation.responsibility">
 				<anchored to="responsibility_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
 			<label name="rank_label">
-				<anchored to="responsibility" position="righthigh" offset="15,0" width="30"/>
+				<anchored to="responsibility" position="righthigh" offset="15,0" width="40"/>
 				<static textres="char_label_rank"/>
 			</label>
 			<basicnumber name="rank" source="reputation.rank">
@@ -169,6 +190,59 @@
 			<basicnumber name="challengedie" source="reputation.challengedie">
 				<anchored to="challengedie_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
+			
+<!-- Appearance Frame -->
+			<frame_char name="appearanceframe">
+				<anchored to="reputationframe" position="belowleft" offset="0,0" height="175">
+					<right offset="-155" />
+				</anchored>
+			</frame_char>
+			<label_frametop>
+				<anchored to="appearanceframe" />
+				<static textres="char_label_appearance" />
+			</label_frametop>
+			<stringu name="appearance">
+				<anchored to="appearanceframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar_list>
+				<anchored to="appearance" />
+				<target>appearance</target>
+			</scrollbar_list>
+			
+<!-- Language Frame -->
+			<frame_char name="languageframe">
+				<anchored to="appearanceframe" position="right" offset="0,0" width="155" height="175" />
+			</frame_char>
+			<label_frametop>
+				<anchored to="languageframe" />
+				<static textres="char_label_languages" />
+			</label_frametop>
+			<list_language name="languages">
+				<anchored to="languageframe">
+					<top offset="35" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+			</list_language>
+			<scrollbar_list>
+				<anchored to="languages" />
+				<target>languages</target>
+			</scrollbar_list>
+			<button_iedit name="languages_iedit">
+				<anchored to="languages" position="aboveright" offset="5,5" />
+				<target>languages</target>
+			</button_iedit>
+			<button_iadd name="languages_iadd">
+				<anchored to="languages" position="aboveleft" offset="10,5" />
+				<target>languages</target>
+			</button_iadd>
 		</sheetdata>
 	</windowclass>
 </root>

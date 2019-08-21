@@ -7,6 +7,13 @@
 <!-- Character Sheet -->
 	<string name="char_label_species">Species</string>
 	<string name="char_label_rank">Rank</string>
+
+	<string name="details_rank_ensign">Ensign</string>
+	<string name="details_rank_lieutenantjg">Lieutenant JG</string>
+	<string name="details_rank_lieutanent">Lieutenant</string>
+	<string name="details_rank_lieutenant_commander">Lieutenant Commander</string>
+	<string name="details_rank_commander">Commander</string>
+	<string name="details_rank_captain">Captain</string>
 	
 	<string name="char_label_roll_tn">TR</string>
 	<string name="char_label_roll_focus">Focus Used</string>
@@ -42,6 +49,7 @@
 	<string name="char_label_background">Background</string>
 	<string name="char_label_focuses">Focuses</string>
 	<string name="char_label_stress">Stress</string>
+	<string name="char_label_resistance">Resistance</string>
 	<string name="char_label_injuries">Injuries</string>
   
 	<string name="char_label_weapons">Weapons</string>
