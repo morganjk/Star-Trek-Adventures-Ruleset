@@ -5,6 +5,7 @@
 -->
 <root>
   <!--  Override Smiteworks Decal  -->
+  <icon name="rulesetlogo_Star Trek Adventures" file="graphics/icons/rulesetlogo_STA.png" />
   <icon name="desktopdecal_sw" file="graphics/decals/desktopdecal_sw.png"/> 
   
   <!-- Icons -->
@@ -78,8 +79,6 @@
 	<icon name="button_quests_down" file="graphics/sidebar/button_quests_down.png" />
 	<icon name="button_tables" file="graphics/sidebar/button_tables.png" />
 	<icon name="button_tables_down" file="graphics/sidebar/button_tables_down.png" />
-	<icon name="button_ships" file="graphics/sidebar/button_ships.png" />
-	<icon name="button_ships_down" file="graphics/sidebar/button_ships_down.png" />
 	<icon name="button_vehicles" file="graphics/sidebar/button_vehicles.png" />
 	<icon name="button_vehicles_down" file="graphics/sidebar/button_vehicles_down.png" />
 	<icon name="button_species" file="graphics/sidebar/button_species.png" />

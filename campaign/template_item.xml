@@ -100,6 +100,7 @@
 				</script>
 			</string_columnh>
 
+<!--
 			<label_column name="subtype_label">
 				<static textres="item_label_subtype" />
 			</label_column>
@@ -111,73 +112,49 @@
 					end
 				</script>
 			</string_columnh>
+-->
 
-			<label_column name="rarity_label">
-				<static textres="item_label_rarity" />
+			<label_column name="ranges_label">
+				<static textres="item_label_ranges" />
 			</label_column>
-			<string_columnh name="rarity" />
+			<string_columnh name="ranges" />
+
+			<label_column name="damagerating_label">
+				<font>challengedie_font</font>
+				<static text="A"/>
+			</label_column>
+			<number_column name="damagerating" />
+			
+			<label_column name="resistance_label">
+				<static textres="char_label_resistance" />
+			</label_column>
+			<number_column name="resistance" />
+				
+			<label_column name="effect_label">
+				<static textres="item_label_effect" />
+			</label_column>
+			<string_columnh name="effect" />
+
+			<label_column name="size_label">
+				<static textres="item_label_size" />
+			</label_column>
+			<string_columnh name="size" />
+
+			<label_column name="qualities_label">
+				<static textres="item_label_qualities" />
+			</label_column>
+			<string_columnh name="qualities" />
 
 			<line_column name="divider" />
-
+			
 			<label_column name="cost_label">
 				<static textres="item_label_cost" />
 			</label_column>
 			<string_columnh name="cost" />
-
-			<label_column name="weight_label">
-				<static textres="item_label_weight" />
-			</label_column>
-			<number_columnh name="weight" />
-
+			
 			<line_column name="divider2" />
 
-			<label_column name="bonus_label">
-				<static textres="item_label_bonus" />
-			</label_column>
-			<number_columnh name="bonus">
-				<delaykeyupdate />
-				<displaysign />
-			</number_columnh>
-			
-			<label_column name="damage_label">
-				<static textres="item_label_damage" />
-			</label_column>
-			<string_columnh name="damage" />
-			
-			<label_column name="ac_label">
-				<static textres="item_label_ac" />
-			</label_column>
-			<number_columnh name="ac">
-				<delaykeyupdate />
-			</number_columnh>
-			
-			<label_column name="dexbonus_label">
-				<static textres="item_label_dexbonus" />
-			</label_column>
-			<string_columnh name="dexbonus">
-				<delaykeyupdate />
-			</string_columnh>
-			
-			<label_column name="strength_label">
-				<static textres="item_label_strength" />
-			</label_column>
-			<string_columnh name="strength" />
-			
-			<label_column name="stealth_label">
-				<static textres="item_label_stealth" />
-			</label_column>
-			<string_columnh name="stealth">
-				<delaykeyupdate />
-			</string_columnh>
-			
-			<label_column name="properties_label">
-				<static textres="item_label_properties" />
-			</label_column>
-			<string_columnh name="properties" />
-			
-			<line_column name="divider3" />
-
-			<ft_columnh name="description" />
+			<ft_columnh name="notes" />
 		</sheetdata>
 	</windowclass>
 </root>

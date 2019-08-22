@@ -151,7 +151,7 @@
 		<color value="#000000" />
 	</font>
 	<font name="Cardassian">
-		<ttf file="graphics/fonts/cardassian.ttf" size="20" />
+		<ttf file="graphics/fonts/Cardassian.ttf" name="ST Cardassian" size="20" />
 		<color value="#000000" />
 	</font>
 	<font name="Bajoran">

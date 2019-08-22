@@ -6,7 +6,7 @@
 -->
 
 <root>
-	<windowclass name="ship">
+	<windowclass name="vehicle">
 		<frame>recordsheet</frame>
 		<placement>
 			<size width="800" height="800" />
@@ -30,13 +30,13 @@
 		</script>
 		<sheetdata>
 			<sub_record_header name="header">
-				<class>ship_header</class>
+				<class>vehicle_header</class>
 			</sub_record_header>
 
 			<frame_record_content_tabbed name="contentframe" />
 
 			<subwindow_record name="main">
-				<class>ship_main</class>
+				<class>vehicle_main</class>
 			</subwindow_record>
 			<ft_record name="notes">
 				<anchored to="contentframe" position="over" />
@@ -67,7 +67,7 @@
 		</sheetdata>
 	</windowclass>
 	
-	<windowclass name="ship_header">
+	<windowclass name="vehicle_header">
 		<margins control="0,0,0,7" />
 		<script>
 			function onInit()
@@ -81,7 +81,7 @@
 		</script>
 		<sheetdata>
 			<link_record_header>
-				<class>ship</class>
+				<class>vehicle</class>
 			</link_record_header>
 			
 			<anchor_record_header_right name="rightanchor" />
@@ -115,12 +115,12 @@
 			</button_record_locked>
 
 			<string_record_name name="name">
-				<empty textres="library_recordtype_empty_ship" />
+				<empty textres="library_recordtype_empty_vehicle" />
 			</string_record_name>
 		</sheetdata>
 	</windowclass>
 	
-	<windowclass name="ship_main">
+	<windowclass name="vehicle_main">
 		<margins control="0,0,0,2" />
 		<script>
 			function onInit()
@@ -141,27 +141,27 @@
 			</frame_char>
 			<string_labeled name="designation">
 				<anchored to="detailsframe" position="insidetopleft" offset="15,15" width="343" height="20" />
-				<labelres>ship_label_designation</labelres>
+				<labelres>vehicle_label_designation</labelres>
 			</string_labeled>
 			<string_labeled name="service date">
 				<anchored to="designation" position="righthigh" offset="5,0" width="343" height="20" />
-				<labelres>ship_label_service_date</labelres>
+				<labelres>vehicle_label_service_date</labelres>
 			</string_labeled>
 			<string_labeled name="space frame">
 				<anchored to="detailsframe" position="insidetopleft" offset="15,50" width="343" height="20" />
-				<labelres>ship_label_space_frame</labelres>
+				<labelres>vehicle_label_space_frame</labelres>
 			</string_labeled>
 			<string_labeled name="refit">
 				<anchored to="space frame" position="righthigh" offset="5,0" width="343" height="20" />
-				<labelres>ship_label_refit</labelres>
+				<labelres>vehicle_label_refit</labelres>
 			</string_labeled>
 			<string_labeled name="mission profile">
 				<anchored to="detailsframe" position="insidetopleft" offset="15,85" width="686" height="20" />
-				<labelres>ship_label_mission_profile</labelres>
+				<labelres>vehicle_label_mission_profile</labelres>
 			</string_labeled>
 			<string_labeled name="traits">
 				<anchored to="detailsframe" position="insidetopleft" offset="15,120" width="686" height="20" />
-				<labelres>ship_label_traits</labelres>
+				<labelres>vehicle_label_traits</labelres>
 			</string_labeled>
 
 <!-- Systems -->
@@ -172,12 +172,12 @@
 			</frame_char>
 			<label_frametop name="systemframe_label">
 				<anchored to="systemsframe" />
-				<static textres="ship_label_systems" />
+				<static textres="vehicle_label_systems" />
 			</label_frametop>
 			
 			<label name="engines_label">
 				<anchored to="systemsframe" position="insidetopleft" offset="20,22" width="100" height="20" />
-				<static textres="ship_label_engines"/>
+				<static textres="vehicle_label_engines"/>
 			</label>
 			<char_attribute name="engines">
 				<anchored to="engines_label" position="righthigh" offset="0,0" width="30" />
@@ -201,7 +201,7 @@
 			
 			<label name="computers_label">
 				<anchored to="engines" position="righthigh" offset="15,0" width="100" height="20" />
-				<static textres="ship_label_computers" />
+				<static textres="vehicle_label_computers" />
 			</label>
 			<char_attribute name="computers">
 				<anchored to="computers_label" position="righthigh" offset="0,0" width="30" />
@@ -225,7 +225,7 @@
 			
 			<label name="weapons_label">
 				<anchored to="computers" position="righthigh" offset="15,0" width="100" height="20" />
-				<static textres="ship_label_weapons" />
+				<static textres="vehicle_label_weapons" />
 			</label>
 			<char_attribute name="weapons">
 				<anchored to="weapons_label" position="righthigh" offset="0,0" width="30" />
@@ -249,7 +249,7 @@
 			
 			<label name="structure_label">
 				<anchored to="engines_label" position="belowleft" offset="0,18" width="100" height="20" />
-				<static textres="ship_label_structure" />
+				<static textres="vehicle_label_structure" />
 			</label>
 			<char_attribute name="structure" source="systems.structure">
 				<anchored to="structure_label" position="righthigh" offset="0,0" width="30" />
@@ -273,7 +273,7 @@
 			
 			<label name="sensors_label">
 				<anchored to="structure" position="righthigh" offset="15,0" width="100" height="20" />
-				<static textres="ship_label_sensors" />
+				<static textres="vehicle_label_sensors" />
 			</label>
 			<char_attribute name="sensors">
 				<anchored to="sensors_label" position="righthigh" offset="0,0" width="30" />
@@ -297,7 +297,7 @@
 			
 			<label name="comms_label">
 				<anchored to="sensors" position="righthigh" offset="15,0" width="100" height="20" />
-				<static textres="ship_label_comms" />
+				<static textres="vehicle_label_comms" />
 			</label>
 			<char_attribute name="comms">
 				<anchored to="comms_label" position="righthigh" offset="0,0" width="30" />
@@ -322,7 +322,11 @@
 <!-- Breaches -->
 			<buttongroup_counter name="engines_breach">
 				<anchored to="engines_label" position="belowleft" offset="0,0" />
-				<spacing>10</spacing>
+				<stateicons>
+					<on>stress_tick</on>
+					<off>stress_empty</off>
+				</stateicons>
+				<spacing>12</spacing>
 				<allowsinglespacing/>
 				<maxslotperrow>7</maxslotperrow>
 				<sourcefields>
@@ -332,7 +336,11 @@
 			</buttongroup_counter>
 			<buttongroup_counter name="computers_breach">
 				<anchored to="computers_label" position="belowleft" offset="0,0" />
-				<spacing>10</spacing>
+				<stateicons>
+					<on>stress_tick</on>
+					<off>stress_empty</off>
+				</stateicons>
+				<spacing>12</spacing>
 				<allowsinglespacing/>
 				<maxslotperrow>7</maxslotperrow>
 				<sourcefields>
@@ -342,7 +350,11 @@
 			</buttongroup_counter>
 			<buttongroup_counter name="weapons_breach">
 				<anchored to="weapons_label" position="belowleft" offset="0,0" />
-				<spacing>10</spacing>
+				<stateicons>
+					<on>stress_tick</on>
+					<off>stress_empty</off>
+				</stateicons>
+				<spacing>12</spacing>
 				<allowsinglespacing/>
 				<maxslotperrow>7</maxslotperrow>
 				<sourcefields>
@@ -352,7 +364,11 @@
 			</buttongroup_counter>
 			<buttongroup_counter name="structure_breach">
 				<anchored to="structure_label" position="belowleft" offset="0,0" />
-				<spacing>10</spacing>
+				<stateicons>
+					<on>stress_tick</on>
+					<off>stress_empty</off>
+				</stateicons>
+				<spacing>12</spacing>
 				<allowsinglespacing/>
 				<maxslotperrow>7</maxslotperrow>
 				<sourcefields>
@@ -362,7 +378,11 @@
 			</buttongroup_counter>
 			<buttongroup_counter name="sensors_breach">
 				<anchored to="sensors_label" position="belowleft" offset="0,0" />
-				<spacing>10</spacing>
+				<stateicons>
+					<on>stress_tick</on>
+					<off>stress_empty</off>
+				</stateicons>
+				<spacing>12</spacing>
 				<allowsinglespacing/>
 				<maxslotperrow>7</maxslotperrow>
 				<sourcefields>
@@ -372,7 +392,11 @@
 			</buttongroup_counter>
 			<buttongroup_counter name="comms_breach">
 				<anchored to="comms_label" position="belowleft" offset="0,0" />
-				<spacing>10</spacing>
+				<stateicons>
+					<on>stress_tick</on>
+					<off>stress_empty</off>
+				</stateicons>
+				<spacing>12</spacing>
 				<allowsinglespacing/>
 				<maxslotperrow>7</maxslotperrow>
 				<sourcefields>
@@ -389,7 +413,7 @@
 			</frame_char>
 			<label_frametop name="departmentsframe_label">
 				<anchored to="departmentsframe" />
-				<static textres="ship_label_departments" />
+				<static textres="vehicle_label_departments" />
 			</label_frametop>
 			
 			<label name="command_label">
@@ -545,7 +569,7 @@
 			</number_shieldsmax>
 			<label name="maxshield_label">
 				<anchored to="maxshield" position="lefthigh" offset="0,0" width="50"/>
-				<static textres="ship_label_shields"/>
+				<static textres="vehicle_label_shields"/>
 			</label>
 			<buttongroup_counter name="shieldcounter">
 				<anchored to="shieldframe" position="insidetopleft" offset="15,45" width="140" height="120"/>
@@ -564,11 +588,11 @@
 
 <!-- Launch Bay -->
 			<frame_char name="launch_bayframe">
-				<anchored to="shieldframe" position="righthigh" offset="0,0" width="150" height="220"/>
+				<anchored to="shieldframe" position="righthigh" offset="0,0" width="150" height="150"/>
 			</frame_char>
 			<label_frametop name="launch_bayframe_label">
 				<anchored to="launch_bayframe" />
-				<static textres="ship_label_launch_bay" />
+				<static textres="vehicle_label_launch_bay" />
 			</label_frametop>
 			<stringu name="launch_bay">
 				<anchored to="launch_bayframe">
@@ -583,6 +607,25 @@
 				<anchored to="launch_bay" />
 				<target>launch_bay</target>
 			</scrollbar_list>
+						
+<!-- Crew Support -->
+			<frame_char name="crew_supportframe">
+				<anchored to="launch_bayframe" position="belowleft" offset="0,0" width="150" height="70"/>
+			</frame_char>
+			<label_frametop name="crew_support_label">
+				<anchored to="crew_supportframe" />
+				<static textres="vehicle_label_crew_support" />
+			</label_frametop>
+			<basicnumber name="current_crew" source="crew.current">
+				<anchored to="crew_support_label" position="belowleft" offset="15,5" width="20" height="15"/>
+			</basicnumber>
+			<label name="crew_support_max_label">
+				<anchored to="current_crew" position="righthigh" offset="45,0" width="35" height="20" />
+				<static textres="vehicle_label_crew_max" />
+			</label>
+			<basicnumber name="max_crew" source="crew.max">
+				<anchored to="crew_support_max_label" position="righthigh" offset="0,0" width="20" height="15"/>
+			</basicnumber>
 			
 <!-- Other Stuff -->
 			<frame_char name="otherframe">
@@ -590,14 +633,14 @@
 			</frame_char>
 			<label name="scale_label">
 				<anchored to="otherframe" position="insidetopleft" offset="20,15" width="40" height="20" />
-				<static textres="ship_label_scale" />
+				<static textres="vehicle_label_scale" />
 			</label>
 			<char_attribute name="scale">
 				<anchored to="scale_label" position="righthigh" offset="0,0" width="30" />
 			</char_attribute>
 			<label name="resistance_label">
 				<anchored to="scale" position="righthigh" offset="15,0" width="70" />
-				<static textres="ship_label_resistance" />
+				<static textres="vehicle_label_resistance" />
 			</label>
 			<char_attribute name="resistance">
 				<anchored to="resistance_label" position="righthigh" offset="0,0" width="30" />
@@ -605,7 +648,7 @@
 			</char_attribute>
 			<label name="power_label">
 				<anchored to="resistance" position="righthigh" offset="15,0" width="50" />
-				<static textres="ship_label_power" />
+				<static textres="vehicle_label_power" />
 			</label>
 			<char_attribute name="power">
 				<anchored to="power_label" position="righthigh" offset="0,0" width="30" />
@@ -613,7 +656,7 @@
 			</char_attribute>
 			<label name="max_power_label">
 				<anchored to="power" position="righthigh" offset="10,0" width="73" />
-				<static textres="ship_label_max_power" />
+				<static textres="vehicle_label_max_power" />
 			</label>
 			<char_attribute name="max_power">
 				<anchored to="max_power_label" position="righthigh" offset="15,0" width="30" />
@@ -626,9 +669,9 @@
 			</frame_char>
 			<label_frametop name="talentsframe_label">
 				<anchored to="talentsframe" />
-				<static textres="ship_label_talents" />
+				<static textres="vehicle_label_talents" />
 			</label_frametop>
-			<stringu name="talents">
+			<list_charbackground name="talents">
 				<anchored to="talentsframe">
 					<top offset="30" />
 					<left offset="15" />
@@ -636,7 +679,7 @@
 					<bottom offset="-15" />
 				</anchored>
 				<multilinespacing>20</multilinespacing>
-			</stringu>
+			</list_charbackground>
 			<scrollbar_list name="talents_scroll">
 				<anchored to="talents" />
 				<target>talents</target>
@@ -660,12 +703,13 @@
 			<label>
 				<anchored to="weaponsframe" position="insidetopleft" offset="155,28"/>
 				<font>sheetlabelmini</font>
-				<static textres="char_label_weapon_size" />
+				<static textres="item_label_ranges" />
 			</label>
 			<label>
-				<anchored to="weaponsframe" position="insidetopleft" offset="192,28"/>
+				<anchored to="weaponsframe" position="insidetopleft" offset="200,28"/>
 				<font>sheetlabelmini</font>
-				<static textres="char_label_weapon_damage" />
+				<font>challengedie_font</font>
+				<static text="A"/>
 			</label>
 			<label>
 				<anchored to="weaponsframe" position="insidetopleft" offset="295,28"/>

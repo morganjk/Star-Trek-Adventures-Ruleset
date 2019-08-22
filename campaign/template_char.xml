@@ -89,12 +89,37 @@
 			</linkfield>
 		</sheetdata>
 	</windowclass>
+	
+	<windowclass name="char_textlistitem_nolink">
+		<margins control="0,0,0,2"/>
+		<sheetdata>
+			<genericcontrol name="rightanchor">
+				<anchored width="0" height="0">
+					<top/>
+					<right/>
+				</anchored>
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored>
+					<top/>
+					<right offset="-5" relation="relative" anchor="left" parent="rightanchor"/>
+				</anchored>
+			</button_idelete>
+			<string_textlistitem name="label">
+				<anchored height="20">
+					<top offset="2"/>
+					<left offset="22"/>
+					<right offset="-10" relation="relative" anchor="left" parent="rightanchor"/>
+				</anchored>
+			</string_textlistitem>
+		</sheetdata>
+	</windowclass>
 
 <!-- Values List -->
 	<template name="list_charvalues">
 		<list_text>
 			<datasource>.values</datasource>
-			<class>char_textlistitem</class>
+			<class>char_textlistitem_nolink</class>
 			<columns>
 				<fillwidth />
 				<width>145</width>

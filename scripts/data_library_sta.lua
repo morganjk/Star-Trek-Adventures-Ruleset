@@ -58,11 +58,11 @@
 --
 
 aRecordOverrides = {
-	["ship"] = { 
+	["vehicle"] = { 
 		bExport = true,
-		aDataMap = { "ship", "reference.ships" }, 
-		aDisplayIcon = { "button_ships", "button_ships_down" },
-		-- sRecordDisplayClass = "ship", 
+		aDataMap = { "vehicle", "reference.vehicles" }, 
+		aDisplayIcon = { "button_vehicles", "button_vehicles_down" },
+		-- sRecordDisplayClass = "vehicle", 
 	},
 	["species"] = { 
 		bExport = true,
@@ -79,23 +79,23 @@ aRecordOverrides = {
 };
 
 aListViews = {
-	["ship"] = {
+	["vehicle"] = {
 		["byletter"] = {
-			sTitleRes = "ship_grouped_title_byletter",
+			sTitleRes = "vehicle_grouped_title_byletter",
 			aColumns = {
-				{ sName = "name", sType = "string", sHeadingRes = "ship_grouped_label_name", nWidth=250 },
+				{ sName = "name", sType = "string", sHeadingRes = "vehicle_grouped_label_name", nWidth=250 },
 			},
 			aFilters = { },
 			aGroups = { { sDBField = "name", nLength = 1 } },
 			aGroupValueOrder = { },
 		},
 		["bytype"] = {
-			sTitleRes = "ship_grouped_title_bytype",
+			sTitleRes = "vehicle_grouped_title_bytype",
 			aColumns = {
-				{ sName = "name", sType = "string", sHeadingRes = "ship_grouped_label_name", nWidth=250 },
+				{ sName = "name", sType = "string", sHeadingRes = "vehicle_grouped_label_name", nWidth=250 },
 			},
 			aFilters = { },
-			aGroups = { { sDBField = "type", sCustom="ship_type" } },
+			aGroups = { { sDBField = "type", sCustom="vehicle_type" } },
 			aGroupValueOrder = { },
 		},
 	},
@@ -150,5 +150,5 @@ function onInit()
 			LibraryData.setListView(kRecordType, kListView, vListView);
 		end
 	end
-	--LibraryData.setRecordTypeInfo("ship", nil);
+	--LibraryData.setRecordTypeInfo("vehicle", nil);
 end

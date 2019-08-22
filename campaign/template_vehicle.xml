@@ -15,7 +15,7 @@
 	<template name="number_shieldsmax">
 		<number_shieldtotal>
 			<modifiersize>mini</modifiersize>
-			<description textres="ship_label_shields" />
+			<description textres="vehicle_label_shields" />
 			<modifierfield>shield.max.temporary</modifierfield>
 			<source><name>systems.structure</name><op>+</op></source>
 			<source><name>departments.security</name><op>+</op></source>

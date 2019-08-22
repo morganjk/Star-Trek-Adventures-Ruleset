@@ -25,7 +25,7 @@
 <!-- Templates -->
 	<includefile source="desktop/chit.xml" />
     <includefile source="campaign/template_char.xml" />
-	<includefile source="campaign/template_ship.xml" />
+	<includefile source="campaign/template_vehicle.xml" />
 	<includefile source="campaign/template_npc.xml" />
 <!--	<includefile source="campaign/template_item.xml" /> -->
 	
@@ -58,7 +58,7 @@
  
 <!-- Campaign Records -->
 	<includefile source="campaign/record_npc.xml" />    
-	<includefile source="campaign/record_ship.xml" />   
+	<includefile source="campaign/record_vehicle.xml" />
 	<includefile source="campaign/record_species.xml" />
 	<includefile source="campaign/record_item.xml" />
 	<includefile source="campaign/record_talents.xml" />

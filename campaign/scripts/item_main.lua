@@ -31,7 +31,7 @@ function update()
 	local nodeRecord = getDatabaseNode();
 	local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
 	local bID = LibraryData.getIDState("item", nodeRecord);
-	
+--[[	
 	local bSection1 = false;
 	if User.isHost() then
 		if updateControl("nonid_name", bReadOnly, true) then bSection1 = true; end;
@@ -43,7 +43,7 @@ function update()
 	else
 		updateControl("nonid_notes", bReadOnly, false);
 	end
-	
+--]]	
 	local bSection2 = false;
 	if updateControl("cost", bReadOnly, bID) then bSection2 = true; end
 	if updateControl("weight", bReadOnly, bID) then bSection2 = true; end
@@ -52,6 +52,6 @@ function update()
 	notes.setVisible(bID);
 	notes.setReadOnly(bReadOnly);
 		
-	divider.setVisible(bSection1 and bSection2);
-	divider2.setVisible((bSection1 or bSection2) and bSection3);
+	divider.setVisible(bSection2 and bSection3);
+--	divider2.setVisible((bSection1 or bSection2) and bSection3);
 end
