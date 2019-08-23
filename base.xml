@@ -62,6 +62,8 @@
 	<includefile source="campaign/record_species.xml" />
 	<includefile source="campaign/record_item.xml" />
 	<includefile source="campaign/record_talents.xml" />
+	<includefile source="campaign/record_environment.xml" />
+	<includefile source="campaign/record_upbringing.xml" />
 	
 <!-- Combat tracker -->
 	<includefile source="ct/template_ct.xml" />

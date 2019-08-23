@@ -85,7 +85,13 @@
 	<icon name="button_species_down" file="graphics/sidebar/button_species_down.png" />
 	<icon name="button_talents" file="graphics/sidebar/button_talents.png" />
 	<icon name="button_talents_down" file="graphics/sidebar/button_talents_down.png" />
-
+	
+	<icon name="button_environment" file="graphics/sidebar/button_environment.png" />
+	<icon name="button_environment_down" file="graphics/sidebar/button_environment_down.png" />
+	
+	<icon name="button_upbringing" file="graphics/sidebar/button_upbringing.png" />
+	<icon name="button_upbringing_down" file="graphics/sidebar/button_upbringing_down.png" />
+	
 	<icon name="button_library" file="graphics/sidebar/button_library.png" />
 	<icon name="button_library_down" file="graphics/sidebar/button_library_down.png" />
 	<icon name="button_tokencase" file="graphics/sidebar/button_tokencase.png" />

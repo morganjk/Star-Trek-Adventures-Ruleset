@@ -98,7 +98,7 @@
 				<static textres="char_label_roll_focus"/>
 			</label>
 			<buttonfield name="focusselector" source="rollable.focusused">
-				<anchored  to="focus_label" position="below" width="20" height="20" />
+				<anchored  to="focus_label" position="belowleft" offset="25,0" width="20" height="20" />
 				<state icon="stress_empty" />
 				<state icon="stress_tick" />
 				<script>

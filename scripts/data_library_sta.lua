@@ -74,7 +74,19 @@ aRecordOverrides = {
 		bExport = true,
 		aDataMap = { "talents", "reference.talents" }, 
 		aDisplayIcon = { "button_talents", "button_talents_down" },
-		-- sRecordDisplayClass = "values", 
+		-- sRecordDisplayClass = "talents", 
+	},
+	["environment"] = { 
+		bExport = true,
+		aDataMap = { "environment", "reference.environment" }, 
+		aDisplayIcon = { "button_environment", "button_environment_down" },
+		-- sRecordDisplayClass = "environment", 
+	},
+	["upbringing"] = { 
+		bExport = true,
+		aDataMap = { "upbringing", "reference.upbringing" }, 
+		aDisplayIcon = { "button_upbringing", "button_upbringing_down" },
+		-- sRecordDisplayClass = "upbringing", 
 	},
 };
 
@@ -120,15 +132,6 @@ aListViews = {
 			aGroups = { { sDBField = "name", nLength = 1 } },
 			aGroupValueOrder = { },
 		},
-		["bydept"] = {
-			sTitleRes = "talents_grouped_title_bydept",
-			aColumns = {
-				{ sName = "name", sType = "string", sHeadingRes = "talents_grouped_label_name", nWidth=250 },
-			},
-			aFilters = { },
-			aGroups = { { sDBField = "type", sCustom="values_dept" } },
-			aGroupValueOrder = { },
-		},
 		["byreq"] = {
 			sTitleRes = "talents_grouped_title_byreq",
 			aColumns = {
@@ -136,6 +139,46 @@ aListViews = {
 			},
 			aFilters = { },
 			aGroups = { { sDBField = "type", sCustom="values_req" } },
+			aGroupValueOrder = { },
+		},
+	},
+	["environment"] = {
+		["byletter"] = {
+			sTitleRes = "environment_grouped_title_byletter",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "environment_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "name", nLength = 1 } },
+			aGroupValueOrder = { },
+		},
+		["byattribute"] = {
+			sTitleRes = "environment_grouped_title_byattribute",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "environment_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "type", sCustom="environment_req" } },
+			aGroupValueOrder = { },
+		},
+		["bydiscipline"] = {
+			sTitleRes = "environment_grouped_title_bydiscipline",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "environment_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "type", sCustom="environment_req" } },
+			aGroupValueOrder = { },
+		},
+	},
+	["upbringing"] = {
+		["byletter"] = {
+			sTitleRes = "upbringing_grouped_title_byletter",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "upbringing_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "name", nLength = 1 } },
 			aGroupValueOrder = { },
 		},
 	},

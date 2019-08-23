@@ -148,42 +148,42 @@
 <!-- Reputation -->
 			<frame_char name="reputationframe">
 				<anchored to="milestoneframe" position="belowleft" offset="0,0"
-				width="480" height="90" />
+				width="480" height="110" />
 			</frame_char>
 			<label_frametop name="reputation_frame_label">
 				<anchored to="reputationframe" />
 				<static textres="char_label_reputation" />
 			</label_frametop>
 			<label name="reputation_label">
-				<anchored to="reputationframe" position="insidetopleft" offset="15,35" width="70"/>
+				<anchored to="reputationframe" position="insidetopleft" offset="35,35" width="70"/>
 				<static textres="char_label_reputation"/>
 			</label>
 			<basicnumber name="reputation" source="reputation.reputation">
 				<anchored to="reputation_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
 			<label name="privilege_label">
-				<anchored to="reputation" position="righthigh" offset="15,0" width="60"/>
+				<anchored to="reputation" position="righthigh" offset="25,0" width="60"/>
 				<static textres="char_label_privilege"/>
 			</label>
 			<basicnumber name="privilege" source="reputation.privilege">
 				<anchored to="privilege_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
 			<label name="responsibility_label">
-				<anchored to="privilege" position="righthigh" offset="15,0" width="85"/>
+				<anchored to="privilege" position="righthigh" offset="25,0" width="85"/>
 				<static textres="char_label_responsibility"/>
 			</label>
 			<basicnumber name="responsibility" source="reputation.responsibility">
 				<anchored to="responsibility_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
 			<label name="rank_label">
-				<anchored to="responsibility" position="righthigh" offset="15,0" width="40"/>
+				<anchored to="reputation_label" position="belowleft" offset="0,15" width="40"/>
 				<static textres="char_label_rank"/>
 			</label>
-			<basicnumber name="rank" source="reputation.rank">
-				<anchored to="rank_label" position="righthigh" offset="0,0" width="20" height="20"/>
-			</basicnumber>
+			<stringu name="rank" source="reputation.rank">
+				<anchored to="rank_label" position="righthigh" offset="0,0" width="200" height="20" />
+			</stringu>
 			<label name="challengedie_label">
-				<anchored to="rank" position="righthigh" offset="15,0" width="20"/>
+				<anchored to="responsibility" position="righthigh" offset="35,0" width="20"/>
 				<font>challengedie_font</font>
 				<static text="A"/>
 			</label>
@@ -217,7 +217,7 @@
 			
 <!-- Language Frame -->
 			<frame_char name="languageframe">
-				<anchored to="appearanceframe" position="right" offset="0,0" width="155" height="175" />
+				<anchored to="appearanceframe" position="righthigh" offset="0,0" width="155" height="175" />
 			</frame_char>
 			<label_frametop>
 				<anchored to="languageframe" />
