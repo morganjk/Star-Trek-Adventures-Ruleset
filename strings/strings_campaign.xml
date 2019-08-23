@@ -105,7 +105,15 @@
 <!-- Species -->
 	<string name="species_header_talents">TALENTS</string>
 	<string name="species_header_traits">TRAITS</string>
-  
+	
+<!-- Environment -->
+	<string name="environment_header_adjustments">ADJUSTMENTS</string>
+	<string name="library_recordtype_empty_environmentadjustments">New Adjustments</string>
+	
+<!-- Upbringing -->
+	<string name="upbringing_header_adjustments">ADJUSTMENTS</string>
+	<string name="library_recordtype_empty_upbringingadjustments">New Adjustments</string>
+	
 <!-- Combat Tracker -->
 	<string name="ct_label_max_stress">Max</string>
   
@@ -119,6 +127,10 @@
 	<string name="library_recordtype_empty_species">New Species</string>
 	<string name="library_recordtype_label_talents">Talents</string>
 	<string name="library_recordtype_empty_talents">New Talent</string>
+	<string name="library_recordtype_label_environment">Environment</string>
+	<string name="library_recordtype_empty_environment">New Environment</string>
+	<string name="library_recordtype_label_upbringing">Upbringing</string>
+	<string name="library_recordtype_empty_upbringing">New Upbringing</string>
 	
 <!-- Character Attributes -->
 	<string name="char_abilities_message_speciesadd">Species '%s' added to '%s'.</string>

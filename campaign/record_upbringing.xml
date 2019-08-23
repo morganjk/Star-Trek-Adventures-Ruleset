@@ -6,7 +6,7 @@
 -->
 
 <root>
-	<windowclass name="talents">
+	<windowclass name="upbringing">
 		<frame>recordsheet</frame>
 		<placement>
 			<size width="350" height="350" />
@@ -15,81 +15,217 @@
 			<minimum width="300" height="300" />
 			<dynamic />
 		</sizelimits>
-		<nodelete />
-		<playercontrol />
-		<sharable />
+		<minimize>minimized_utility</minimize>
 		<tooltip field="name" />
-		<minimize>minimized_item</minimize>
-		<script file="campaign/scripts/talents.lua" />
+		<nodelete />
+		<sharable />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				if main and main.subwindow then
+					main.subwindow.update();
+				end
+				if notes and notes.subwindow then
+					notes.subwindow.update();
+				end
+
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				notes.setReadOnly(bReadOnly);
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
 		<sheetdata>
 			<sub_record_header name="header">
-				<class>talents_header</class>
+				<class>upbringing_header</class>
 			</sub_record_header>
 
-			<frame_record_content name="contentframe" />
+			<frame_record_content_tabbed name="contentframe" />
 
-			<subwindow_record name="main">
-				<class>talents_main</class>
-				<activate />
+			<subwindow_record name="notes">
+				<class>upbringing_notes</class>
 			</subwindow_record>
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<empty textres="ft_empty" hidereadonly="true" />
+				<invisible />
+			</ft_record>
 
 			<scrollbar_record>
 				<target>main</target>
 			</scrollbar_record>
-
+			<scrollbar_record>
+				<target>notes</target>
+			</scrollbar_record>
+			
+			<tabs_recordsheet>
+				<tab>
+					<icon>tab_main</icon>
+					<subwindow>main</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
+				</tab>
+			</tabs_recordsheet>
+			
 			<resize_recordsheet />
 			<close_recordsheet />
 		</sheetdata>
 	</windowclass>
+	
+	<windowclass name="upbringing_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>upbringing</class>
+			</link_record_header>
+			
+			<anchor_record_header_right />
 
-	<windowclass name="talents_header">
+			<icon_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</icon_record_locked>
+			<button_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</button_record_locked>
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_upbringing" />
+			</string_record_name>
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="upbringing_notes">
 		<margins control="0,0,0,7" />
 		<script>
 			function onInit()
 				update();
 			end
 			function update()
-				local nodeRecord = getDatabaseNode();
-
-				local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
-				name.setReadOnly(bReadOnly);
-				nonid_name.setReadOnly(bReadOnly);
-
-				local bID = LibraryData.getIDState("talents", nodeRecord);
-				name.setVisible(bID);
-				nonid_name.setVisible(not bID);
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				adjustments.update(bReadOnly);
 			end
 		</script>
 		<sheetdata>
-			<link_record_header_id name="link">
-				<class>talents</class>
-			</link_record_header_id>
+			<anchor_column name="columnanchor" />
+			
+			<header_column name="adjustments_header">
+				<static textres="upbringing_header_adjustments" />
+				<center />
+			</header_column>
+			<button_iedit name="adjustments_iedit">
+				<anchored to="adjustments_header" position="righthigh" offset="-20,0" />
+				<target>adjustments</target>
+			</button_iedit>
+			<button_iadd name="adjustments_iadd">
+				<anchored to="adjustments_iedit" position="lefthigh" offset="5,0" />
+				<target>adjustments</target>
+			</button_iadd>
+			<list_column name="adjustments">
+				<datasource>.adjustments</datasource>
+				<class>upbringing_adjustments</class>
+			</list_column>
+			
+		</sheetdata>
+	</windowclass>
 
-			<anchor_record_header_right name="rightanchor" />
+	<windowclass name="upbringing_adjustments">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+			<link_listitem_column name="shortcut">
+				<class>reference_upbringingadjustments</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name">
+				<empty textres="library_recordtype_empty_upbringingadjustments" />
+			</string_listitem_column_name>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="reference_upbringingadjustments">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>upbringingadjustments_header</class>
+			</sub_record_header>
+
+			<frame_record_content />
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<footer>footer_wide</footer>
+			</ft_record>
+			<scrollbar>
+				<anchored to="main" />
+				<target>main</target>
+			</scrollbar>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="upbringingadjustments_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>reference_upbringingadjustments</class>
+			</link_record_header>
+
+			<anchor_record_header_right />
 			<icon_record_locked />
 			<button_record_locked />
 
-			<string_record_name_id name="name">
-				<empty textres="library_recordtype_empty_talents" />
-			</string_record_name_id>
-			<string_record_name_id name="nonid_name">
-				<empty textres="library_recordtype_empty_nonid_talents" />
-			</string_record_name_id>
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_upbringingadjustments" />
+			</string_record_name>
+			<label_reftype name="reftype">
+				<static textres="type_upbringingadjustments" />
+			</label_reftype>	
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="talents_main">
-		<margins control="0,0,0,2" />
-		<script file="campaign/scripts/talents_main.lua" />
-		<sheetdata>
-			<anchor_column name="columnanchor" />
-			
-			<label_column name="req_label">
-				<static textres="talents_label_req" />
-			</label_column>
-			<string_columnh name="requirements" />
-			
-			<ft_columnh name="notes" />
-		</sheetdata>
-	</windowclass>
 </root>
