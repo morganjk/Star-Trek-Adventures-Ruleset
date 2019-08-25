@@ -103,7 +103,6 @@
 					<right offset="-7" />
 				</anchored>
 			</button_record_locked>
-
 			<string_record_name name="name">
 				<empty textres="library_recordtype_empty_species" />
 			</string_record_name>

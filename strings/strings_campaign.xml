@@ -67,6 +67,10 @@
 	<string name="char_label_reputation">Reputation</string>
 	<string name="char_label_privilege">Privilege</string>
 	<string name="char_label_responsibility">Responsibility</string>
+	
+	<string name="char_details_message_speciesadd">Species '%s' added to '%s'.</string>
+	<string name="char_details_message_environmentadd">Environment '%s' added to '%s'.</string>
+	<string name="char_details_message_upbringingadd">Upbriinging '%s' added to '%s'.</string>
 
 <!-- NPC -->
 	<string name="npc_label_max_stress">Stress (Max)</string>

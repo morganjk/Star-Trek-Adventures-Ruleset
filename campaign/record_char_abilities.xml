@@ -35,7 +35,7 @@
 				<anchored to="traitsframe" />
 				<static textres="char_label_traits" />
 			</label_frametop>
-			<list_chartraits name="traits">
+			<list_chartraits name="traits" source="abilities.traits">
 				<anchored to="traitsframe">
 					<left offset="15"/>
 					<top offset="35"/>

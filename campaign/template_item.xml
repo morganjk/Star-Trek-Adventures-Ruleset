@@ -99,21 +99,6 @@
 					end
 				</script>
 			</string_columnh>
-
-<!--
-			<label_column name="subtype_label">
-				<static textres="item_label_subtype" />
-			</label_column>
-			<string_columnh name="subtype">
-				<delaykeyupdate />
-				<script>
-					function onValueChanged()
-						window.update();
-					end
-				</script>
-			</string_columnh>
--->
-
 			<label_column name="ranges_label">
 				<static textres="item_label_ranges" />
 			</label_column>

@@ -43,6 +43,7 @@
 <!--	<script name="TableManager2" file="scripts/manager_table2.lua" /> -->
 	<script name="Languages_Extension" file="scripts/languages_extension.lua" /> 
 	<script name="LibraryDataSTA" file="scripts/data_library_sta.lua" />
+	<script name="CharManager" file="campaign/scripts/manager_char.lua" />
 	
 <!-- Graphics -->
 	<includefile source="graphics/graphics_frames.xml" />
@@ -64,6 +65,7 @@
 	<includefile source="campaign/record_talents.xml" />
 	<includefile source="campaign/record_environment.xml" />
 	<includefile source="campaign/record_upbringing.xml" />
+	
 	
 <!-- Combat tracker -->
 	<includefile source="ct/template_ct.xml" />

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
+
 <!-- 
   Please see the license.html file included with this distribution for 
   attribution and copyright information.
@@ -11,7 +12,7 @@
 				if draginfo.isType("shortcut") then
 					local sClass, sRecord = draginfo.getShortcutData();
 
-					if StringManager.contains({"species", "environment", "upbringing", "traits"}, sClass) then
+					if StringManager.contains({"species", "environment", "upbringing"}, sClass) then
 						CharManager.addInfoDB(getDatabaseNode(), sClass, sRecord);
 						return true;
 					end
@@ -41,22 +42,92 @@
 				<anchored to="rank" position="belowleft" width="40" />
 				<static textres="char_label_rank" />
 			</label>
-			<string_labeled name="species">
-				<anchored to="rank" position="righthigh" offset="5,5" width="220" height="20" />
-				<labelres>char_label_species</labelres>
-			</string_labeled>
-			<string_labeled name="environment">
-				<anchored to="detailsframe" position="insidetopleft" offset="15,65" width="220" height="20" />
-				<labelres>char_label_environment</labelres>
-			</string_labeled>
-			<string_labeled name="upbringing">
-				<anchored to="environment" position="righthigh" offset="5,0" width="220" height="20" />
-				<labelres>char_label_upbringing</labelres>
-			</string_labeled>
-			<string_labeled name="assignment">
-				<anchored to="detailsframe" position="insidetopleft" offset="15,100" width="440" height="20" />
-				<labelres>char_label_assignment</labelres>
-			</string_labeled>
+			
+			<stringu name="species" source="details.species">
+				<anchored to="rank" position="rightlow" offset="30,-5" width="200"  height="20" />
+			</stringu>
+			<linkfield name="specieslink">
+				<anchored to="species" position="righthigh" offset="0,0" width="20" height="20" />
+				<description field="species" />
+				<closetoggle />
+				<invisible />
+				<script>
+					function onInit()
+						onValueChanged();
+					end
+					function onValueChanged()
+						if isEmpty() then
+							setVisible(false);
+						else
+							setVisible(true);
+						end
+					end
+				</script>
+			</linkfield>
+			<label name="label_species">
+				<anchored to="species" position="belowleft" offset="0,-5" width="45" />
+				<static textres="char_label_species" />
+			</label>
+			
+			<stringu name="environment" source="details.environment">
+				<anchored to="detailsframe" position="insidetopleft" offset="15,70" width="200" height="20" />
+			</stringu>
+			<linkfield name="environmentlink">
+				<anchored to="environment" position="righthigh" offset="0,0" width="20" height="20" />
+				<description field="environment" />
+				<closetoggle />
+				<invisible />
+				<script>
+					function onInit()
+						onValueChanged();
+					end
+					function onValueChanged()
+						if isEmpty() then
+							setVisible(false);
+						else
+							setVisible(true);
+						end
+					end
+				</script>
+			</linkfield>
+			<label name="label_environment">
+				<anchored to="environment" position="belowleft" offset="0,-5" width="100" />
+				<static textres="char_label_environment" />
+			</label>
+			
+			<stringu name="upbringing" source="details.upbringing">
+				<anchored to="environment" position="rightlow" offset="40,0" width="200" height="20" />
+			</stringu>
+			<linkfield name="upbringinglink">
+				<anchored to="upbringing" position="righthigh" offset="0,0" width="20" height="20" />
+				<description field="upbringing" />
+				<closetoggle />
+				<invisible />
+				<script>
+					function onInit()
+						onValueChanged();
+					end
+					function onValueChanged()
+						if isEmpty() then
+							setVisible(false);
+						else
+							setVisible(true);
+						end
+					end
+				</script>
+			</linkfield>
+			<label name="label_upbringing">
+				<anchored to="upbringing" position="belowleft" offset="0,-5" width="100" />
+				<static textres="char_label_upbringing" />
+			</label>
+			
+			<stringu name="assignment" source="details.assignment">
+				<anchored to="environment" position="belowleft" offset="0,15" width="440" height="20" />
+			</stringu>
+			<label name="label_assignment">
+				<anchored to="assignment" position="belowleft" offset="0,-5" width="100" />
+				<static textres="char_label_assignment" />
+			</label>
 			
 <!-- Rolling Window -->
 			<frame_char name="rollingframe">
