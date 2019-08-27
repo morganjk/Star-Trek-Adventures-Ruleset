@@ -19,7 +19,6 @@ function attribSelect(winFrame, nAttrib)
 	local nodeWin = winFrame.getDatabaseNode();
 		Debug.chat("nodeWin:");
 		Debug.chat(nodeWin);
-	nodeWin.createChild("attrib", "number");
 	local test = DB.setValue(nodeWin, "attrib", "number", nAttrib);
 		Debug.chat("test:");
 		Debug.chat(test);
@@ -30,10 +29,7 @@ function discipSelect(winFrame, nDiscip)
 	local nodeWin = winFrame.getDatabaseNode();
 		Debug.chat("nodeWin:");
 		Debug.chat(nodeWin);
-	local nDiscipline = nodeWin.createChild("discip", "number");
-		Debug.chat("nDiscipline:");
-		Debug.chat(nDiscipline);
-	local discip = DB.getValue(nodeWin, nDiscip, 0);
+	local discip = DB.setValue(nodeWin, "discip", "number", nDiscip);
 		Debug.chat("discip:");
 		Debug.chat(discip);
 	return true;
