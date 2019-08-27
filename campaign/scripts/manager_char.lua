@@ -15,6 +15,42 @@ function outputUserMessage(sResource, ...)
 	ChatManager.SystemMessage(sMsg);
 end
 
+function attribSelect(winFrame, nAttrib)
+	local nodeWin = winFrame.getDatabaseNode();
+		Debug.chat("nodeWin:");
+		Debug.chat(nodeWin);
+	nodeWin.createChild("attrib", "number");
+	local test = DB.setValue(nodeWin, "attrib", "number", nAttrib);
+		Debug.chat("test:");
+		Debug.chat(test);
+	return true;
+end
+
+function discipSelect(winFrame, nDiscip)
+	local nodeWin = winFrame.getDatabaseNode();
+		Debug.chat("nodeWin:");
+		Debug.chat(nodeWin);
+	local nDiscipline = nodeWin.createChild("discip", "number");
+		Debug.chat("nDiscipline:");
+		Debug.chat(nDiscipline);
+	local discip = DB.getValue(nodeWin, nDiscip, 0);
+		Debug.chat("discip:");
+		Debug.chat(discip);
+	return true;
+end
+
+function targetNumber(winFrame, attrib, discip)
+	local nodeWin = winFrame.getDatabaseNode();
+		Debug.chat("nodeWin:");
+		Debug.chat(nodeWin);
+	local att = nodeWin.getValue(nodeWin, attrib, 0);
+	local dis = nodeWin.getValue(nodeWin, discip, 0);
+	local TN = att + dis;
+		Debug.chat("TN:");
+		Debug.chat(TN);
+	DB.setValue(nodeWin, "rollable.targetroll", "number", TN);
+end
+
 --
 -- CLASS MANAGEMENT
 --

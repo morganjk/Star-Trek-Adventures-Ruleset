@@ -349,4 +349,17 @@
 	</template>
 -->
 
+<!-- Attribute Check Box -->
+	<template name="attrib_select">
+		<buttonfield>
+			<state icon="stress_empty" />
+			<state icon="stress_tick" />
+			<script>
+				function onInit()
+					setValue (0);
+				end
+			</script>
+		</buttonfield>
+	</template>
+	
 </root>
