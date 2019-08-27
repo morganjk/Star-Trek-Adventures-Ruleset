@@ -136,15 +136,9 @@
 				<anchored to="rollingframe" position="insidetopleft" offset="50,10" width="20"/>
 				<static textres="char_label_roll_tn"/>
 			</label>
-			<basicnumber name="target_roll" source="rollable.targetroll">
+			<number_targetroll name="target_roll" source="rollable.targetroll">
 				<anchored to="targetroll_label" position="belowleft" offset="-3,0" width="20" height="20"/>
-				<script>
-					function onInit()
-						setValue (0);
-					end
-
-				</script>
-			</basicnumber>
+			</number_targetroll>
 			<label name="dicetoroll_label">
 				<anchored to="targetroll_label" position="righthigh" offset="35,0" width="70"/>
 				<static textres="char_label_roll_dicetouse"/>

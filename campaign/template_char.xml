@@ -337,17 +337,14 @@
 		</number_chartotal>
 	</template>
 	
-<!--
 	<template name="number_targetroll">
 		<number_chartotal>
 			<modifiersize>mini</modifiersize>
-			<description textres="char_label_stress" />
 			<modifierfield>targetroll.temporary</modifierfield>
-			<source><name>attribute.fitness</name><op>+</op></source>
-			<source><name>discipline.security</name><op>+</op></source>
+			<source><name>attrib</name><op>+</op></source>
+			<source><name>discip</name><op>+</op></source>
 		</number_chartotal>
 	</template>
--->
 
 <!-- Attribute Check Box -->
 	<template name="attrib_select">

@@ -17,34 +17,16 @@ end
 
 function attribSelect(winFrame, nAttrib)
 	local nodeWin = winFrame.getDatabaseNode();
-		Debug.chat("nodeWin:");
-		Debug.chat(nodeWin);
-	local test = DB.setValue(nodeWin, "attrib", "number", nAttrib);
-		Debug.chat("test:");
-		Debug.chat(test);
+	local testattrib = DB.getValue(nodeWin, nAttrib);
+	DB.setValue(nodeWin, "attrib", "number", testattrib);
 	return true;
 end
 
 function discipSelect(winFrame, nDiscip)
 	local nodeWin = winFrame.getDatabaseNode();
-		Debug.chat("nodeWin:");
-		Debug.chat(nodeWin);
-	local discip = DB.setValue(nodeWin, "discip", "number", nDiscip);
-		Debug.chat("discip:");
-		Debug.chat(discip);
+	local testdiscip = DB.getValue(nodeWin, nDiscip);
+	DB.setValue(nodeWin, "discip", "number", testdiscip);
 	return true;
-end
-
-function targetNumber(winFrame, attrib, discip)
-	local nodeWin = winFrame.getDatabaseNode();
-		Debug.chat("nodeWin:");
-		Debug.chat(nodeWin);
-	local att = nodeWin.getValue(nodeWin, attrib, 0);
-	local dis = nodeWin.getValue(nodeWin, discip, 0);
-	local TN = att + dis;
-		Debug.chat("TN:");
-		Debug.chat(TN);
-	DB.setValue(nodeWin, "rollable.targetroll", "number", TN);
 end
 
 --
