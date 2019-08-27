@@ -213,13 +213,24 @@
 			<script>
 				function onDrop(x,y,draginfo)
 					if draginfo.isType("shortcut") then
+						local nodeWin = window.getDatabaseNode();
+						local nodeItem = draginfo.getDatabaseNode();
+						local nDamage = DB.getValue(nodeItem, "damagerating", 0);
+						local nDisc = DB.getValue(nodeWin, "discipline.security", 0);
+							nDamage = nDamage + nDisc;
+						local sQualities = DB.getValue(nodeItem, "qualities", 0);
+						local sEffect = DB.getValue(nodeItem, "effect", 0);
+						sQualities = sQualities .. ", " .. sEffect;
 						local class, datasource = draginfo.getShortcutData();
 						if class == "referencetext" or class == "item" then
 							local newentry = createWindow()
 							newentry.name.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+							newentry.size.setValue(draginfo.getDatabaseNode().getChild("size").getValue());
+							newentry.damage.setValue(nDamage);
+							newentry.qualities.setValue(sQualities);
 						end
+						return true;
 					end
-					return true;
 				end
 			</script>   
 		</list_text>

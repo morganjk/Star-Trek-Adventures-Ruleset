@@ -53,7 +53,7 @@
 	<string name="char_label_injuries">Injuries</string>
   
 	<string name="char_label_weapons">Weapons</string>
-	<string name="char_label_weapon_name">Name / Type</string>
+	<string name="char_label_weapon_name">Name</string>
 	<string name="char_label_weapon_size">Size</string>
 	<string name="char_label_weapon_damage">Damage</string>
 	<string name="char_label_weapon_qualities">Qualities</string>

@@ -139,7 +139,6 @@ function getEncumbranceMult(nodeChar)
 	
 	return nMult;
 end
---]]
 
 --
 -- ARMOR MANAGEMENT
@@ -352,6 +351,11 @@ function removeFromWeaponDB(nodeItem)
 	return bFound;
 end
 
+function addWeapon(nodeWin)
+
+
+end
+
 function addToWeaponDB(nodeItem)
 	-- Parameter validation
 	if not ItemManager2.isWeapon(nodeItem) then
@@ -365,210 +369,44 @@ function addToWeaponDB(nodeItem)
 		return;
 	end
 	
-	-- Set new weapons as equipped
-	DB.setValue(nodeItem, "carried", "number", 2);
-
-	-- Determine identification
-	local nItemID = 0;
-	if LibraryData.getIDState("item", nodeItem, true) then
-		nItemID = 1;
-	end
+	-- Set identification
+	local nItemID = 1;
 	
 	-- Grab some information from the source node to populate the new weapon entries
-	local sName;
-	if nItemID == 1 then
-		sName = DB.getValue(nodeItem, "name", "");
-	else
-		sName = DB.getValue(nodeItem, "nonid_name", "");
-		if sName == "" then
-			sName = Interface.getString("item_unidentified");
-		end
-		sName = "** " .. sName .. " **";
-	end
-	local nBonus = 0;
-	if nItemID == 1 then
-		nBonus = DB.getValue(nodeItem, "bonus", 0);
-	end
-
-	-- Handle special weapon properties
-	local sProps = DB.getValue(nodeItem, "properties", "");
-	local aWeaponProps = StringManager.split(sProps:lower(), ",", true);
+	local sName = DB.getValue(nodeItem, "name", "");
+	Debug.chat(sName);
 	
-	local bThrown = false;
-	local bMissile = false;
-	local bFinesse = false;
-	local bMagic = false;
-	local bSpecial = false;
-	for _,vProperty in ipairs(aWeaponProps) do
-		if vProperty:match("^thrown %(?range ") then
-			bThrown = true;
-		elseif vProperty:match("^finesse$") then
-			bFinesse = true;
-		elseif vProperty:match("^magic$") then
-			bMagic = true;
-		end
-	end
+	local sSize = DB.getValue(nodeItem, "size", "");
+	Debug.chat(sSize);
 	
-	local sType = DB.getValue(nodeItem, "subtype", ""):lower();
-	local bMelee = true;
-	local bRanged = false;
-	if sType:find("ranged") then
-		bMelee = false;
-		bRanged = true;
-	end
+	local sType = DB.getValue(nodeItem, "type", ""):lower();
+	Debug.chat(sType);
 	
 	-- Parse damage field
-	local sDamage = DB.getValue(nodeItem, "damage", "");
-	
-	local aDmgClauses = {};
-	local aWords = StringManager.parseWords(sDamage);
-	local i = 1;
-	while aWords[i] do
-		local aDiceString = {};
-		
-		while StringManager.isDiceString(aWords[i]) do
-			table.insert(aDiceString, aWords[i]);
-			i = i + 1;
-		end
-		if #aDiceString == 0 then
-			break;
-		end
-		
-		local aDamageTypes = {};
-		while StringManager.contains(DataCommon.dmgtypes, aWords[i]) do
-			table.insert(aDamageTypes, aWords[i]);
-			i = i + 1;
-		end
-		if bMagic then
-			table.insert(aDamageTypes, "magic");
-		end
-		
-		local rDmgClause = {};
-		rDmgClause.aDice, rDmgClause.nMod = StringManager.convertStringToDice(table.concat(aDiceString, " "));
-		rDmgClause.dmgtype = table.concat(aDamageTypes, ",");
-		table.insert(aDmgClauses, rDmgClause);
-		
-		if StringManager.contains({ "+", "plus" }, aWords[i]) then
-			i = i + 1;
-		end
-	end
+	local nDamage = DB.getValue(nodeItem, "damagerating", "");
+	local nDisc = DB.getValue(nodeChar, "discipline.security", "");
+	nDamage = nDamage + nDisc;
+	Debug.chat(nDamage);
+
+	-- Parse Qualities Field
+	local sQualities = DB.getValue(nodeItem, "qualities", "");
+	local sEffect = DB.getValue(nodeItem, "effect", "");
+	sQualities = (sQualities..", "..sEffects);	
+	Debug.chat(sQualities);
 	
 	-- Create weapon entries
-	if bMelee then
-		local nodeWeapon = nodeWeapons.createChild();
-		if nodeWeapon then
-			DB.setValue(nodeWeapon, "isidentified", "number", nItemID);
-			DB.setValue(nodeWeapon, "shortcut", "windowreference", "item", "....inventorylist." .. nodeItem.getName());
-			
-			local sAttackAbility = "";
-			local sDamageAbility = "base";
-			if bFinesse then
-				if DB.getValue(nodeChar, "abilities.strength.score", 10) < DB.getValue(nodeChar, "abilities.dexterity.score", 10) then
-					sAttackAbility = "dexterity";
-					sDamageAbility = "dexterity";
-				end
-			end
-			
-			DB.setValue(nodeWeapon, "name", "string", sName);
-			DB.setValue(nodeWeapon, "type", "number", 0);
-			DB.setValue(nodeWeapon, "properties", "string", sProps);
-
-			DB.setValue(nodeWeapon, "attackstat", "string", sAttackAbility);
-			DB.setValue(nodeWeapon, "attackbonus", "number", nBonus);
-
-			local nodeDmgList = DB.createChild(nodeWeapon, "damagelist");
-			if nodeDmgList then
-				for kClause,rClause in ipairs(aDmgClauses) do
-					local nodeDmg = DB.createChild(nodeDmgList);
-					if nodeDmg then
-						DB.setValue(nodeDmg, "dice", "dice", rClause.aDice);
-						if kClause == 1 then
-							DB.setValue(nodeDmg, "stat", "string", sDamageAbility);
-							DB.setValue(nodeDmg, "bonus", "number", nBonus + rClause.nMod);
-						else
-							DB.setValue(nodeDmg, "bonus", "number", rClause.nMod);
-						end
-						DB.setValue(nodeDmg, "type", "string", rClause.dmgtype);
-					end
-				end
-			end
-		end
-	end
-
-	if bRanged and not bThrown then
-		local nodeWeapon = nodeWeapons.createChild();
-		if nodeWeapon then
-			DB.setValue(nodeWeapon, "isidentified", "number", nItemID);
-			DB.setValue(nodeWeapon, "shortcut", "windowreference", "item", "....inventorylist." .. nodeItem.getName());
-			
-			local sAttackAbility = "";
-			local sDamageAbility = "base";
-				
-			DB.setValue(nodeWeapon, "name", "string", sName);
-			DB.setValue(nodeWeapon, "type", "number", 1);
-			DB.setValue(nodeWeapon, "properties", "string", sProps);
-
-			DB.setValue(nodeWeapon, "attackstat", "string", sAttackAbility);
-			DB.setValue(nodeWeapon, "attackbonus", "number", nBonus);
-
-			local nodeDmgList = DB.createChild(nodeWeapon, "damagelist");
-			if nodeDmgList then
-				for kClause,rClause in ipairs(aDmgClauses) do
-					local nodeDmg = DB.createChild(nodeDmgList);
-					if nodeDmg then
-						DB.setValue(nodeDmg, "dice", "dice", rClause.aDice);
-						if kClause == 1 then
-							DB.setValue(nodeDmg, "stat", "string", sDamageAbility);
-							DB.setValue(nodeDmg, "bonus", "number", nBonus + rClause.nMod);
-						else
-							DB.setValue(nodeDmg, "bonus", "number", rClause.nMod);
-						end
-						DB.setValue(nodeDmg, "type", "string", rClause.dmgtype);
-					end
-				end
-			end
-		end
-	end
+	local nodeWeapon = nodeWeapons.createChild();
+	Debug.chat(nodeWeapon);
 	
-	if bThrown then
-		local nodeWeapon = nodeWeapons.createChild();
-		if nodeWeapon then	
-			DB.setValue(nodeWeapon, "isidentified", "number", nItemID);
-			DB.setValue(nodeWeapon, "shortcut", "windowreference", "item", "....inventorylist." .. nodeItem.getName());
-			
-			local sAttackAbility = "";
-			local sDamageAbility = "base";
-			if bFinesse then
-				if DB.getValue(nodeChar, "abilities.strength.score", 10) < DB.getValue(nodeChar, "abilities.dexterity.score", 10) then
-					sAttackAbility = "dexterity";
-					sDamageAbility = "dexterity";
-				end
-			end
-				
-			DB.setValue(nodeWeapon, "name", "string", sName);
-			DB.setValue(nodeWeapon, "type", "number", 2);
-			DB.setValue(nodeWeapon, "properties", "string", sProps);
+	if nodeWeapon then
+		DB.setValue(nodeWeapon, "isidentified", "number", nItemID);
+		DB.setValue(nodeWeapon, "shortcut", "windowreference", "item", "....inventorylist." .. nodeItem.getName());
+	
+		DB.setValue(nodeWeapon, "name", "string", sName);
+		DB.setValue(nodeWeapon, "size", "string", sSize);
+		DB.setValue(nodeWeapon, "damage", "number", nDamage);
+		DB.setValue(nodeWeapon, "qualities", "string", sQualities);
 
-			DB.setValue(nodeWeapon, "attackstat", "string", sAttackAbility);
-			DB.setValue(nodeWeapon, "attackbonus", "number", nBonus);
-
-			local nodeDmgList = DB.createChild(nodeWeapon, "damagelist");
-			if nodeDmgList then
-				for kClause,rClause in ipairs(aDmgClauses) do
-					local nodeDmg = DB.createChild(nodeDmgList);
-					if nodeDmg then
-						DB.setValue(nodeDmg, "dice", "dice", rClause.aDice);
-						if kClause == 1 then
-							DB.setValue(nodeDmg, "stat", "string", sDamageAbility);
-							DB.setValue(nodeDmg, "bonus", "number", nBonus + rClause.nMod);
-						else
-							DB.setValue(nodeDmg, "bonus", "number", rClause.nMod);
-						end
-						DB.setValue(nodeDmg, "type", "string", rClause.dmgtype);
-					end
-				end
-			end
-		end
 	end
 end
 
