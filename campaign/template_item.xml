@@ -99,10 +99,12 @@
 					end
 				</script>
 			</string_columnh>
-			<label_column name="ranges_label">
+			<label_column name="range_label">
 				<static textres="item_label_ranges" />
 			</label_column>
-			<string_columnh name="ranges" />
+			<string_columnh name="range" />
+
+			<line_column name="divider" />
 
 			<label_column name="damagerating_label">
 				<font>challengedie_font</font>
@@ -120,6 +122,8 @@
 			</label_column>
 			<string_columnh name="effect" />
 
+			<line_column name="divider2" />
+
 			<label_column name="size_label">
 				<static textres="item_label_size" />
 			</label_column>
@@ -130,14 +134,12 @@
 			</label_column>
 			<string_columnh name="qualities" />
 
-			<line_column name="divider" />
-			
 			<label_column name="cost_label">
 				<static textres="item_label_cost" />
 			</label_column>
 			<string_columnh name="cost" />
 			
-			<line_column name="divider2" />
+			<line_column name="divider3" />
 
 			<ft_columnh name="notes" />
 		</sheetdata>

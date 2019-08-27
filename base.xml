@@ -13,7 +13,7 @@
 			A fan made ruleset for the Star Trek Adventures RPG. Borrowed heavilly from extension built by Ian M Kirby
 		</text>
 		<version>0.1.0</version>
-		<author>Statik367</author>
+		<author>Wesley Toma-Lee</author>
 	</description>
 	
 <!-- Layers -->
@@ -27,7 +27,7 @@
     <includefile source="campaign/template_char.xml" />
 	<includefile source="campaign/template_vehicle.xml" />
 	<includefile source="campaign/template_npc.xml" />
-<!--	<includefile source="campaign/template_item.xml" /> -->
+	<includefile source="campaign/template_item.xml" />
 	
 <!-- Tabletop Chits -->
 	<includefile source="desktop/darksidechit.xml" />
@@ -40,10 +40,11 @@
 <!-- Scripts -->
 	<script name="ChallengeDieHandler" file="scripts/handler_challengedice.lua"/>
 	<script name="SkillDieHandler" file="scripts/handler_skilldice.lua"/>
-<!--	<script name="TableManager2" file="scripts/manager_table2.lua" /> -->
+	<script name="TableManager2" file="scripts/manager_table2.lua" />
 	<script name="Languages_Extension" file="scripts/languages_extension.lua" /> 
 	<script name="LibraryDataSTA" file="scripts/data_library_sta.lua" />
 	<script name="CharManager" file="campaign/scripts/manager_char.lua" />
+	<script name="ItemManager2" file="scripts/manager_item2.lua" />
 	
 <!-- Graphics -->
 	<includefile source="graphics/graphics_frames.xml" />

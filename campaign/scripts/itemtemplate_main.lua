@@ -15,39 +15,34 @@ function InvisDataAdded()
 	update();
 end
 
-function updateControl(sControl, bReadOnly, bShow)
+function updateControl(sControl, bReadOnly)
 	if not self[sControl] then
 		return false;
 	end
 		
-	return self[sControl].update(bReadOnly, not bShow);
+	return self[sControl].update(bReadOnly);
 end
 
 function update()
 	local nodeRecord = getDatabaseNode();
 	local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
 	
-	local bWeapon, sTypeLower, sSubtypeLower = ItemManager2.isWeapon(nodeRecord);
+	local bWeapon, sTypeLower = ItemManager2.isWeapon(nodeRecord);
 	local bArmor = ItemManager2.isArmor(nodeRecord);
 	
 	local bSection = false;
-	if updateControl("type", bReadOnly, true) then bSection = true; end
-	if updateControl("subtype", bReadOnly, true) then bSection = true; end
-	if updateControl("rarity", bReadOnly, true) then bSection = true; end
+	if updateControl("type", bReadOnly) then bSection = true; end
+	if updateControl("range", bReadOnly) then bSection = true; end
 	
 	local bSection2 = false;
-	if updateControl("cost", bReadOnly, true) then bSection2 = true; end
-	if updateControl("weight", bReadOnly, true) then bSection2 = true; end
+	if updateControl("damagerating", bReadOnly) then bSection2 = true; end
+	if updateControl("resistance", bReadOnly) then bSection2 = true; end
+	if updateControl("effect", bReadOnly) then bSection2 = true; end
 	
 	local bSection3 = false;
-	if updateControl("bonus", bReadOnly, (bWeapon or bArmor or bArcaneFocus)) then bSection3 = true; end
-	
-	if updateControl("ac", bReadOnly, bArmor) then bSection3 = true; end
-	if updateControl("dexbonus", bReadOnly, bArmor) then bSection3 = true; end
-	if updateControl("strength", bReadOnly, bArmor) then bSection3 = true; end
-	if updateControl("stealth", bReadOnly, bArmor) then bSection3 = true; end
-
-	if updateControl("properties", bReadOnly, (bWeapon or bArmor)) then bSection3 = true; end
+	if updateControl("size", bReadOnly) then bSection3 = true; end
+	if updateControl("qualities", bReadOnly) then bSection3 = true; end
+	if updateControl("cost", bReadOnly) then bSection3 = true; end
 	
 	description.setReadOnly(bReadOnly);
 	
