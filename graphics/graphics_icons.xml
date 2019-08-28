@@ -8,9 +8,11 @@
   <icon name="rulesetlogo_Star Trek Adventures" file="graphics/icons/rulesetlogo_STA.png" />
   <icon name="desktopdecal_sw" file="graphics/decals/desktopdecal_sw.png"/> 
   
+  
   <!-- Icons -->
 	<icon name="stress_empty" file="graphics/icons/stress-blank.png" />
 	<icon name="stress_tick" file="graphics/icons/stress-ticked.png" />
+	<icon name="diceroller" file="graphics/icons/field_rollable.png" />
   
   <!--  Momentum Tokens  -->
 	<icon name="momentumchit" file="graphics/chits/lightside.png" />

@@ -19,37 +19,55 @@ function processRoll(sCommand, sParams)
 	end		
 end
 
-
-function taskcheck(winFrame, label)
-	local type = "dice";
-	local rRoll = { sType = "dice", sDesc = label, aDice = dice.getDice(), nMod = bonus.getValue() };
-	Debug.chat("label:")
-	Debug.chat(label)
-	Debug.chat("rRoll:")
-	Debug.chat(rRoll)
-	local rActor = ActorManager.getActor("pc", winFrame.getDatabaseNode());
-	Debug.chat("rActor: ");
-	Debug.chat(rActor);
-					
+function attribSelect(winFrame, nAttrib)
 	local nodeWin = winFrame.getDatabaseNode();
-	Debug.chat("nodeWin: ");
-	Debug.chat(nodeWin);
+	local testattrib = DB.getValue(nodeWin, nAttrib);
+	DB.setValue(nodeWin, "attrib", "number", testattrib);
+	return true;
+end
 
+function discipSelect(winFrame, nDiscip)
+	local nodeWin = winFrame.getDatabaseNode();
+	local testdiscip = DB.getValue(nodeWin, nDiscip);
+	DB.setValue(nodeWin, "discip", "number", testdiscip);
+	return true;
+end
+
+
+function taskcheck(draginfo, winFrame)
+	local nodeWin = winFrame.getDatabaseNode();
+	Debug.chat("nodeWin: ", nodeWin);
+
+	local rRoll = {sType = "dice", aDice = {}, nMod = nodeWin.getChild("rollable.comprange").getValue()};
+	for i = 1, nodeWin.getChild("rollable.dicetoroll").getValue(), 1 do	
+		table.insert(rRoll.aDice, "d20");
+	end
+
+	Debug.chat("rRoll:",rRoll);
+	local rActor = ActorManager.getActor("pc", nodeWin);
+	Debug.chat("rActor: ", rActor);
+					
 	local TN = nodeWin.getChild("rollable.targetroll").getValue();
-	Debug.chat("TN: ");
-	Debug.chat(TN);
+	Debug.chat("TN: ", TN);
 					
 	local FC = nodeWin.getChild("rollable.focusused").getValue();
-	Debug.chat("FC: ");
-	Debug.chat(FC);
-					
-	local rolling20 = nodeWin.getChild("rollable.dicetoroll").getValue();
-	Debug.chat("rolling20: ");
-	Debug.chat(rolling20);
+	Debug.chat("FC: ", FC);
 	
+	local nFocus = 0
+		if FC == 0 then
+			nFocus = 1;
+		elseif FC == 1 then 
+			nFocus = DB.getValue(nodeWin, "discip");
+		end
+	Debug.chat("nFocus: ", nFocus)
+		
+					
 	local comp = nodeWin.getChild("rollable.comprange").getValue();
-	Debug.chat("comp");
-	Debug.chat(comp);
+	Debug.chat("comp", comp);
+	
+	local rolling20 = nodeWin.getChild("rollable.dicetoroll").getValue();
+	Debug.chat("rolling20: ", rolling20);
+
 	
 	local msg = {font = "sheetlabel"};
 	msg.text = rActor.sName .. " rolls a task"
@@ -62,18 +80,20 @@ function taskcheck(winFrame, label)
 	for i = 1, rolling20, 1 do	
 		table.insert(rRoll, "d20");
 	end
-	Debug.chat("rRoll");
-	Debug.chat(rRoll);
 
+	Debug.chat("rRoll", rRoll);
+	
 
 	resetdice(winFrame);
+--	ActionsManager.performAction(draginfo, rActor, rRoll);
 	SkillDieHandler.handleDiceLanded(rSource, TN, rRoll);
 		return true;
 end
 
 function repcheck(winFrame)
 	local rRoll="dCD";
-	Debug.console(dCD);
+	Debug.chat(dCD);
+	Debug.chat(rRoll);
 	
 	local rActor = ActorManager.getActor("pc", winFrame.getDatabaseNode());
 	Debug.console("rActor: ");
@@ -134,6 +154,13 @@ function updateControl()
 			control.modifier.setFont("modcollector");
 		end
 	end
+end
+
+function resetdice(winFrame)
+	local nodeWin = winFrame.getDatabaseNode();
+	nodeWin.getChild("rollable.dicetoroll").setValue(2);
+	nodeWin.getChild("rollable.comprange").setValue(1);
+	nodeWin.getChild("rollable.focusused").setValue(0);
 end
 
 --[[
@@ -287,13 +314,6 @@ function skilldicebuy(window,purchasetype,dice)
 
 end
 --]]
-
-function resetdice(winFrame)
-	local nodeWin = winFrame.getDatabaseNode();
-	nodeWin.getChild("rollable.dicetoroll").setValue(2);
-	nodeWin.getChild("rollable.comprange").setValue(1);
-	nodeWin.getChild("rollable.focusused").setValue(0);
-end
 
 --[[
 function spendmomentum(winFrame)

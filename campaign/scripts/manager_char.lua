@@ -15,20 +15,6 @@ function outputUserMessage(sResource, ...)
 	ChatManager.SystemMessage(sMsg);
 end
 
-function attribSelect(winFrame, nAttrib)
-	local nodeWin = winFrame.getDatabaseNode();
-	local testattrib = DB.getValue(nodeWin, nAttrib);
-	DB.setValue(nodeWin, "attrib", "number", testattrib);
-	return true;
-end
-
-function discipSelect(winFrame, nDiscip)
-	local nodeWin = winFrame.getDatabaseNode();
-	local testdiscip = DB.getValue(nodeWin, nDiscip);
-	DB.setValue(nodeWin, "discip", "number", testdiscip);
-	return true;
-end
-
 --
 -- CLASS MANAGEMENT
 --

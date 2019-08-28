@@ -266,13 +266,25 @@
 			<center />
 		</stringcontrol>
 	</template>
-
+	<template name="button_rolls_type">
+		<button_iconcycler>
+			<anchored width="24" height="24" />
+			<parameters>
+				<icons>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta|diceroller</icons>
+				<values>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta|diceroller</values>
+				<tooltips>Rolls|Modifier|Table|Chat|Damage|Heal|Attack|Saving|Spell|Cleric|Hitos|Legend|Harn|Traveller|BlackCrusade|Cypher|PBTA|MyHand|Animal|Helmet|Bomb|Dragon|Talislanta|DiceRoller</tooltips>
+				<defaulttooltip>Roll Type</defaulttooltip>
+				<defaulticon>diceroller</defaulticon>
+			</parameters>
+			<readonly />
+		</button_iconcycler>
+	</template>
 	<template name="button_roll">
 		<button_vari_icon>
 			<parameters>
-				<icons>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta</icons>
-				<values>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta</values>
-				<tooltips>Rolls|Modifier|Table|Chat|Damage|Heal|Attack|Saving|Spell|Cleric|Hitos|Legend|Harn|Traveller|BlackCrusade|Cypher|PBTA|MyHand|Animal|Helmet|Bomb|Dragon|Talislanta</tooltips>
+				<icons>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta|diceroller</icons>
+				<values>rolls|modifier|table|chat|damage|heal|attack|saving|spell|cleric|hitos|legend|harn|traveller|blackcrusade|cypher|pbta|myhand|animal|helmet|bomb|dragon|talislanta|diceroller</values>
+				<tooltips>Rolls|Modifier|Table|Chat|Damage|Heal|Attack|Saving|Spell|Cleric|Hitos|Legend|Harn|Traveller|BlackCrusade|Cypher|PBTA|MyHand|Animal|Helmet|Bomb|Dragon|Talislanta|DiceRoller</tooltips>
 				<defaulttooltip>Roll Type</defaulttooltip>
 				<defaulticon>rolls</defaulticon>
 			</parameters>

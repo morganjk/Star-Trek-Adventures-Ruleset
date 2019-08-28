@@ -24,7 +24,7 @@ function handleDiceLanded(rSource, rTarget, rRoll)
     local total = 0;
     
     -- Get Target Info from Modifier Stack
-    local target = rRoll.nModz;
+    local target = rRoll.nMod;
     local diffMessage = "[TN=" .. target .. "]";
     
     local dicetable = rRoll.aDice;
@@ -44,7 +44,7 @@ function handleDiceLanded(rSource, rTarget, rRoll)
     rMessage.type = rRoll.sType;
     rMessage.text = rMessage.text .. diffMessage;
     if success > 0 then rMessage.text = rMessage.text .. "[Base Success: " .. success .. "]"; end
-    rMessage.text = rMessage.text .. " " .. rRoll.sDesc;
+    rMessage.text = rMessage.text;
     rMessage.dice = rRoll.aDice;
     rMessage.diemodifier = 0;
     
@@ -64,6 +64,5 @@ function handleDiceLanded(rSource, rTarget, rRoll)
     --end
   
     Comm.deliverChatMessage(rMessage);
-    ModifierStack.reset();
     return true;
 end

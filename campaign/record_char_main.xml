@@ -180,7 +180,27 @@
 			<button_roll name="rolling">
 				<anchored to="focus_label" position="righthigh" offset="20,10" width="20" height="20" />
 				<script>
+        function action(dragInfo)
+          local label = getName():gsub("^%l", string.upper);
+          draginfo.setType("skilldice");
+          draginfo.setDescription(label);
+          local dice = {"d20","d20"};
+          draginfo.setDieList(dice);
+          return true;
+        end
+
+					function onDragStart(button, x, y, draginfo)
+						return action(draginfo);
+					end
 					
+					function onButtonPress()
+						return action();
+					end
+
+<!--
+					function onClickRelease()
+						STALibrary.taskcheck(draginfo, window)
+					end -->
 				</script>
 			</button_roll>
 
@@ -244,7 +264,7 @@
 				<anchored  to="control" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.attribSelect(window, "attribute.control")
+						STALibrary.attribSelect(window, "attribute.control")
 					end
 				</script>
 			</button_roll>
@@ -252,7 +272,7 @@
 				<anchored  to="daring" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.attribSelect(window, "attribute.daring")
+						STALibrary.attribSelect(window, "attribute.daring")
 					end
 				</script>
 			</button_roll>
@@ -260,7 +280,7 @@
 				<anchored  to="fitness" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.attribSelect(window, "attribute.fitness")
+						STALibrary.attribSelect(window, "attribute.fitness")
 					end
 				</script>
 			</button_roll>
@@ -268,7 +288,7 @@
 				<anchored  to="insight" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.attribSelect(window, "attribute.insight")
+						STALibrary.attribSelect(window, "attribute.insight")
 					end
 				</script>
 			</button_roll>
@@ -276,7 +296,7 @@
 				<anchored  to="presence" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.attribSelect(window, "attribute.presence")
+						STALibrary.attribSelect(window, "attribute.presence")
 					end
 				</script>
 			</button_roll>
@@ -284,7 +304,7 @@
 				<anchored  to="reason" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.attribSelect(window, "attribute.reason")
+						STALibrary.attribSelect(window, "attribute.reason")
 					end
 				</script>
 			</button_roll>
@@ -350,7 +370,7 @@
 				<anchored  to="command" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.discipSelect(window, "discipline.command")
+						STALibrary.discipSelect(window, "discipline.command")
 					end
 				</script>
 			</button_roll>
@@ -358,7 +378,7 @@
 				<anchored  to="conn" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.discipSelect(window, "discipline.conn")
+						STALibrary.discipSelect(window, "discipline.conn")
 					end
 				</script>
 			</button_roll>
@@ -366,7 +386,7 @@
 				<anchored  to="security" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.discipSelect(window, "discipline.security")
+						STALibrary.discipSelect(window, "discipline.security")
 					end
 				</script>
 			</button_roll>
@@ -374,7 +394,7 @@
 				<anchored  to="engineering" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.discipSelect(window, "discipline.engineering")
+						STALibrary.discipSelect(window, "discipline.engineering")
 					end
 				</script>
 			</button_roll>
@@ -382,7 +402,7 @@
 				<anchored  to="science" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.discipSelect(window, "discipline.science")
+						STALibrary.discipSelect(window, "discipline.science")
 					end
 				</script>
 			</button_roll>
@@ -390,7 +410,7 @@
 				<anchored  to="medicine" position="lefthigh" offset="15,0" width="20" height="20" />
 				<script>
 					function onClickRelease()
-						CharManager.discipSelect(window, "discipline.medicine")
+						STALibrary.discipSelect(window, "discipline.medicine")
 					end
 				</script>
 			</button_roll>

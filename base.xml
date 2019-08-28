@@ -45,6 +45,9 @@
 	<script name="LibraryDataSTA" file="scripts/data_library_sta.lua" />
 	<script name="CharManager" file="campaign/scripts/manager_char.lua" />
 	<script name="ItemManager2" file="scripts/manager_item2.lua" />
+	<script name="STALibrary" file="campaign/scripts/stalibrary.lua" />
+	<script name="DiceRoller" file="scripts/manager_custom_2d20.lua" />
+
 	
 <!-- Graphics -->
 	<includefile source="graphics/graphics_frames.xml" />
