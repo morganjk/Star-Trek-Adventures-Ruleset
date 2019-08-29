@@ -245,7 +245,7 @@
 	<template name="list_chartraits">
 		<list_text>
 			<datasource>.traits</datasource>
-			<class>char_textlistitem</class>
+			<class>char_textlistitem_nolink</class>
 			<columns>
 				<fillwidth />
 				<width>145</width>
@@ -288,7 +288,7 @@
 				function onDrop(x,y,draginfo)
 					if draginfo.isType("shortcut") then
 						local class, datasource = draginfo.getShortcutData();
-						if class == "referencetext" or class == "note" then
+						if class == "referencetext" or class == "talents" then
 							local newentry = createWindow()
 							newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
 							newentry.link.setValue(class, datasource);
