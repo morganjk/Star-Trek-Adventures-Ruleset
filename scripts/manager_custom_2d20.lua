@@ -3,7 +3,7 @@
 -- attribution and copyright information.
 --
 
-local sCmd = "conan";
+local sCmd = "trek";
 
 -- MoreCore v0.60 
 function onInit()
