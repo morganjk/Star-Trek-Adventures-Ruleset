@@ -180,27 +180,9 @@
 			<button_roll name="rolling">
 				<anchored to="focus_label" position="righthigh" offset="20,10" width="20" height="20" />
 				<script>
-        function action(dragInfo)
-          local label = getName():gsub("^%l", string.upper);
-          draginfo.setType("skilldice");
-          draginfo.setDescription(label);
-          local dice = {"d20","d20"};
-          draginfo.setDieList(dice);
-          return true;
-        end
-
-					function onDragStart(button, x, y, draginfo)
-						return action(draginfo);
-					end
-					
 					function onButtonPress()
-						return action();
+						STALibrary.taskcheck(dragInfo, window)
 					end
-
-<!--
-					function onClickRelease()
-						STALibrary.taskcheck(draginfo, window)
-					end -->
 				</script>
 			</button_roll>
 
@@ -461,6 +443,13 @@
 				<min>3</min>
 				<max>3</max>
 				<invisible/>
+				<script>
+					function onInit()
+						local nodeWin = window.getDatabaseNode();
+						DB.setValue(nodeWin, "curdetermination", "number", 1)
+					end
+			</script>
+
 			</basicnumber>
 			<buttongroup_counter name="determinationcounter">
 				<anchored to="determinationframe" position="insidetopleft" offset="15,30" width="140" height="20"/>

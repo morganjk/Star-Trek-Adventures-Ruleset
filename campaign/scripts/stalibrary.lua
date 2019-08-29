@@ -5,20 +5,6 @@ function onInit()
 	ActionsManager.registerResultHandler("sta", onRoll);
 end
 
-function processRoll(sCommand, sParams)
-	if not sParams or sParams == "" then 
-		createHelpMessage();
-		return;
-	end
-
-	if sParams == "?" or string.lower(sParams) == "help" then
-		createHelpMessage();		
-	else
-		local rRoll = createRoll(sParams);
-		ActionsManager.roll(nil, nil, rRoll);
-	end		
-end
-
 function attribSelect(winFrame, nAttrib)
 	local nodeWin = winFrame.getDatabaseNode();
 	local testattrib = DB.getValue(nodeWin, nAttrib);
@@ -36,59 +22,48 @@ end
 
 function taskcheck(draginfo, winFrame)
 	local nodeWin = winFrame.getDatabaseNode();
-	Debug.chat("nodeWin: ", nodeWin);
-
-	local rRoll = {sType = "dice", aDice = {}, nMod = nodeWin.getChild("rollable.comprange").getValue()};
-	for i = 1, nodeWin.getChild("rollable.dicetoroll").getValue(), 1 do	
-		table.insert(rRoll.aDice, "d20");
-	end
-
-	Debug.chat("rRoll:",rRoll);
 	local rActor = ActorManager.getActor("pc", nodeWin);
-	Debug.chat("rActor: ", rActor);
-					
+	local rolling20 = nodeWin.getChild("rollable.dicetoroll").getValue();
+	local sides = 20
 	local TN = nodeWin.getChild("rollable.targetroll").getValue();
-	Debug.chat("TN: ", TN);
-					
 	local FC = nodeWin.getChild("rollable.focusused").getValue();
-	Debug.chat("FC: ", FC);
-	
 	local nFocus = 0
 		if FC == 0 then
 			nFocus = 1;
 		elseif FC == 1 then 
 			nFocus = DB.getValue(nodeWin, "discip");
 		end
-	Debug.chat("nFocus: ", nFocus)
-		
-					
-	local comp = nodeWin.getChild("rollable.comprange").getValue();
-	Debug.chat("comp", comp);
-	
-	local rolling20 = nodeWin.getChild("rollable.dicetoroll").getValue();
-	Debug.chat("rolling20: ", rolling20);
-
-	
+	local nComp = nodeWin.getChild("rollable.comprange").getValue();
+	local comp = 21 - nComp
+	local sParams = rolling20.."d"..sides.."x"..TN.."y"..nFocus.."c"..comp;
 	local msg = {font = "sheetlabel"};
 	msg.text = rActor.sName .. " rolls a task"
 	Comm.deliverChatMessage(msg);
-	
 	local msg = {font = "sheetlabel"};
-	msg.text= "TN.." .. TN.." / FC.."..FC.."\nRolling "..rolling20.. "d20\n"
+	msg.text= "Target Number.." .. TN.."\nFocus Range.."..nFocus.."\nComplication Range.."..nComp.."\nRolling "..rolling20.. "d20\n";
 	Comm.deliverChatMessage(msg);
-	
-	for i = 1, rolling20, 1 do	
-		table.insert(rRoll, "d20");
-	end
-
-	Debug.chat("rRoll", rRoll);
-	
 
 	resetdice(winFrame);
---	ActionsManager.performAction(draginfo, rActor, rRoll);
-	SkillDieHandler.handleDiceLanded(rSource, TN, rRoll);
-		return true;
+	DiceRoller.performAction(draginfo, rActor, sParams)
+	return true;
 end
+
+function challengecheck(draginfo, winFrame)
+	local nodeWin = winFrame.getDatabaseNode();
+	local rActor = ActorManager.getActor("pc", nodeWin);
+	local rolling = nodeWin.getChild("damage").getValue();
+	local sides = 6
+	local sParams = rolling.."d"..sides;
+	local msg = {font = "sheetlabel"};
+	msg.text = rActor.sName .. " does damage"
+	Comm.deliverChatMessage(msg);
+	local msg = {font = "sheetlabel"};
+	msg.text= "Rolling "..rolling.."d"..sides.."\n";
+	Comm.deliverChatMessage(msg);
+	ChallengeDiceManager.performAction(draginfo, rActor, sParams);
+	return true;
+end
+
 
 function repcheck(winFrame)
 	local rRoll="dCD";
@@ -113,47 +88,6 @@ function repcheck(winFrame)
 	
 	sta.processRoll("sta", CD.."dCDx");
 	return true;
-end
-
-function addSlot(description, number)
-	if #slots < 6 then
-		table.insert(slots, { ['description'] = description, ['number'] = number });
-	end
-	
-	updateControl();
-end
-
-function updateControl()
-	if control then
-		if adjustmentedit then
-			control.label.setValue(Interface.getString("modstack_label_adjusting"));
-		else
-			control.label.setValue(Interface.getString("modstack_label_modifier"));
-			
-			if freeadjustment > 0 then
-				control.label.setValue("(+" .. freeadjustment .. ")");
-			elseif freeadjustment < 0 then
-				control.label.setValue("(" .. freeadjustment .. ")");
-			end
-			
-			control.modifier.setValue(getSum());
-			
-			control.base.resetCounters();
-			for i = 1, #slots do
-				control.base.addCounter();
-			end
-			
-			if hoverslot and hoverslot ~= 0 and slots[hoverslot] then
-				control.label.setValue(slots[hoverslot].description);
-			end
-		end
-		
-		if math.abs(control.modifier.getValue()) > 999 then
-			control.modifier.setFont("modcollectorlabel");
-		else
-			control.modifier.setFont("modcollector");
-		end
-	end
 end
 
 function resetdice(winFrame)
@@ -370,14 +304,13 @@ function createChatMessage(rSource, rRoll)
 	Debug.console("Mine as well.");
 	return rMessage;
 end
-
+--]]
 
 function onRoll(rSource, rTarget, rRoll)
-	rRoll = Conan.dropDiceResults(rRoll);
+	rRoll = DiceRoller.dropDiceResults(rRoll);
 	rMessage = createChatMessage(rSource, rRoll);
 	rMessage.font="copper10";
 	rMessage.type = "dice";
 	Comm.deliverChatMessage(rMessage);
 	Debug.console(rMessage);
 end
---]]

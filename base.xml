@@ -39,7 +39,6 @@
 	
 <!-- Scripts -->
 	<script name="ChallengeDieHandler" file="scripts/handler_challengedice.lua"/>
-	<script name="SkillDieHandler" file="scripts/handler_skilldice.lua"/>
 	<script name="TableManager2" file="scripts/manager_table2.lua" />
 	<script name="Languages_Extension" file="scripts/languages_extension.lua" /> 
 	<script name="LibraryDataSTA" file="scripts/data_library_sta.lua" />
@@ -47,6 +46,8 @@
 	<script name="ItemManager2" file="scripts/manager_item2.lua" />
 	<script name="STALibrary" file="campaign/scripts/stalibrary.lua" />
 	<script name="DiceRoller" file="scripts/manager_custom_2d20.lua" />
+	<script name="CustomDiceManager" file="scripts/manager_custom_dice.lua" />
+	<script name="ChallengeDiceManager" file="scripts/manager_custom_challenge.lua" />
 
 	
 <!-- Graphics -->

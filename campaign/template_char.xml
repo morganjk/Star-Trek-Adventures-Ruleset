@@ -186,6 +186,11 @@
 					<top offset="2"/>
 					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
 				</anchored>
+				<script>
+					function onDoubleClick()
+						STALibrary.challengecheck(draginfo, window)
+					end
+				</script>
 				<frame name="fielddark" offset="7,5,7,5" />
 			</basicnumber>
  			<string_textlistitem name="qualities">
