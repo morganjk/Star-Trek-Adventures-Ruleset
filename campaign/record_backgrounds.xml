@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="backgrounds">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_utility</minimize>
+		<tooltip field="name" />
+		<nodelete />
+		<sharable />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				if main and main.subwindow then
+					main.subwindow.update();
+				end
+				if notes and notes.subwindow then
+					notes.subwindow.update();
+				end
+
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				notes.setReadOnly(bReadOnly);
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>backgrounds_header</class>
+			</sub_record_header>
+
+			<frame_record_content_tabbed name="contentframe" />
+
+			<subwindow_record name="notes">
+				<class>backgrounds_notes</class>
+			</subwindow_record>
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<empty textres="ft_empty" hidereadonly="true" />
+				<invisible />
+			</ft_record>
+
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			<scrollbar_record>
+				<target>notes</target>
+			</scrollbar_record>
+			
+			<tabs_recordsheet>
+				<tab>
+					<icon>tab_main</icon>
+					<subwindow>main</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
+				</tab>
+			</tabs_recordsheet>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="backgrounds_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>backgrounds</class>
+			</link_record_header>
+			
+			<anchor_record_header_right />
+
+			<icon_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</icon_record_locked>
+			<button_record_locked>
+				<anchored>
+					<right offset="-7" />
+				</anchored>
+			</button_record_locked>
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_backgrounds" />
+			</string_record_name>
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="backgrounds_notes">
+		<margins control="0,0,0,7" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				adjustments.update(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+			
+			<header_column name="adjustments_header">
+				<static textres="backgrounds_header_adjustments" />
+				<center />
+			</header_column>
+			<button_iedit name="adjustments_iedit">
+				<anchored to="adjustments_header" position="righthigh" offset="-20,0" />
+				<target>adjustments</target>
+			</button_iedit>
+			<button_iadd name="adjustments_iadd">
+				<anchored to="adjustments_iedit" position="lefthigh" offset="5,0" />
+				<target>adjustments</target>
+			</button_iadd>
+			<list_column name="adjustments">
+				<datasource>.adjustments</datasource>
+				<class>backgrounds_adjustments</class>
+			</list_column>
+			
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="backgrounds_adjustments">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+			<link_listitem_column name="shortcut">
+				<class>reference_backgroundsadjustments</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name">
+				<empty textres="library_recordtype_empty_backgroundsadjustments" />
+			</string_listitem_column_name>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="reference_backgroundsadjustments">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				main.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>backgroundsadjustments_header</class>
+			</sub_record_header>
+
+			<frame_record_content />
+			<ft_record name="main">
+				<anchored to="contentframe" position="over" />
+				<footer>footer_wide</footer>
+			</ft_record>
+			<scrollbar>
+				<anchored to="main" />
+				<target>main</target>
+			</scrollbar>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="backgroundsadjustments_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>reference_backgroundsadjustments</class>
+			</link_record_header>
+
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_backgroundsadjustments" />
+			</string_record_name>
+			<label_reftype name="reftype">
+				<static textres="type_backgroundsadjustments" />
+			</label_reftype>	
+		</sheetdata>
+	</windowclass>
+
+</root>

@@ -88,6 +88,12 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_upbringing", "button_upbringing_down" },
 		-- sRecordDisplayClass = "upbringing", 
 	},
+	["backgrounds"] = { 
+		bExport = true,
+		aDataMap = { "backgrounds", "reference.backgrounds" }, 
+		aDisplayIcon = { "button_backrgounds", "button_backrgounds_down" },
+		-- sRecordDisplayClass = "backgrounds", 
+	},
 };
 
 aListViews = {
@@ -176,6 +182,17 @@ aListViews = {
 			sTitleRes = "upbringing_grouped_title_byletter",
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "upbringing_grouped_label_name", nWidth=250 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "name", nLength = 1 } },
+			aGroupValueOrder = { },
+		},
+	},
+	["backgrounds"] = {
+		["byletter"] = {
+			sTitleRes = "backgrounds_grouped_title_byletter",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "backgrounds_grouped_label_name", nWidth=250 },
 			},
 			aFilters = { },
 			aGroups = { { sDBField = "name", nLength = 1 } },

@@ -318,7 +318,7 @@
 				function onDrop(x,y,draginfo)
 					if draginfo.isType("shortcut") then
 						local class, datasource = draginfo.getShortcutData();
-						if class == "referencetext" or class == "note" then
+						if class == "referencetext" or class == "backgrounds" then
 							local newentry = createWindow()
 							newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
 							newentry.link.setValue(class, datasource);

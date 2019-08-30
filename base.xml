@@ -70,6 +70,7 @@
 	<includefile source="campaign/record_talents.xml" />
 	<includefile source="campaign/record_environment.xml" />
 	<includefile source="campaign/record_upbringing.xml" />
+	<includefile source="campaign/record_backgrounds.xml" />
 	
 	
 <!-- Combat tracker -->

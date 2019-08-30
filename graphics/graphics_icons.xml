@@ -87,10 +87,10 @@
 	<icon name="button_species_down" file="graphics/sidebar/button_species_down.png" />
 	<icon name="button_talents" file="graphics/sidebar/button_talents.png" />
 	<icon name="button_talents_down" file="graphics/sidebar/button_talents_down.png" />
-	
+	<icon name="button_backrgounds" file="graphics/sidebar/button_backgrounds.png" />
+	<icon name="button_backrgounds_down" file="graphics/sidebar/button_backgrounds_down.png" />
 	<icon name="button_environment" file="graphics/sidebar/button_environment.png" />
 	<icon name="button_environment_down" file="graphics/sidebar/button_environment_down.png" />
-	
 	<icon name="button_upbringing" file="graphics/sidebar/button_upbringing.png" />
 	<icon name="button_upbringing_down" file="graphics/sidebar/button_upbringing_down.png" />
 	
