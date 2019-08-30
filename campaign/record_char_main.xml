@@ -33,15 +33,13 @@
 				<anchored to="detailsframe" position="insidetopleft" offset="15,30" width="210" height="20" />
 					<script>
 						function onValueChanged()
-							Debug.chat("title_cycler active: ", getValue());
 							STALibrary.rankchange(dragInfo, window);
 						end
 					</script>
 
 				<parameters>
-					<labelsres>details_rank_lieutenantjg|details_rank_lieutanent|details_rank_lieutenant_commander|details_rank_commander|details_rank_captain</labelsres>
-					<values>Lieutenant JG|Lieutanent|Lieutenant Commander|Commander|Captain</values>
-					<defaultlabelres>details_rank_ensign</defaultlabelres>
+					<labelsres>details_rank_ensign|details_rank_lieutenantjg|details_rank_lieutanent|details_rank_lieutenant_commander|details_rank_commander|details_rank_captain</labelsres>
+					<values>Ensign|Lieutenant JG|Lieutenant|Lieutenant Commander|Commander|Captain</values>
 				</parameters>
 			</button_stringcycler>
 			<label name="label_rank">

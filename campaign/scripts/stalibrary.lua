@@ -100,14 +100,25 @@ end
 function rankchange(draginfo, winFrame)
 
 	local nodeWin = winFrame.getDatabaseNode();
-		Debug.chat("nodeWin ", nodeWin);
-		Debug.chat("Rank: ", DB.getValue(nodeWin, "rank"));
-	local rActor = ActorManager.getActor("pc", winFrame.getDatabaseNode());
-		Debug.console("rActor: ", rActor);
 	local curRank = DB.getValue(nodeWin, "rank");
-		Debug.chat("curRank ", curRank);
 	DB.setValue(nodeWin, "reputation.rank", "string", curRank);
-		Debug.chat("reputation.rank ", DB.getValue(nodeWin, "reputation.rank"));
+	DB.setValue(nodeWin, "reputation.reputation", "number", 10);
+	
+	if DB.getValue(nodeWin, "reputation.rank") == "Ensign" then
+		nodeWin.getChild("reputation.privilege").setValue(1);
+		nodeWin.getChild("reputation.responsibility").setValue(20);
+	elseif DB.getValue(nodeWin, "reputation.rank") == "Lieutenant" then
+		nodeWin.getChild("reputation.privilege").setValue(2);
+		nodeWin.getChild("reputation.responsibility").setValue(19);
+	elseif DB.getValue(nodeWin, "reputation.rank") == "Commander" then
+		nodeWin.getChild("reputation.privilege").setValue(3);
+		nodeWin.getChild("reputation.responsibility").setValue(18);
+	elseif DB.getValue(nodeWin, "reputation.rank") == "Captain" then
+		nodeWin.getChild("reputation.privilege").setValue(4);
+		nodeWin.getChild("reputation.responsibility").setValue(17);
+	end
+
+		
 end
 
 --[[
