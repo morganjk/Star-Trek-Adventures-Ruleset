@@ -97,6 +97,19 @@ function resetdice(winFrame)
 	nodeWin.getChild("rollable.focusused").setValue(0);
 end
 
+function rankchange(draginfo, winFrame)
+
+	local nodeWin = winFrame.getDatabaseNode();
+		Debug.chat("nodeWin ", nodeWin);
+		Debug.chat("Rank: ", DB.getValue(nodeWin, "rank"));
+	local rActor = ActorManager.getActor("pc", winFrame.getDatabaseNode());
+		Debug.console("rActor: ", rActor);
+	local curRank = DB.getValue(nodeWin, "rank");
+		Debug.chat("curRank ", curRank);
+	DB.setValue(nodeWin, "reputation.rank", "string", curRank);
+		Debug.chat("reputation.rank ", DB.getValue(nodeWin, "reputation.rank"));
+end
+
 --[[
 function CombatDice(type, bonus, name)
 	if control then

@@ -29,11 +29,18 @@
 				<anchored to="detailsframe" />
 				<static textres="char_label_details" />
 			</label_frametop>
-			<button_stringcycler name="rank" source="details.rank">
+			<button_stringcycler name="rank">
 				<anchored to="detailsframe" position="insidetopleft" offset="15,30" width="210" height="20" />
+					<script>
+						function onValueChanged()
+							Debug.chat("title_cycler active: ", getValue());
+							STALibrary.rankchange(dragInfo, window);
+						end
+					</script>
+
 				<parameters>
 					<labelsres>details_rank_lieutenantjg|details_rank_lieutanent|details_rank_lieutenant_commander|details_rank_commander|details_rank_captain</labelsres>
-					<values>lieutenantjg|lieutanent|lieutenant_commander|commander|captain</values>
+					<values>Lieutenant JG|Lieutanent|Lieutenant Commander|Commander|Captain</values>
 					<defaultlabelres>details_rank_ensign</defaultlabelres>
 				</parameters>
 			</button_stringcycler>
