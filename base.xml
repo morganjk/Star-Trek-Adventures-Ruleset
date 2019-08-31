@@ -47,6 +47,7 @@
 	<script name="DiceRoller" file="scripts/manager_custom_2d20.lua" />
 	<script name="CustomDiceManager" file="scripts/manager_custom_dice.lua" />
 	<script name="ChallengeDiceManager" file="scripts/manager_custom_challenge.lua" />
+	<script name="ReputationManager" file="scripts/manager_reputation.lua" />
 
 	
 <!-- Graphics -->

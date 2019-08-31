@@ -190,6 +190,14 @@
 			<basicnumber name="challengedie" source="reputation.challengedie">
 				<anchored to="challengedie_label" position="righthigh" offset="0,0" width="20" height="20"/>
 			</basicnumber>
+			<button_roll name="rep_roll">
+				<anchored to="rank" position="righthigh" offset="140,0" width="20" height="20" />
+				<script>
+					function onButtonPress()
+						STALibrary.repcheck(dragInfo, window)
+					end
+				</script>
+			</button_roll>
 			
 <!-- Appearance Frame -->
 			<frame_char name="appearanceframe">

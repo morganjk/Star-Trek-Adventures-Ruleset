@@ -11,7 +11,6 @@ function onInit()
 end
 
 function performAction(draginfo, rActor, sParams)
---	Debug.console("performAction: ", draginfo, rActor, sParams);
 	if not sParams or sParams == "" then 
 		sParams = "2d20x8y1";
 	end
@@ -27,7 +26,6 @@ end
 
 
 function onLanded(rSource, rTarget, rRoll)
---	Debug.console("onLanded: ", rSource, rTarget, rRoll);
 	local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
 	rRoll = getDiceResults(rRoll);
 	rMessage = createChatMessage(rSource, rRoll);
@@ -43,7 +41,6 @@ function createRoll(sParams)
 	local rRoll = {};
 	rRoll.sType = sCmd;
 	rRoll.nMod = 0;
---- rRoll.sUser = User.getUsername();
 	rRoll.aDice = {};
 	rRoll.aDropped = {};
 	rRoll.nComp = 0;
@@ -68,15 +65,10 @@ function createRoll(sParams)
 	end
 	
 	local count = tonumber(sNum);
---		Debug.console("count: ", count);
 	local size = tonumber(sSize);
---		Debug.console("size: ", size);
 	local skill = tonumber(sSkill);
---		Debug.console("skill: ", skill);
 	local focus = tonumber(sFocus);
---		Debug.console("focus: ", focus);
 	local comp = tonumber(sComp);
-		Debug.console("comp: ", comp);
 
 	while count > 0 do
 		table.insert(rRoll.aDice, "d" .. sSize);
@@ -103,27 +95,20 @@ end
 function getDiceResults(rRoll)
 
 	local skill = tonumber(rRoll.nSkill);
---		Debug.console("Skill (dropresults): ", skill);
 	local focus = tonumber(rRoll.nFocus) or 1;
 	local comp = tonumber(rRoll.nComp) or 20;
 	local successes = 0;
 	local complications = 0;
   
 	for _,v in ipairs(rRoll.aDice) do
---		Debug.console("Skill 1: ", skill);
 		if v.result <= skill then
-			Debug.console("Successes 1: ", successes);
 			successes = successes + 1;
-			Debug.console("Successes 2: ", successes);
 			if v.result <= focus then
 				successes = successes + 1;
-				Debug.console("Successes 3: ", successes);
 			end
 		end
 		if v.result >= comp then
-			Debug.console("Complications 1: ", complications);
 			complications = complications + 1;
-			Debug.console("Complications 2: ", complications);
 		end
 	end
 
@@ -131,9 +116,7 @@ function getDiceResults(rRoll)
 
 	rRoll.aSuccesses = successes;
 	rRoll.aFocus = focus;
-		Debug.console("Focus 1: ", focus);	
 	rRoll.aSkill = skill;
-		Debug.console("Skill 1: ", skill);
 	rRoll.aComplications = complications;
 
 	return rRoll;
