@@ -129,7 +129,7 @@ function linkPCFields()
 	if nodeChar then
 		name.setLink(nodeChar.createChild("name", "string"), true);
 		stress.setLink(nodeChar.createChild("curstress", "number"), true);
-		maxstress.setLink(nodeChar.createChild("maxstress", "number"), true);
+		maxstress.setLink(nodeChar.createChild("stress.max.total", "number"), true);
 	end
 end
 
