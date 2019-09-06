@@ -55,7 +55,15 @@
 			<label_column name="type_label">
 				<static textres="item_label_type" />
 			</label_column>
-			<string_columnh name="type" />
+			<string_columnh name="type">
+				<nohide />
+				<delaykeyupdate />
+				<script>
+					function onValueChanged()
+						window.update();
+					end
+				</script>
+			</string_columnh>
 			
 			<label_column name="range_label">
 				<static textres="item_label_ranges" />
@@ -68,12 +76,12 @@
 				<font>challengedie_font</font>
 				<static text="A"/>
 			</label_column>
-			<number_column name="damagerating" />
+			<number_columnh name="damagerating" />
 			
 			<label_column name="resistance_label">
 				<static textres="char_label_resistance" />
 			</label_column>
-			<number_column name="resistance" />
+			<number_columnh name="resistance" />
 				
 			<label_column name="effect_label">
 				<static textres="item_label_effect" />

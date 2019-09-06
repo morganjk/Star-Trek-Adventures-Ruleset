@@ -149,7 +149,7 @@
 	<string name="item_label_type">Type</string>
 	<string name="item_label_ranges">Range</string>
 	<string name="item_label_damagerating">Damage Rating</string>
-	<string name="item_label_size">Size</string>
+	<string name="item_label_size">Size/Range</string>
 	<string name="item_label_effect">Effect</string>
 	<string name="item_label_qualities">Qualities</string>
 	

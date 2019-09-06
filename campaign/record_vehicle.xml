@@ -166,7 +166,7 @@
 			
 <!-- Rolling Window -->
 			<frame_char name="rollingframe">
-				<anchored to="detailsframe" position="belowleft" offset="0,0" width="488" height="65">
+				<anchored to="detailsframe" position="belowleft" offset="0,0" height="65">
 					<right parent="" anchor="center" offset="100,0" />
 				</anchored>
 			</frame_char>
@@ -258,7 +258,7 @@
 				<anchored to="computers" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="vehicle_label_weapons" />
 			</label>
-			<basicnumber name="weapons" source="system.weapons">
+			<basicnumber name="weapon" source="system.weapon">
 				<anchored to="weapons_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
 			</basicnumber>
@@ -307,11 +307,11 @@
 					end
 				</script>
 			</button_roll>
-			<button_roll name="weaponsselector" source="select.weapons">
-				<anchored  to="weapons" position="lefthigh" offset="15,0" width="15" height="15" />
+			<button_roll name="weaponselector" source="select.weapon">
+				<anchored  to="weapon" position="lefthigh" offset="15,0" width="15" height="15" />
 				<script>
 					function onClickRelease()
-						STALibrary.attribSelect(window, "system.weapons")
+						STALibrary.attribSelect(window, "system.weapon")
 					end
 				</script>
 			</button_roll>
@@ -689,7 +689,6 @@
 			</label>
 			<label>
 				<anchored to="weaponsframe" position="insidetopleft" offset="200,28"/>
-				<font>sheetlabelmini</font>
 				<font>challengedie_font</font>
 				<static text="A"/>
 			</label>
@@ -699,7 +698,7 @@
 				<static textres="char_label_weapon_qualities" />
 			</label>
 		  
-			<list_weapon name="weapons_list">
+			<list_weapon name="weapons">
 				<anchored to="weaponsframe">
 					<left offset="15"/>
 					<top offset="45"/>
@@ -708,11 +707,11 @@
 				</anchored>
 			</list_weapon>
 			<scrollbar_list>
-				<anchored to="weapons_list"/>
+				<anchored to="weapons"/>
 				<target>weapons</target>
 			</scrollbar_list>
 			<button_iedit name="weapons_iedit">
-				<anchored to="weapons_list" position="aboveright" offset="5,10"/>
+				<anchored to="weapons" position="aboveright" offset="5,10"/>
 				<target>weapons</target>
 			</button_iedit>
 			<button_iadd name="weapons_iadd">

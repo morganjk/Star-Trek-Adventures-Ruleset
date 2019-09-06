@@ -15,34 +15,34 @@ function InvisDataAdded()
 	update();
 end
 
-function updateControl(sControl, bReadOnly)
+function updateControl(sControl, bReadOnly, bShow)
 	if not self[sControl] then
 		return false;
 	end
 		
-	return self[sControl].update(bReadOnly);
+	return self[sControl].update(bReadOnly, not bShow);
 end
 
 function update()
 	local nodeRecord = getDatabaseNode();
 	local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
 	
-	local bWeapon, sTypeLower = ItemManager2.isWeapon(nodeRecord);
+	local bWeapon = ItemManager2.isWeapon(nodeRecord);
 	local bArmor = ItemManager2.isArmor(nodeRecord);
 	
 	local bSection = false;
-	if updateControl("type", bReadOnly) then bSection = true; end
-	if updateControl("range", bReadOnly) then bSection = true; end
+	if updateControl("type", bReadOnly, true) then bSection = true; end
+	if updateControl("range", bReadOnly, bWeapon) then bSection = true; end
 	
 	local bSection2 = false;
-	if updateControl("damagerating", bReadOnly) then bSection2 = true; end
-	if updateControl("resistance", bReadOnly) then bSection2 = true; end
-	if updateControl("effect", bReadOnly) then bSection2 = true; end
+	if updateControl("damagerating", bReadOnly, bWeapon) then bSection2 = true; end
+	if updateControl("resistance", bReadOnly, bArmor) then bSection2 = true; end
+	if updateControl("effect", bReadOnly, bWeapon) then bSection2 = true; end
 	
 	local bSection3 = false;
-	if updateControl("size", bReadOnly) then bSection3 = true; end
-	if updateControl("qualities", bReadOnly) then bSection3 = true; end
-	if updateControl("cost", bReadOnly) then bSection3 = true; end
+	if updateControl("size", bReadOnly, bWeapon) then bSection3 = true; end
+	if updateControl("qualities", bReadOnly, bWeapon) then bSection3 = true; end
+	if updateControl("cost", bReadOnly, true) then bSection3 = true; end
 	
 	description.setReadOnly(bReadOnly);
 	
