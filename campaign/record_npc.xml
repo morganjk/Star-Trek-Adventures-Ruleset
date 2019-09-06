@@ -250,55 +250,55 @@
 				<static textres="char_label_attributes" />
 			</label_frametop>
 			
-			<char_attribute name="control" source="attribute.control">
+			<basicnumber name="control" source="attribute.control">
 				<anchored to="attributeframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>7</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="control_label">
 				<anchored to="control" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_control"/>
 			</label>
 
-			<char_attribute name="daring" source="attribute.daring">
+			<basicnumber name="daring" source="attribute.daring">
 				<anchored to="control" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="daring_label">
 				<anchored to="daring" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_daring"/>
 			</label>
 
-			<char_attribute name="fitness" source="attribute.fitness">
+			<basicnumber name="fitness" source="attribute.fitness">
 				<anchored to="daring" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="fitness_label">
 				<anchored to="fitness" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_fitness"/>
 			</label>
 			
-			<char_attribute name="insight" source="attribute.insight">
+			<basicnumber name="insight" source="attribute.insight">
 				<anchored to="fitness" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="insight_label">
 				<anchored to="insight" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_insight"/>
 			</label>
 
-			<char_attribute name="presence" source="attribute.presence">
+			<basicnumber name="presence" source="attribute.presence">
 				<anchored to="insight" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="presence_label">
 				<anchored to="presence" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_presence"/>
 			</label>
 
-			<char_attribute name="reason" source="attribute.reason">
+			<basicnumber name="reason" source="attribute.reason">
 				<anchored to="presence" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>7</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="reason_label">
 				<anchored to="reason" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_reason"/>
@@ -363,55 +363,55 @@
 				<static textres="char_label_disciplines" />
 			</label_frametop>
 
-			<char_discipline name="command" source="discipline.command">
+			<basicnumber name="command" source="discipline.command">
 				<anchored to="disciplineframe" position="insidetopright" offset="25,35" width="30" height="20"/>
 				<default>1</default>
-			</char_discipline>
+			</basicnumber>
 			<label name="command_label">
 				<anchored to="command" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_command"/>
 			</label>
 
-			<char_discipline name="conn" source="discipline.conn">
+			<basicnumber name="conn" source="discipline.conn">
 				<anchored to="command" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_discipline>
+			</basicnumber>
 			<label name="conn_label">
 				<anchored to="conn" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_conn"/>
 			</label>
 
-			<char_discipline name="security" source="discipline.security">
+			<basicnumber name="security" source="discipline.security">
 				<anchored to="conn" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_discipline>
+			</basicnumber>
 			<label name="security_label">
 				<anchored to="security" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_security"/>
 			</label>
 			
-			<char_discipline name="engineering" source="discipline.engineering">
+			<basicnumber name="engineering" source="discipline.engineering">
 				<anchored to="security" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_discipline>
+			</basicnumber>
 			<label name="engineering_label">
 				<anchored to="engineering" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_engineering"/>
 			</label>
 
-			<char_discipline name="science" source="discipline.science">
+			<basicnumber name="science" source="discipline.science">
 				<anchored to="engineering" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_discipline>
+			</basicnumber>
 			<label name="science_label">
 				<anchored to="science" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_disc_science"/>
 			</label>
 
-			<char_discipline name="medicine" source="discipline.medicine">
+			<basicnumber name="medicine" source="discipline.medicine">
 				<anchored to="science" position="belowleft" offset="0,5" width="30" height="20"/>
 				<default>1</default>
-			</char_discipline>
+			</basicnumber>
 			<label name="medicine_label">
 				<anchored to="medicine" position="lefthigh" offset="50,0" width="90" />
 				<static textres="char_label_disc_medicine"/>
@@ -527,8 +527,58 @@
 				<target>injuries</target>
 			</scrollbar_list>
 
+<!-- Weapons -->
+			<frame_char name="weaponsframe">
+				<anchored to="valuesframe" position="belowleft" offset="0,0" width="448" height="170" />
+			</frame_char>
+			<label_frametop>
+				<anchored to="weaponsframe" />
+				<static textres="char_label_weapons" />
+			</label_frametop>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="25,28"/>
+				<font>sheetlabelmini</font>
+				<static textres="char_label_weapon_name" />
+			</label>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="155,28"/>
+				<font>sheetlabelmini</font>
+				<static textres="char_label_weapon_size" />
+			</label>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="200,28"/>
+				<font>challengedie_font</font>
+				<static text="A"/>
+			</label>
+			<label>
+				<anchored to="weaponsframe" position="insidetopleft" offset="230,28"/>
+				<font>sheetlabelmini</font>
+				<static textres="char_label_weapon_qualities" />
+			</label>
+		  
+			<list_weapon name="weapons">
+				<anchored to="weaponsframe">
+					<left offset="15"/>
+					<top offset="45"/>
+					<right offset="-15"/>
+					<bottom offset="-20"/>
+				</anchored>
+			</list_weapon>
+			<scrollbar_list>
+				<anchored to="weapons"/>
+				<target>weapons</target>
+			</scrollbar_list>
+			<button_iedit name="weapons_iedit">
+				<anchored to="weapons" position="aboveright" offset="5,10"/>
+				<target>weapons</target>
+			</button_iedit>
+			<button_iadd name="weapons_iadd">
+				<anchored to="weapons_iedit" position="lefthigh" offset="5,0"/>
+				<target>weapons</target>
+			</button_iadd>
+
 			<anchor_column name="columnanchor">
-				<anchored to="valuesframe" position="belowleft" offset="0,0" />
+				<anchored to="weaponsframe" position="belowleft" offset="0,0" />
 			</anchor_column>
 			
 			<line_column name="divider2" />
@@ -563,21 +613,13 @@
 				</sourcefields>
 			</number_npc_stress_max>
 
-			<label_column name="weapons_label">
-				<static textres="char_label_weapons" />
-			</label_column>
-			<string_columnh name="weapons">
-				<!-- Roll identification not yet working
-				<nodragselect />
-				<script file="campaign/scripts/npc_roll.lua" />
-				-->
-			</string_columnh>
-
+<!-- Equipment -->
 			<label_column name="items_label">
 				<static textres="npc_label_items" />
 			</label_column>
 			<string_columnh name="items" />
 
+<!-- Languages -->
 			<label_column name="languages_label">
 				<static textres="npc_label_languages" />
 			</label_column>

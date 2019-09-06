@@ -163,10 +163,71 @@
 				<anchored to="detailsframe" position="insidetopleft" offset="15,120" width="686" height="20" />
 				<labelres>vehicle_label_traits</labelres>
 			</string_labeled>
+			
+<!-- Rolling Window -->
+			<frame_char name="rollingframe">
+				<anchored to="detailsframe" position="belowleft" offset="0,0" width="488" height="65">
+					<right parent="" anchor="center" offset="100,0" />
+				</anchored>
+			</frame_char>
+			<label name="targetroll_label" >
+				<anchored to="rollingframe" position="insidetopleft" offset="50,10" width="20"/>
+				<static textres="char_label_roll_tn"/>
+			</label>
+			<number_targetroll name="target_roll" source="rollable.targetroll">
+				<anchored to="targetroll_label" position="belowleft" offset="-3,0" width="20" height="20"/>
+			</number_targetroll>
+			<label name="dicetoroll_label">
+				<anchored to="targetroll_label" position="righthigh" offset="35,0" width="70"/>
+				<static textres="char_label_roll_dicetouse"/>
+			</label>
+			<basicnumber name="dicetoroll" source="rollable.dicetoroll">
+				<anchored to="dicetoroll_label" position="belowleft" offset="20,0" width="20" height="20"/>
+				<script>
+					function onInit()
+						setValue (1);
+					end
+				</script>
+			</basicnumber>
+			<label name="comprange_label">
+				<anchored to="dicetoroll_label" position="righthigh" offset="35,0" width="70"/>
+				<static textres="char_label_roll_comprange"/>
+			</label>
+			<basicnumber name="comprange" source="rollable.comprange">
+				<anchored to="comprange_label" position="belowleft" offset="20,0" width="20" height="20"/>
+				<script>
+					function onInit()
+						setValue (1);
+					end
+				</script>
+			</basicnumber>
+			<label name="focus_label">
+				<anchored to="comprange_label" position="righthigh" offset="35,0" width="65"/>
+				<static textres="char_label_roll_focus"/>
+			</label>
+			<buttonfield name="focusselector" source="rollable.focusused">
+				<anchored  to="focus_label" position="belowleft" offset="25,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<button_roll name="rolling">
+				<anchored to="focus_label" position="righthigh" offset="20,10" width="20" height="20" />
+				<script>
+					function onButtonPress()
+						STALibrary.npctaskcheck(dragInfo, window)
+					end
+				</script>
+			</button_roll>
+
 
 <!-- Systems -->
 			<frame_char name="systemsframe">
-				<anchored to="detailsframe" position="belowleft" offset="0,0" height="110" >
+				<anchored to="rollingframe" position="belowleft" offset="0,0" height="115" >
 					<right parent="" anchor="center" offset="100,0" />
 				</anchored>
 			</frame_char>
@@ -176,148 +237,109 @@
 			</label_frametop>
 			
 			<label name="engines_label">
-				<anchored to="systemsframe" position="insidetopleft" offset="20,22" width="100" height="20" />
+				<anchored to="systemsframe" position="insidetopleft" offset="20,25" width="100" height="20" />
 				<static textres="vehicle_label_engines"/>
 			</label>
-			<char_attribute name="engines">
+			<basicnumber name="engines" source="system.engines">
 				<anchored to="engines_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="computers_label">
 				<anchored to="engines" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="vehicle_label_computers" />
 			</label>
-			<char_attribute name="computers">
+			<basicnumber name="computers" source="system.computers">
 				<anchored to="computers_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="weapons_label">
 				<anchored to="computers" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="vehicle_label_weapons" />
 			</label>
-			<char_attribute name="weapons">
+			<basicnumber name="weapons" source="system.weapons">
 				<anchored to="weapons_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="structure_label">
 				<anchored to="engines_label" position="belowleft" offset="0,18" width="100" height="20" />
 				<static textres="vehicle_label_structure" />
 			</label>
-			<char_attribute name="structure" source="systems.structure">
+			<basicnumber name="structure" source="system.structure">
 				<anchored to="structure_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="sensors_label">
 				<anchored to="structure" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="vehicle_label_sensors" />
 			</label>
-			<char_attribute name="sensors">
+			<basicnumber name="sensors" source="system.sensors">
 				<anchored to="sensors_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="comms_label">
 				<anchored to="sensors" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="vehicle_label_comms" />
 			</label>
-			<char_attribute name="comms">
+			<basicnumber name="comms" source="system.comms">
 				<anchored to="comms_label" position="righthigh" offset="0,0" width="30" />
 				<default>7</default>
+			</basicnumber>
+
+<!-- Buttons -->
+			<button_roll name="enginesselector" source="select.engines">
+				<anchored  to="engines" position="lefthigh" offset="15,0" width="15" height="15" />
 				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
+					function onClickRelease()
+						STALibrary.attribSelect(window, "system.engines")
+					end
 				</script>
-			</char_attribute>
+			</button_roll>
+			<button_roll name="computersselector" source="select.computers">
+				<anchored  to="computers" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.attribSelect(window, "system.computers")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="weaponsselector" source="select.weapons">
+				<anchored  to="weapons" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.attribSelect(window, "system.weapons")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="structureselector" source="select.structure">
+				<anchored  to="structure" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.attribSelect(window, "system.structure")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="sensorsselector" source="select.sensors">
+				<anchored  to="sensors" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.attribSelect(window, "system.sensors")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="commsselector" source="select.comms">
+				<anchored  to="comms" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.attribSelect(window, "system.comms")
+					end
+				</script>
+			</button_roll>
+
 
 <!-- Breaches -->
 			<buttongroup_counter name="engines_breach">
@@ -420,149 +442,109 @@
 				<anchored to="departmentsframe" position="insidetopleft" offset="20,35" width="100" height="20" />
 				<static textres="char_label_disc_command"/>
 			</label>
-			<char_attribute name="command">
+			<basicnumber name="command" source="departments.command">
 				<anchored to="command_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
-			<label name="security_label" source="departments.security">
+			<label name="security_label">
 				<anchored to="command" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_security" />
 			</label>
-			<char_attribute name="security" source="departments.security">
+			<basicnumber name="security" source="departments.security">
 				<anchored to="security_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="science_label">
 				<anchored to="security" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_science" />
 			</label>
-			<char_attribute name="science">
+			<basicnumber name="science" source="departments.science">
 				<anchored to="science_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="conn_label">
 				<anchored to="command_label" position="belowleft" offset="0,15" width="100" height="20" />
 				<static textres="char_label_disc_conn" />
 			</label>
-			<char_attribute name="conn">
+			<basicnumber name="conn" source="departments.conn">
 				<anchored to="conn_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="engineering_label">
 				<anchored to="conn" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_engineering" />
 			</label>
-			<char_attribute name="engineering">
+			<basicnumber name="engineering" source="departments.engineering">
 				<anchored to="engineering_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
-				</script>
-			</char_attribute>
+			</basicnumber>
 			
 			<label name="medicine_label">
 				<anchored to="engineering" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_medicine" />
 			</label>
-			<char_attribute name="medicine">
+			<basicnumber name="medicine" source="departments.security">
 				<anchored to="medicine_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
+			</basicnumber>
+
+			<button_roll name="commandselector" source="select.command">
+				<anchored  to="command" position="lefthigh" offset="15,0" width="15" height="15" />
 				<script>
-					function onDragStart(button, x, y, draginfo)
-						local label = getName():gsub("^%l", string.upper);
-						draginfo.setType("skilldice");
-						draginfo.setDescription(label);
-						local dice = {"d20"};
-						draginfo.setDieList(dice);
-						return true;
-					  end
-			  
-					  function onDoubleClick(x, y)
-						local label = getName():gsub("^%l", string.upper);
-						ModifierStack.addSlot(label, getValue());
-					  end
+					function onClickRelease()
+						STALibrary.discipSelect(window, "departments.command")
+					end
 				</script>
-			</char_attribute>
+			</button_roll>
+			<button_roll name="securityselector" source="select.security">
+				<anchored  to="security" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.discipSelect(window, "departments.security")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="scienceselector" source="select.science">
+				<anchored  to="science" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.discipSelect(window, "departments.science")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="connselector" source="select.conn">
+				<anchored  to="conn" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.discipSelect(window, "departments.conn")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="engineeringselector" source="select.engineering">
+				<anchored  to="engineering" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.discipSelect(window, "departments.engineering")
+					end
+				</script>
+			</button_roll>
+			<button_roll name="medicineelector" source="select.medicine">
+				<anchored  to="medicine" position="lefthigh" offset="15,0" width="15" height="15" />
+				<script>
+					function onClickRelease()
+						STALibrary.discipSelect(window, "departments.medicine")
+					end
+				</script>
+			</button_roll>
+
 			
 <!-- Shields -->
 			<frame_char name="shieldframe">
-				<anchored to="systemsframe" position="righthigh" offset="0,0" width="110" height="220"/>
+				<anchored to="rollingframe" position="righthigh" offset="0,0" width="110" height="220"/>
 			</frame_char>
 			<number_shieldsmax name="maxshield" source="shield.max.total">
 				<anchored to="shieldframe" position="insidetopright" offset="20,15" width="30" height="20"/>
@@ -635,33 +617,33 @@
 				<anchored to="otherframe" position="insidetopleft" offset="20,15" width="40" height="20" />
 				<static textres="vehicle_label_scale" />
 			</label>
-			<char_attribute name="scale">
+			<basicnumber name="scale">
 				<anchored to="scale_label" position="righthigh" offset="0,0" width="30" />
-			</char_attribute>
+			</basicnumber>
 			<label name="resistance_label">
 				<anchored to="scale" position="righthigh" offset="15,0" width="70" />
 				<static textres="vehicle_label_resistance" />
 			</label>
-			<char_attribute name="resistance">
+			<basicnumber name="resistance">
 				<anchored to="resistance_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="power_label">
 				<anchored to="resistance" position="righthigh" offset="15,0" width="50" />
 				<static textres="vehicle_label_power" />
 			</label>
-			<char_attribute name="power">
+			<basicnumber name="power">
 				<anchored to="power_label" position="righthigh" offset="0,0" width="30" />
 				<default>0</default>
-			</char_attribute>
+			</basicnumber>
 			<label name="max_power_label">
 				<anchored to="power" position="righthigh" offset="10,0" width="73" />
 				<static textres="vehicle_label_max_power" />
 			</label>
-			<char_attribute name="max_power">
+			<basicnumber name="max_power">
 				<anchored to="max_power_label" position="righthigh" offset="15,0" width="30" />
 				<default>1</default>
-			</char_attribute>
+			</basicnumber>
 			
 <!-- Talents -->
 			<frame_char name="talentsframe">
@@ -687,7 +669,7 @@
 
 <!-- Weapons -->
 			<frame_char name="weaponsframe">
-				<anchored to="otherframe" position="belowleft" offset="0,0" height="220" >
+				<anchored to="otherframe" position="belowleft" offset="0,0" height="185" >
 					<right parent="" anchor="center" offset="100,0" />
 				</anchored>
 			</frame_char>

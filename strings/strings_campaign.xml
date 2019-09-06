@@ -92,7 +92,7 @@
 	<string name="vehicle_label_computers">Computers</string>
 	<string name="vehicle_label_sensors">Sensors</string>
 	<string name="vehicle_label_weapons">Weapons</string>
-	<string name="vehicle_label_comms">Communications</string>
+	<string name="vehicle_label_comms">Comms</string>
   
 	<string name="vehicle_label_scale">Scale</string>
 	<string name="vehicle_label_resistance">Resistance</string>
