@@ -179,10 +179,69 @@
 				<anchored to="detailsframe" position="insidetopleft" offset="15,120" width="410" height="20" />
 				<labelres>char_label_trait</labelres>
 			</string_labeled>
+
+<!-- Rolling Window -->
+			<frame_char name="rollingframe">
+				<anchored to="detailsframe" position="belowleft" offset="0,0" width="488" height="65" />
+			</frame_char>
+			<label name="targetroll_label" >
+				<anchored to="rollingframe" position="insidetopleft" offset="50,10" width="20"/>
+				<static textres="char_label_roll_tn"/>
+			</label>
+			<number_targetroll name="target_roll" source="rollable.targetroll">
+				<anchored to="targetroll_label" position="belowleft" offset="-3,0" width="20" height="20"/>
+			</number_targetroll>
+			<label name="dicetoroll_label">
+				<anchored to="targetroll_label" position="righthigh" offset="35,0" width="70"/>
+				<static textres="char_label_roll_dicetouse"/>
+			</label>
+			<basicnumber name="dicetoroll" source="rollable.dicetoroll">
+				<anchored to="dicetoroll_label" position="belowleft" offset="20,0" width="20" height="20"/>
+				<script>
+					function onInit()
+						setValue (1);
+					end
+				</script>
+			</basicnumber>
+			<label name="comprange_label">
+				<anchored to="dicetoroll_label" position="righthigh" offset="35,0" width="70"/>
+				<static textres="char_label_roll_comprange"/>
+			</label>
+			<basicnumber name="comprange" source="rollable.comprange">
+				<anchored to="comprange_label" position="belowleft" offset="20,0" width="20" height="20"/>
+				<script>
+					function onInit()
+						setValue (1);
+					end
+				</script>
+			</basicnumber>
+			<label name="focus_label">
+				<anchored to="comprange_label" position="righthigh" offset="35,0" width="65"/>
+				<static textres="char_label_roll_focus"/>
+			</label>
+			<buttonfield name="focusselector" source="rollable.focusused">
+				<anchored  to="focus_label" position="belowleft" offset="25,0" width="20" height="20" />
+				<state icon="stress_empty" />
+				<state icon="stress_tick" />
+				<script>
+					function onInit()
+						setValue (0);
+					end
+				</script>
+			</buttonfield>
+			<button_roll name="rolling">
+				<anchored to="focus_label" position="righthigh" offset="20,10" width="20" height="20" />
+				<script>
+					function onButtonPress()
+						STALibrary.npctaskcheck(dragInfo, window)
+					end
+				</script>
+			</button_roll>
+
 			
 <!-- Attributes -->
 			<frame_char name="attributeframe">
-					<anchored to="detailsframe" position="belowleft" offset="0,0" height="200" >
+					<anchored to="rollingframe" position="belowleft" offset="0,0" height="200" >
 					<right parent="" anchor="center" offset="0,0" />
 				</anchored>
 			</frame_char>
@@ -244,66 +303,54 @@
 				<anchored to="reason" position="lefthigh" offset="50,0" width="90"/>
 				<static textres="char_label_attr_reason"/>
 			</label>
-			<buttonfield name="controlselector" source="select.control">
+			<button_roll name="controlselector" source="select.control">
 				<anchored  to="control" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.attribSelect(window, "attribute.control")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="daringselector" source="select.daring">
+			</button_roll>
+			<button_roll name="daringselector" source="select.daring">
 				<anchored  to="daring" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.attribSelect(window, "attribute.daring")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="fitnessselector" source="select.fitness">
+			</button_roll>
+			<button_roll name="fitnessselector" source="select.fitness">
 				<anchored  to="fitness" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.attribSelect(window, "attribute.fitness")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="insightselector" source="select.insight">
+			</button_roll>
+			<button_roll name="insightselector" source="select.insight">
 				<anchored  to="insight" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.attribSelect(window, "attribute.insight")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="presenceselector" source="select.presence">
+			</button_roll>
+			<button_roll name="presenceselector" source="select.presence">
 				<anchored  to="presence" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.attribSelect(window, "attribute.presence")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="reasonselector" source="select.reason">
+			</button_roll>
+			<button_roll name="reasonselector" source="select.reason">
 				<anchored  to="reason" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.attribSelect(window, "attribute.reason")
 					end
 				</script>
-			</buttonfield>
+			</button_roll>
 
 <!-- Disciplines -->
 			<frame_char name="disciplineframe">
@@ -369,66 +416,54 @@
 				<anchored to="medicine" position="lefthigh" offset="50,0" width="90" />
 				<static textres="char_label_disc_medicine"/>
 			</label>
-			<buttonfield name="commandselector" source="select.command">
+			<button_roll name="commandselector" source="select.command">
 				<anchored  to="command" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.discipSelect(window, "discipline.command")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="connselector" source="select.conn">
+			</button_roll>
+			<button_roll name="connselector" source="select.conn">
 				<anchored  to="conn" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.discipSelect(window, "discipline.conn")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="securityselector" source="select.security">
+			</button_roll>
+			<button_roll name="securityselector" source="select.security">
 				<anchored  to="security" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.discipSelect(window, "discipline.security")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="engineeringselector" source="select.engineering">
+			</button_roll>
+			<button_roll name="engineeringselector" source="select.engineering">
 				<anchored  to="engineering" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.discipSelect(window, "discipline.engineering")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="scienceselector" source="select.science">
+			</button_roll>
+			<button_roll name="scienceselector" source="select.science">
 				<anchored  to="science" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.discipSelect(window, "discipline.science")
 					end
 				</script>
-			</buttonfield>
-			<buttonfield name="medicineelector" source="select.medicine">
+			</button_roll>
+			<button_roll name="medicineelector" source="select.medicine">
 				<anchored  to="medicine" position="lefthigh" offset="15,0" width="20" height="20" />
-				<state icon="stress_empty" />
-				<state icon="stress_tick" />
 				<script>
-					function onInit()
-						setValue (0);
+					function onClickRelease()
+						STALibrary.discipSelect(window, "discipline.medicine")
 					end
 				</script>
-			</buttonfield>
+			</button_roll>
 
 
 <!-- Values -->

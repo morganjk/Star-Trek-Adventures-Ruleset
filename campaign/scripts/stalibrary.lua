@@ -123,3 +123,38 @@ function onRoll(rSource, rTarget, rRoll)
 	rMessage.type = "dice";
 	Comm.deliverChatMessage(rMessage);
 end
+
+function npctaskcheck(draginfo, winFrame)
+	local nodeWin = winFrame.getDatabaseNode();
+	local rActor = ActorManager.getActor("pc", nodeWin);
+	local rolling20 = nodeWin.getChild("rollable.dicetoroll").getValue();
+	local sides = 20
+	local TN = nodeWin.getChild("rollable.targetroll").getValue();
+	local FC = nodeWin.getChild("rollable.focusused").getValue();
+	local nFocus = 0
+		if FC == 0 then
+			nFocus = 1;
+		elseif FC == 1 then 
+			nFocus = DB.getValue(nodeWin, "discip");
+		end
+	local nComp = nodeWin.getChild("rollable.comprange").getValue();
+	local comp = 21 - nComp
+	local sParams = rolling20.."d"..sides.."x"..TN.."y"..nFocus.."c"..comp;
+	local msg = {font = "sheetlabel"};
+	msg.text = rActor.sName .. " rolls a task"
+	Comm.deliverChatMessage(msg);
+	local msg = {font = "sheetlabel"};
+	msg.text= "Target Number.." .. TN.."\nFocus Range.."..nFocus.."\nComplication Range.."..nComp.."\nRolling "..rolling20.. "d20\n";
+	Comm.deliverChatMessage(msg);
+
+	npcresetdice(winFrame);
+	DiceRoller.performAction(draginfo, rActor, sParams)
+	return true;
+end
+
+function npcresetdice(winFrame)
+	local nodeWin = winFrame.getDatabaseNode();
+	nodeWin.getChild("rollable.dicetoroll").setValue(1);
+	nodeWin.getChild("rollable.comprange").setValue(1);
+	nodeWin.getChild("rollable.focusused").setValue(0);
+end
