@@ -111,6 +111,10 @@ function rankchange(draginfo, winFrame)
 	elseif DB.getValue(nodeWin, "reputation.rank") == "Captain" then
 		nodeWin.getChild("reputation.privilege").setValue(4);
 		nodeWin.getChild("reputation.responsibility").setValue(17);
+	else
+		nodeWin.getChild("reputation.privilege").setValue(1);
+		nodeWin.getChild("reputation.responsibility").setValue(20);
+
 	end
 
 		
