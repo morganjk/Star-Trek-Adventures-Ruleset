@@ -290,7 +290,6 @@
 				<default>7</default>
 			</basicnumber>
 
-<!-- Buttons -->
 			<button_roll name="enginesselector" source="select.engines">
 				<anchored  to="engines" position="lefthigh" offset="15,0" width="15" height="15" />
 				<script>
@@ -340,8 +339,6 @@
 				</script>
 			</button_roll>
 
-
-<!-- Breaches -->
 			<buttongroup_counter name="engines_breach">
 				<anchored to="engines_label" position="belowleft" offset="0,0" />
 				<stateicons>
@@ -653,7 +650,7 @@
 				<anchored to="talentsframe" />
 				<static textres="vehicle_label_talents" />
 			</label_frametop>
-			<list_charbackground name="talents">
+			<list_chartalents name="talents">
 				<anchored to="talentsframe">
 					<top offset="30" />
 					<left offset="15" />
@@ -661,7 +658,7 @@
 					<bottom offset="-15" />
 				</anchored>
 				<multilinespacing>20</multilinespacing>
-			</list_charbackground>
+			</list_chartalents>
 			<scrollbar_list name="talents_scroll">
 				<anchored to="talents" />
 				<target>talents</target>
@@ -698,14 +695,14 @@
 				<static textres="char_label_weapon_qualities" />
 			</label>
 		  
-			<list_weapon name="weapons">
+			<ship_list_weapon name="weapons">
 				<anchored to="weaponsframe">
 					<left offset="15"/>
 					<top offset="45"/>
 					<right offset="-15"/>
 					<bottom offset="-20"/>
 				</anchored>
-			</list_weapon>
+			</ship_list_weapon>
 			<scrollbar_list>
 				<anchored to="weapons"/>
 				<target>weapons</target>

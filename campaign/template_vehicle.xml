@@ -21,4 +21,103 @@
 			<source><name>departments.security</name><op>+</op></source>
 		</number_shieldtotal>
 	</template>
+
+<!-- Ship Weapon List Item -->
+	<windowclass name="ship_weaponlistitem">
+		<margins control="0,0,0,2"/>
+		<sheetdata>
+			<genericcontrol name="leftanchor">
+				<anchored height="0" width="0">
+					<top/>
+					<left/>
+				</anchored>
+			</genericcontrol>
+			<genericcontrol name="rightanchor">
+				<anchored height="0" width="0">
+					<top/>
+					<right/>
+				</anchored>
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored>
+					<top/>
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+				</anchored>
+			</button_idelete>
+			<string_textlistitem name="name">
+				<anchored width="120" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<font>sheetlabelmini</font>
+			</string_textlistitem>
+ 			<string_textlistitem name="size">
+				<anchored width="30" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<font>sheetlabelmini</font>
+			</string_textlistitem>
+			<basicnumber name="damage">
+				<anchored width="20" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<script>
+					function onDoubleClick()
+						STALibrary.challengecheck(draginfo, window)
+					end
+				</script>
+				<frame name="fielddark" offset="7,5,7,5" />
+			</basicnumber>
+ 			<string_textlistitem name="qualities">
+				<anchored width="210" height="15">
+					<top offset="2"/>
+					<left parent="leftanchor" anchor="right" relation="relative" offset="10"/>
+				</anchored>
+				<font>sheetlabelmini</font>
+			</string_textlistitem>
+		</sheetdata>
+	</windowclass>
+  
+<!-- Ship Weapons List -->
+	<template name="ship_list_weapon">
+		<list_text>
+			<datasource>.weapons</datasource>
+			<class>ship_weaponlistitem</class>
+			<columns>
+				<width>460</width>
+			</columns>
+			<sortby>
+				<control>name</control>
+			</sortby>
+			<newfocus>name</newfocus>
+			<script>
+				function onDrop(x,y,draginfo)
+					if draginfo.isType("shortcut") then
+						local nodeWin = window.getDatabaseNode();
+						local nodeItem = draginfo.getDatabaseNode();
+						local nDamage = DB.getValue(nodeItem, "damagerating", 0);
+						local nDisc = DB.getValue(nodeWin, "departments.security", 0);
+							nDamage = nDamage + nDisc;
+						local sQualities = DB.getValue(nodeItem, "qualities", 0);
+						local sEffect = DB.getValue(nodeItem, "effect", 0);
+						sQualities = sQualities .. ", " .. sEffect;
+						local class, datasource = draginfo.getShortcutData();
+						if class == "referencetext" or class == "item" then
+							local newentry = createWindow()
+							newentry.name.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+							newentry.size.setValue(draginfo.getDatabaseNode().getChild("size").getValue());
+							newentry.damage.setValue(nDamage);
+							newentry.qualities.setValue(sQualities);
+						end
+						return true;
+					end
+				end
+			</script>   
+		</list_text>
+	</template>
+	
+	
+	
 </root>

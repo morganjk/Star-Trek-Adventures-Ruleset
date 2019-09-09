@@ -142,7 +142,7 @@
 			end
 		</script>
 		<sheetdata>
-
+<!-- Details -->
 			<frame_char name="detailsframe">
 				<bounds>0,5,-1,165</bounds>
 			</frame_char>
@@ -182,7 +182,7 @@
 
 <!-- Rolling Window -->
 			<frame_char name="rollingframe">
-				<anchored to="detailsframe" position="belowleft" offset="0,0" width="488" height="65" />
+				<anchored to="detailsframe" position="belowleft" offset="0,0" width="445" height="65" />
 			</frame_char>
 			<label name="targetroll_label" >
 				<anchored to="rollingframe" position="insidetopleft" offset="50,10" width="20"/>
@@ -505,27 +505,34 @@
 				<target>focuses</target>
 			</scrollbar_list>
 	
-<!-- Injuries -->
-			<frame_char name="injuryframe">
+<!-- Talents -->
+			<frame_char name="talentsframe">
 				<anchored to="focusframe" position="righthigh" offset="0,0" width="149" height="170"/>
 			</frame_char>
 			<label_frametop>
-				<anchored to="injuryframe" />
-				<static textres="char_label_injuries" />
+				<anchored to="talentsframe" />
+				<static textres="char_label_talents" />
 			</label_frametop>
-			<stringu name="injuries">
-				<anchored to="injuryframe">
-					<top offset="30" />
-					<left offset="15" />
-					<right offset="-20" />
-					<bottom offset="-15" />
+			<list_chartalents name="talents">
+				<anchored to="talentsframe">
+					<left offset="15"/>
+					<top offset="35"/>
+					<right offset="-15"/>
+					<bottom offset="-20"/>
 				</anchored>
-				<multilinespacing>20</multilinespacing>
-			</stringu>
+			</list_chartalents>
 			<scrollbar_list>
-				<anchored to="injuries" />
-				<target>injuries</target>
+				<anchored to="talents"/>
+				<target>talents</target>
 			</scrollbar_list>
+			<button_iedit name="talents_iedit">
+				<anchored to="talents" position="aboveright" offset="5,5"/>
+				<target>talents</target>
+			</button_iedit>
+			<button_iadd name="talents_iadd">
+				<anchored to="talents_iedit" position="lefthigh" offset="5,0"/>
+				<target>talents</target>
+			</button_iadd>
 
 <!-- Weapons -->
 			<frame_char name="weaponsframe">
@@ -624,6 +631,11 @@
 				<static textres="npc_label_languages" />
 			</label_column>
 			<string_columnh name="languages" />
+<!-- Injuries -->
+			<label_column name="injuries_label">
+				<static textres="char_label_injuries" />
+			</label_column>
+			<string_columnh name="injuries" />
 
 		</sheetdata>
 	</windowclass>
