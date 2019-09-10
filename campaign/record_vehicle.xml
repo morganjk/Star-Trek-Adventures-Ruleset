@@ -484,7 +484,7 @@
 				<anchored to="engineering" position="righthigh" offset="15,0" width="100" height="20" />
 				<static textres="char_label_disc_medicine" />
 			</label>
-			<basicnumber name="medicine" source="departments.security">
+			<basicnumber name="medicine" source="departments.medicine">
 				<anchored to="medicine_label" position="righthigh" offset="0,0" width="30" />
 				<default>1</default>
 			</basicnumber>

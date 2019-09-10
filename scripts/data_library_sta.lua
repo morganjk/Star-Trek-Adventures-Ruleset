@@ -210,5 +210,7 @@ function onInit()
 			LibraryData.setListView(kRecordType, kListView, vListView);
 		end
 	end
-	--LibraryData.setRecordTypeInfo("vehicle", nil);
+  DesktopManager.setStackIconSizeAndSpacing(50, 20, 3, 3, 4, 0);
+  DesktopManager.setDockIconSizeAndSpacing(120, 48, 0, 4);
+
 end
