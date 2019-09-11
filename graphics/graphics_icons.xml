@@ -6,7 +6,7 @@
 <root>
   <!--  Override Smiteworks Decal  -->
   <icon name="rulesetlogo_Star Trek Adventures" file="graphics/icons/rulesetlogo_STA.png" />
-  <icon name="desktopdecal_sw" file="graphics/decals/desktopdecal_sw.png"/> 
+  <icon name="desktopdecal_st" file="graphics/decals/desktopdecal_st.png"/> 
   
   
   <!-- Icons -->

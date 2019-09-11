@@ -157,4 +157,8 @@
 	<string name="talents_grouped_title_byletter">By Letter</string>
 	<string name="talents_label_req">Requirements</string>
 
+<!-- Desktop -->
+	<string name="option_val_DDCL_st">Star Trek</string>
+
+
 </root>
