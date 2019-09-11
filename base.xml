@@ -48,6 +48,8 @@
 	<script name="CustomDiceManager" file="scripts/manager_custom_dice.lua" />
 	<script name="ChallengeDiceManager" file="scripts/manager_custom_challenge.lua" />
 	<script name="ReputationManager" file="scripts/manager_reputation.lua" />
+	<script name="OptionsCore2" file="scripts/data_options_core2.lua" />
+
 
 	
 <!-- Graphics -->
