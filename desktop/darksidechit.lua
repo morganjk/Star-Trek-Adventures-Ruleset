@@ -33,40 +33,40 @@ function onInit()
 end
 
 function refreshDestinyChits()
-	Debug.console("chit.lua: refreshDestinyChits()"); 
+--	Debug.console("chit.lua: refreshDestinyChits()"); 
 	local msg = SPECIAL_MSGTYPE_REFRESHDESTINYCHITS;
 	local identity = User.getCurrentIdentity();
 	msg.msgidentity = User.getIdentityLabel() or "GM";
 	msg.msguser = User.getIdentityOwner(identity) or "GM";
-	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
+--	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
 	Comm.deliverOOBMessage(msg);
 end
 
 function handleRefreshDarksideChits(servermsg)
-	Debug.console("chit.lua: handleRefreshDarksideChits()"); 
+--	Debug.console("chit.lua: handleRefreshDarksideChits()"); 
   local lightsidenode = nil;
 	local darksidenode = nil;
 	
-	Debug.console("chit.lua: handleRefreshDarksideChits()  window.getClass() = " .. window.getClass());
+--	Debug.console("chit.lua: handleRefreshDarksideChits()  window.getClass() = " .. window.getClass());
 
   -- ensure that we have the light side chit node, create it if it does not exist (e.g. for a new campaign)
   if User.isHost() then
     if not darksidenode then
       darksidenode = DB.createNode("darksidechit.chits","number");
       darksidenode.setPublic(true);
-      Debug.console("chit.lua: handleRefreshDarksideChits()  Create Node: " .. window.getClass());
+ --     Debug.console("chit.lua: handleRefreshDarksideChits()  Create Node: " .. window.getClass());
     end
   end
   
   -- If we don't have the lightsidechit node at this point, find it.
   if not darksidenode then
     darksidenode = DB.findNode("darksidechit.chits");
-    Debug.console("chit.lua: handleRefreshDarksideChits()  Find Node: " .. window.getClass());
+--    Debug.console("chit.lua: handleRefreshDarksideChits()  Find Node: " .. window.getClass());
   end	
   
   -- refresh chits here
   if darksidenode then		
-    Debug.console("chit.lua: handleRefreshDarksideChits() darksidenode.getValue = " .. darksidenode.getValue());
+--    Debug.console("chit.lua: handleRefreshDarksideChits() darksidenode.getValue = " .. darksidenode.getValue());
     if darksidenode.getValue()<=0 then
       setIcon("darksidechit0");
     elseif darksidenode.getValue()<8 then

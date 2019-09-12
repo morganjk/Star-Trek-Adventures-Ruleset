@@ -80,4 +80,7 @@
 	<includefile source="ct/ct_host.xml" />
 	<includefile source="ct/ct_client.xml" />
 
+<!-- Desktop -->
+	<includefile source="desktop/template_desktop.xml" />
+
 </root>

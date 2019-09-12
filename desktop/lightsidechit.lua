@@ -40,20 +40,20 @@ end
 
 function refreshDestinyChits()
 	--ChatManager.sendSpecialMessage(SPECIAL_MSGTYPE_REFRESHDESTINYCHITS, {});
-	Debug.console("chit.lua: refreshDestinyChits()"); 
+--	Debug.console("chit.lua: refreshDestinyChits()"); 
 	local msg = SPECIAL_MSGTYPE_REFRESHDESTINYCHITS;
 	local identity = User.getCurrentIdentity();
 	msg.msgidentity = User.getIdentityLabel() or "GM";
 	msg.msguser = User.getIdentityOwner(identity) or "GM";
-	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
+--	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
 	Comm.deliverOOBMessage(msg);
 end
 
 function handleRefreshLightsideChits(servermsg)
-	Debug.console("chit.lua: handleRefreshLightsideChits()"); 
+--	Debug.console("chit.lua: handleRefreshLightsideChits()"); 
   local lightsidenode = nil;
 	
-	Debug.console("chit.lua: handleRefreshLightsideChits()  window.getClass() = " .. window.getClass());
+--	Debug.console("chit.lua: handleRefreshLightsideChits()  window.getClass() = " .. window.getClass());
 
   -- ensure that we have the light side chit node - create it if it does not exist (e.g. for a new campaign)
   if User.isHost() then
@@ -61,18 +61,18 @@ function handleRefreshLightsideChits(servermsg)
     if not lightsidenode then
       lightsidenode = DB.createNode("lightsidechit.chits","number");
       lightsidenode.setPublic(true);
-      Debug.console("chit.lua: handleRefreshLightsideChits()  Create Node: " .. window.getClass());
+--      Debug.console("chit.lua: handleRefreshLightsideChits()  Create Node: " .. window.getClass());
     end		
   end
   
   -- If we don't have the lightsidechit node at this point, find it.
   if not lightsidenode then
     lightsidenode = DB.findNode("lightsidechit.chits");
-    Debug.console("chit.lua: handleRefreshLightsideChits()  Find Node: " .. window.getClass());
+--    Debug.console("chit.lua: handleRefreshLightsideChits()  Find Node: " .. window.getClass());
   end
     
   if lightsidenode then		
-    Debug.console("chit.lua: handleRefreshLightsideChits() lightsidenode.getValue = " .. lightsidenode.getValue());
+--    Debug.console("chit.lua: handleRefreshLightsideChits() lightsidenode.getValue = " .. lightsidenode.getValue());
     -- refresh chits here
     if lightsidenode.getValue()<=0 then
       setIcon("lightsidechit0");
@@ -88,18 +88,18 @@ function removeLightsideChits()
 	--local msgparams = {};
 	--msgparams[1] = "true";		--Used as the removingchit flag to ensure that the OOB process only fires once on the GM side.	
 	--ChatManager.sendSpecialMessage(SPECIAL_MSGTYPE_REMOVELIGHTSIDECHIT, msgparams);
-	Debug.console("chit.lua: removeLightsideChits()");
+--	Debug.console("chit.lua: removeLightsideChits()");
 	local msg = SPECIAL_MSGTYPE_REMOVELIGHTSIDECHIT;
 	local identity = User.getCurrentIdentity();
 	msg.msgidentity = User.getIdentityLabel() or "GM";
 	msg.msguser = User.getIdentityOwner(identity) or "GM";
-	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
+--	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
 	Comm.deliverOOBMessage(msg);
 end
 
 function handleRemoveLightsideChits(servermsg)
 	-- Can onlt adjust the database as the host
-	Debug.console("chit.lua: handleRemoveLightsideChits()");
+--	Debug.console("chit.lua: handleRemoveLightsideChits()");
 	--removingchit = true; --msgparams[1];
 	if User.isHost() then --and removingchit == "true" then
 		local msg = {};
@@ -112,7 +112,7 @@ function handleRemoveLightsideChits(servermsg)
 			if lightsidenode.getValue() > 0 then
 				-- decrease the lightside count
 				lightsidenode.setValue(lightsidenode.getValue() - 1);
-				Debug.console("Momentum use.");
+--				Debug.console("Momentum use.");
 				if servermsg.msgidentity == "" then
 					msg.text = "A Momentum chit has been used by  " .. servermsg.msguser;
 				elseif servermsg.msgidentity == "GM" then
@@ -121,7 +121,7 @@ function handleRemoveLightsideChits(servermsg)
 					msg.text = "A Momentum chit has been used by " .. servermsg.msgidentity .. " (" .. servermsg.msguser .. ")";
 				end
 
-				Debug.console("Momentum has been decremented to " ..  lightsidenode.getValue());
+--				Debug.console("Momentum has been decremented to " ..  lightsidenode.getValue());
 				--ChatManager.deliverMessage(msg);
 				Comm.deliverChatMessage(msg);
 				
@@ -139,18 +139,18 @@ function addLightsideChits()
 	--local msgparams = {};
 	--msgparams[1] = "true";		--Used as the removingchit flag to ensure that the OOB process only fires once on the GM side.	
 	--ChatManager.sendSpecialMessage(SPECIAL_MSGTYPE_REMOVELIGHTSIDECHIT, msgparams);
-	Debug.console("chit.lua: addLightsideChits()");
+--	Debug.console("chit.lua: addLightsideChits()");
 	local msg = SPECIAL_MSGTYPE_ADDLIGHTSIDECHIT;
 	local identity = User.getCurrentIdentity();
 	msg.msgidentity = User.getIdentityLabel() or "GM";
 	msg.msguser = User.getIdentityOwner(identity) or "GM";
-	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
+--	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
 	Comm.deliverOOBMessage(msg);
 end
 
 function handleAddLightsideChits(servermsg)
 	-- Can onlt adjust the database as the host
-	Debug.console("chit.lua: handleAddLightsideChits()");
+--	Debug.console("chit.lua: handleAddLightsideChits()");
 	--removingchit = true; --msgparams[1];
 	if User.isHost() then --and removingchit == "true" then
 		local msg = {};
@@ -163,7 +163,7 @@ function handleAddLightsideChits(servermsg)
 			if lightsidenode.getValue() < 6 then
 				-- increase the lightside count
 				lightsidenode.setValue(lightsidenode.getValue() + 1);
-				Debug.console("Momentum increase.");
+--				Debug.console("Momentum increase.");
 				if servermsg.msgidentity == "" then
 					msg.text = servermsg.msguser .. "adds a Momentum chit.";
 				elseif servermsg.msgidentity == "GM" then
@@ -172,7 +172,7 @@ function handleAddLightsideChits(servermsg)
 					msg.text = servermsg.msguser .. " adds a Momentum chit for " .. servermsg.msgidentity;
 				end
 
-				Debug.console("Momentum has been increased to " ..  lightsidenode.getValue());
+--				Debug.console("Momentum has been increased to " ..  lightsidenode.getValue());
 				--ChatManager.deliverMessage(msg);
 				Comm.deliverChatMessage(msg);
 				
