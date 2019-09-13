@@ -17,7 +17,7 @@
 			<modifiersize>mini</modifiersize>
 			<description textres="vehicle_label_shields" />
 			<modifierfield>shield.max.temporary</modifierfield>
-			<source><name>systems.structure</name><op>+</op></source>
+			<source><name>system.structure</name><op>+</op></source>
 			<source><name>departments.security</name><op>+</op></source>
 		</number_shieldtotal>
 	</template>
