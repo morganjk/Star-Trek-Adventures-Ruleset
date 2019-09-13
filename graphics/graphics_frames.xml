@@ -119,7 +119,7 @@
 	<!-- Hot key bar -->	
 	<framedef name="hotkeybox">
 		<bitmap file="graphics/frames/hotkeybox.png" />
-		<offset>6,6,6,6</offset>
+		<offset>10,10,14,10</offset>
 	</framedef>
 	<framedef name="hotkeytitlebox">
 		<bitmap file="graphics/frames/hotkeytitlebox.png" />

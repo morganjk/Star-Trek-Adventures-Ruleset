@@ -10,7 +10,7 @@
 	<windowclass name="charsheet">
 		<frame>charsheet</frame>
 		<placement>
-			<size width="525" height="835" />
+			<size width="525" height="860" />
 		</placement>
 		<minimize>minimized_npc</minimize>
 		<tooltip field="name" />
@@ -29,30 +29,30 @@
 
 		<sheetdata>
 			<button_charactivate name="speak">
-				<bounds>-41,30,23,22</bounds>
+				<bounds>-56,15,23,22</bounds>
 			</button_charactivate>
 		
 			<token_char name="token">
-				<bounds>-86,23,40,40</bounds>
+				<bounds>-93,8,40,40</bounds>
 			</token_char>
 		
 			<genericcontrol>
-				<bounds>-137,21,45,45</bounds>
+				<bounds>-137,6,45,45</bounds>
 				<icon>charlist_base</icon>
 				<disabled />
 			</genericcontrol>
 
 			<portrait_charlocal name="localportrait">
-				<bounds>-137,21,45,45</bounds>
+				<bounds>-137,6,45,45</bounds>
 				<invisible />
 			</portrait_charlocal>
 
 			<portrait_char name="portrait">
-				<bounds>-137,21,45,45</bounds>
+				<bounds>-137,6,45,45</bounds>
 			</portrait_char>
 			
 			<frame_char name="overviewframe">
-				<bounds>15,20,-140,50</bounds>
+				<bounds>15,5,-140,50</bounds>
 			</frame_char>
 
 			<string_labeled name="name">

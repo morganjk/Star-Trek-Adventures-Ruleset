@@ -8,7 +8,7 @@
 
 <!-- Detail Frame -->
 			<frame_char name="detailframe">
-				<bounds>15,0,-30,50</bounds>
+				<bounds>15,20,-30,50</bounds>
 			</frame_char>
 			<string_labeled name="gender">
 				<anchored to="detailframe" position="insidetopleft" offset="15,10" width="140" height="20" />
