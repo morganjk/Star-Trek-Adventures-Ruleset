@@ -157,12 +157,12 @@
 	
 	<framedef name="referencepage">
 		<bitmap file="graphics/frames/referencepage.png" />
-		<offset>20,20,20,20</offset>
+		<offset>25,80,25,25</offset>
 		<insideoffset>0,0,5,5</insideoffset>
 	</framedef> 
 	<framedef name="referencelist">
 		<bitmap file="graphics/frames/referencepage.png" />
-		<offset>20,20,20,20</offset>
+		<offset>25,80,25,25</offset>
 		<insideoffset>0,0,5,5</insideoffset>
 	</framedef> 	
 
@@ -181,7 +181,7 @@
 	<!-- Windows -->
 	<framedef name="windowtitle">
 		<bitmap file="graphics/frames/windowtitle.png" />
-		<offset>25,0,10,0</offset>
+		<offset>25,0,30,0</offset>
 	</framedef>
 	<framedef name="tabs">
 		<bitmap file="graphics/frames/tabs.png" />
