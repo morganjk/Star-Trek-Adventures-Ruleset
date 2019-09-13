@@ -181,7 +181,7 @@
 	<!-- Windows -->
 	<framedef name="windowtitle">
 		<bitmap file="graphics/frames/windowtitle.png" />
-		<offset>25,0,30,0</offset>
+		<offset>25,0,10,0</offset>
 	</framedef>
 	<framedef name="tabs">
 		<bitmap file="graphics/frames/tabs.png" />
