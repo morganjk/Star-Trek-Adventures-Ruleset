@@ -6,23 +6,33 @@ function onInit()
 --	end 
 
 	GameSystem.languagefonts = {
-		["Vulcan"] = "Vulcan",
-		["Andorian"] = "Andorian",		
-		["Tellarite"] = "Tellarite",
+		["Andorian"] = "Andorian",
+		["Bajoran"] = "Bajoran",
+		["Borg"] = "Borg",
+		["Cardassian"] = "Cardassian",
+		["Dominion"] = "Dominion",
+		["Ferengi"] = "Ferengi",
 		["Klingon"] = "Klingon",
 		["Romulan"] = "Romulan",
-		["Cardassian"] = "Cardassian",
-		["Bajoran"] = "Bajoran"
+		["Tellarite"] = "Tellarite",
+		["Tholian"] = "Tholian",
+		["Trill"] = "Trill",
+		["Vulcan"] = "Vulcan"
 	}	
 	
 	GameSystem.languages = {
-		["Vulcan"] = "Vulcan",
-		["Andorian"] = "Andorian",		
-		["Tellarite"] = "Tellarite",
+		["Andorian"] = "Andorian",
+		["Bajoran"] = "Bajoran",
+		["Borg"] = "Borg",
+		["Cardassian"] = "Cardassian",
+		["Dominion"] = "Dominion",
+		["Ferengi"] = "Ferengi",
 		["Klingon"] = "Klingon",
 		["Romulan"] = "Romulan",
-		["Cardassian"] = "Cardassian",
-		["Bajoran"] = "Bajoran"
+		["Tellarite"] = "Tellarite",
+		["Tholian"] = "Tholian",
+		["Trill"] = "Trill",
+		["Vulcan"] = "Vulcan"
 	}
 	
 	-- Add new languages to the end of the current languages table in manager_gamesystem.lua

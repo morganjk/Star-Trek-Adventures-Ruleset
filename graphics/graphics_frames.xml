@@ -6,13 +6,9 @@
 <root>
 	<!--  Desktop background  -->
 	<framedef name="desktop">
-		<bitmap file="graphics/frames/desktop.png"/>
-		<top rect="1,1,324,151"/>
-		<middle rect="1,154,200,200"/>
-		<right rect="450,0,100,144"/>
-		<bottomright rect="450,0,100,144"/>
-		<bottom rect="219,437,567,132"/>
-<!--		<decal rect="830,0,510,510"/> -->
+		<bitmap file="graphics/frames/desktop.jpg"/>
+		<top rect="0,0,600,600"/>
+		<middle rect="0,0,600,600"/>
 	</framedef>
 	<framedef name="shortcuts">
 		<bitmap file="graphics/frames/desktop.png"/>
@@ -21,6 +17,43 @@
 		<right rect="525,0,25,144"/>
 	</framedef>
   
+	<!-- Calendar -->
+	<framedef name="calendar">
+		<bitmap file="graphics/frames/referencepage.png" />
+		<offset>25,80,25,25</offset>
+		<insideoffset>0,0,7,7</insideoffset>
+	</framedef>
+	<framedef name="calendarhighlight">
+		<bitmap file="graphics/frames/calendarhighlight.png"/>
+		<offset>5,5,5,5</offset>
+    </framedef>
+	<framedef name="calendarselectentry">
+		<bitmap file="graphics/frames/fieldlight.png" />
+		<offset>12,12,12,12</offset>
+    </framedef>
+	<framedef name="calendarmonthentry">
+		<bitmap file="graphics/frames/fielddark.png" />
+		<offset>12,12,12,12</offset>
+    </framedef>
+
+	<!-- Characters -->
+	<framedef name="charsheet">
+		<bitmap file="graphics/frames/charsheet.png" />
+		<offset>20,80,20,20</offset>
+		<insideoffset>0,0,7,7</insideoffset>
+	</framedef>
+
+	<!-- Character selection -->	
+	<framedef name="charselect">
+		<bitmap file="graphics/frames/charselect.png" />
+		<offset>68,75,77,51</offset>
+		<insideoffset>0,0,5,7</insideoffset>
+	</framedef>
+	<framedef name="charselectentry">
+		<bitmap file="graphics/frames/fieldlight.png" />
+		<offset>12,12,12,12</offset>
+	</framedef>
+
 	<!-- Chat window -->
 	<framedef name="chatbox">
 		<bitmap file="graphics/frames/chatbox.png" />
@@ -34,7 +67,45 @@
 		<bottom rect="120,452,340,52" />
 		<bottomright rect="350,452,164,52" />
 	</framedef>
-  
+	<framedef name="chatentry">
+		<bitmap file="graphics/frames/chatentry.png" />
+		<offset>1,1,1,1</offset>
+	</framedef>
+	<framedef name="chatboxhilight">
+		<bitmap file="graphics/frames/chatboxhilight.png" />
+		<offset>12,12,16,50</offset>
+	</framedef>
+	<framedef name="chatframe_chat">
+		<bitmap file="graphics/frames/chatframe_chat.png" />
+		<offset>17,17,7,7</offset>
+	</framedef>
+	<framedef name="chatframe_story">
+		<bitmap file="graphics/frames/chatframe_story.png" />
+		<offset>18,18,17,17</offset>
+	</framedef>
+	<framedef name="chatframe_whisper">
+		<bitmap file="graphics/frames/chatframe_whisper.png" />
+		<offset>17,17,7,7</offset>
+	</framedef>
+	<framedef name="diebox">
+		<bitmap file="graphics/frames/diebox.png" />
+		<offset>16,16,16,16</offset>
+	</framedef>
+
+	<!-- Control frames -->
+	<framedef name="groupbox">
+		<bitmap file="graphics/frames/groupbox.png" />
+		<offset>18,18,17,17</offset>
+	</framedef>
+	<framedef name="fielddark">
+		<bitmap file="graphics/frames/fielddark.png" />
+		<offset>12,12,12,12</offset>
+	</framedef>
+	<framedef name="fieldlight">
+		<bitmap file="graphics/frames/fieldlight.png" />
+		<offset>12,12,12,12</offset>
+	</framedef>
+	
 	<!-- Dice Tower -->
 	<framedef name="dicetower_normal">
 		<bitmap>graphics/frames/dicetower_normal.png</bitmap>
@@ -44,4 +115,79 @@
 		<bitmap>graphics/frames/dicetower_drop.png</bitmap>
 		<middle>0,0,90,90</middle>
 	</framedef>
+
+	<!-- Hot key bar -->	
+	<framedef name="hotkeybox">
+		<bitmap file="graphics/frames/hotkeybox.png" />
+		<offset>6,6,6,6</offset>
+	</framedef>
+	<framedef name="hotkeytitlebox">
+		<bitmap file="graphics/frames/hotkeytitlebox.png" />
+		<offset>0,0,6,6</offset>
+	</framedef>
+
+	<!-- Party Sheet -->
+	<framedef name="partysheet">
+		<bitmap file="graphics/frames/referencepage.png" />
+		<offset>25,80,25,25</offset>
+		<insideoffset>0,0,7,7</insideoffset>
+	</framedef>
+	<framedef name="partysheetentry">
+		<bitmap file="graphics/frames/fieldlight.png" />
+		<offset>12,12,12,12</offset>
+	</framedef>
+
+
+	<!-- Utility windows -->
+	<framedef name="utilitybox">
+		<bitmap file="graphics/frames/utilitybox.png" />
+		<offset>20,20,20,20</offset>
+		<insideoffset>0,0,10,10</insideoffset>
+	</framedef>
+	<framedef name="utilitybox2">
+		<bitmap file="graphics/frames/utilitybox2.png" />
+		<offset>20,20,20,20</offset>
+		<insideoffset>0,0,7,8</insideoffset>
+	</framedef>
+	<framedef name="utilitybox3">
+		<bitmap file="graphics/frames/utilitybox3.png" />
+		<offset>20,20,20,20</offset>
+		<insideoffset>0,0,5,7</insideoffset>
+	</framedef>	
+	
+	<framedef name="referencepage">
+		<bitmap file="graphics/frames/referencepage.png" />
+		<offset>20,20,20,20</offset>
+		<insideoffset>0,0,5,5</insideoffset>
+	</framedef> 
+	<framedef name="referencelist">
+		<bitmap file="graphics/frames/referencepage.png" />
+		<offset>20,20,20,20</offset>
+		<insideoffset>0,0,5,5</insideoffset>
+	</framedef> 	
+
+	<!-- Token Bag -->
+	<framedef name="tokenbag">
+		<bitmap file="graphics/frames/tokenbag.png" />
+		<offset>19,19,24,24</offset>
+		<insideoffset>0,0,13,13</insideoffset>
+	</framedef>
+	<framedef name="tokenbagbar">
+		<bitmap file="graphics/frames/tokenbagbar.png" />
+		<left rect="0,0,100,50" />
+		<middle rect="100,0,50,50" />
+	</framedef>
+	
+	<!-- Windows -->
+	<framedef name="windowtitle">
+		<bitmap file="graphics/frames/windowtitle.png" />
+		<offset>25,0,30,0</offset>
+	</framedef>
+	<framedef name="tabs">
+		<bitmap file="graphics/frames/tabs.png" />
+		<topleft rect="0,0,25,73" />
+		<left rect="0,73,25,335" />
+		<bottomleft rect="0,408,25,86" />
+	</framedef>
+	
 </root>

@@ -67,7 +67,7 @@ end
 
 function refreshDestinyChits()
 	--ChatManager.sendSpecialMessage(SPECIAL_MSGTYPE_REFRESHDESTINYCHITS, {});
-	Debug.console("chit.lua: refreshDestinyChits()"); 
+--	Debug.console("chit.lua: refreshDestinyChits()"); 
 	local msg = SPECIAL_MSGTYPE_REFRESHDESTINYCHITS;
 	if window.getClass() == "lightsidechit" then
   	msg = SPECIAL_MSGTYPE_REFRESHLIGHTSIDECHITS;
@@ -78,16 +78,16 @@ function refreshDestinyChits()
 	local identity = User.getCurrentIdentity();
 	msg.msgidentity = User.getIdentityLabel() or "GM";
 	msg.msguser = User.getIdentityOwner(identity) or "GM";
-	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
+--	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
 	Comm.deliverOOBMessage(msg);
 end
 
 function handleRefreshDestinyChits(servermsg)
-	Debug.console("chit.lua: handleRefreshDestinyChits()"); 
+--	Debug.console("chit.lua: handleRefreshDestinyChits()"); 
   local lightsidenode = nil;
 	local darksidenode = nil;
 	
-	Debug.console("chit.lua: handleRefreshDestinyChits()  window.getClass() = " .. window.getClass());
+--	Debug.console("chit.lua: handleRefreshDestinyChits()  window.getClass() = " .. window.getClass());
 
 	if window.getClass() == "lightsidechit" then
 		-- ensure that we have the light side chit node - create it if it does not exist (e.g. for a new campaign)
@@ -104,7 +104,7 @@ function handleRefreshDestinyChits(servermsg)
 		end
 			
 		if lightsidenode then		
-  		Debug.console("chit.lua: handleRefreshDestinyChits() lightsidenode.getValue = " .. lightsidenode.getValue());
+--  		Debug.console("chit.lua: handleRefreshDestinyChits() lightsidenode.getValue = " .. lightsidenode.getValue());
 			-- refresh chits here
 			if lightsidenode.getValue()<=0 then
 				setIcon("lightsidechit0");
@@ -129,24 +129,24 @@ function handleRefreshDestinyChits(servermsg)
 		
 		-- refresh chits here
 		if darksidenode then		
-  		Debug.console("chit.lua: handleRefreshDestinyChits() darksidenode.getValue = " .. darksidenode.getValue());
+-- 		Debug.console("chit.lua: handleRefreshDestinyChits() darksidenode.getValue = " .. darksidenode.getValue());
 			if darksidenode.getValue()<=0 then
 				setIcon("darksidechit0");
-			elseif darksidenode.getValue()<8 then
+			elseif darksidenode.getValue()<20 then
 				setIcon("darksidechit" .. darksidenode.getValue());
 			else
-				setIcon("darksidechit8more");
+				setIcon("darksidechit20");
 			end
 		end
 	end	
 end
 
 function handleRefreshLightsideChits(servermsg)
-	Debug.console("chit.lua: handleRefreshLightsideChits()"); 
+--	Debug.console("chit.lua: handleRefreshLightsideChits()"); 
   local lightsidenode = nil;
 	local darksidenode = nil;
 	
-	Debug.console("chit.lua: handleRefreshLightsideChits()  window.getClass() = " .. window.getClass());
+--	Debug.console("chit.lua: handleRefreshLightsideChits()  window.getClass() = " .. window.getClass());
 
 	if window.getClass() == "lightsidechit" then
 		-- ensure that we have the light side chit node - create it if it does not exist (e.g. for a new campaign)
@@ -163,7 +163,7 @@ function handleRefreshLightsideChits(servermsg)
 		end
 			
 		if lightsidenode then		
-  		Debug.console("chit.lua: handleRefreshLightsideChits() lightsidenode.getValue = " .. lightsidenode.getValue());
+--  		Debug.console("chit.lua: handleRefreshLightsideChits() lightsidenode.getValue = " .. lightsidenode.getValue());
 			-- refresh chits here
 			if lightsidenode.getValue()<=0 then
 				setIcon("lightsidechit0");
@@ -178,21 +178,21 @@ end
 
 function refreshDestinyChits()
 	--ChatManager.sendSpecialMessage(SPECIAL_MSGTYPE_REFRESHDESTINYCHITS, {});
-	Debug.console("chit.lua: refreshDestinyChits()"); 
+--	Debug.console("chit.lua: refreshDestinyChits()"); 
 	local msg = SPECIAL_MSGTYPE_REFRESHDESTINYCHITS;
 	local identity = User.getCurrentIdentity();
 	msg.msgidentity = User.getIdentityLabel() or "GM";
 	msg.msguser = User.getIdentityOwner(identity) or "GM";
-	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
+--	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
 	Comm.deliverOOBMessage(msg);
 end
 
 function handleRefreshDarksideChits(servermsg)
-	Debug.console("chit.lua: handleRefreshDarksideChits()"); 
+--	Debug.console("chit.lua: handleRefreshDarksideChits()"); 
   local lightsidenode = nil;
 	local darksidenode = nil;
 	
-	Debug.console("chit.lua: handleRefreshDarksideChits()  window.getClass() = " .. window.getClass());
+--	Debug.console("chit.lua: handleRefreshDarksideChits()  window.getClass() = " .. window.getClass());
 
 	if window.getClass() == "darksidechit" then
 		-- ensure that we have the light side chit node, create it if it does not exist (e.g. for a new campaign)
@@ -207,13 +207,13 @@ function handleRefreshDarksideChits(servermsg)
 		
 		-- refresh chits here
 		if darksidenode then		
-  		Debug.console("chit.lua: handleRefreshDarksideChits() darksidenode.getValue = " .. darksidenode.getValue());
+--  		Debug.console("chit.lua: handleRefreshDarksideChits() darksidenode.getValue = " .. darksidenode.getValue());
 			if darksidenode.getValue()<=0 then
 				setIcon("darksidechit0");
-			elseif darksidenode.getValue()<8 then
+			elseif darksidenode.getValue()<20 then
 				setIcon("darksidechit" .. darksidenode.getValue());
 			else
-				setIcon("darksidechit8more");
+				setIcon("darksidechit20");
 			end
 		end
 	end	
@@ -223,18 +223,18 @@ function removeLightsideChits()
 	--local msgparams = {};
 	--msgparams[1] = "true";		--Used as the removingchit flag to ensure that the OOB process only fires once on the GM side.	
 	--ChatManager.sendSpecialMessage(SPECIAL_MSGTYPE_REMOVELIGHTSIDECHIT, msgparams);
-	Debug.console("chit.lua: removeLightsideChits()");
+--	Debug.console("chit.lua: removeLightsideChits()");
 	local msg = SPECIAL_MSGTYPE_REMOVELIGHTSIDECHIT;
 	local identity = User.getCurrentIdentity();
 	msg.msgidentity = User.getIdentityLabel() or "GM";
 	msg.msguser = User.getIdentityOwner(identity) or "GM";
-	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
+--	Debug.console("OOB MESSAGE => Type: " .. msg.type .. "; Identity: " .. msg.msgidentity .. "; User: " .. msg.msguser); 
 	Comm.deliverOOBMessage(msg);
 end
 
 function handleRemoveLightsideChits(servermsg)
 	-- Can onlt adjust the database as the host
-	Debug.console("chit.lua: handleRemoveLightsideChits()");
+--	Debug.console("chit.lua: handleRemoveLightsideChits()");
 	--removingchit = true; --msgparams[1];
 	--if User.isHost() and removingchit == "true" then
 		local msg = {};
@@ -247,7 +247,7 @@ function handleRemoveLightsideChits(servermsg)
 			if lightsidenode.getValue() > 0 then
 				-- decrease the lightside count
 				lightsidenode.setValue(lightsidenode.getValue() - 1);
-				Debug.console("Momentum use.");
+--				Debug.console("Momentum use.");
 				if servermsg.msgidentity == "" then
 					msg.text = "A Momentum chit has been used by  " .. servermsg.msguser;
 				elseif servermsg.msgidentity == "GM" then
@@ -256,7 +256,7 @@ function handleRemoveLightsideChits(servermsg)
 					msg.text = "A Momentum chit has been used by  " .. servermsg.msguser .. ", for character " .. servermsg.msgidentity;
 				end
 
-				Debug.console("Momentum has been decremented to " ..  lightsidenode.getValue());
+--				Debug.console("Momentum has been decremented to " ..  lightsidenode.getValue());
 				--ChatManager.deliverMessage(msg);
 				Comm.deliverChatMessage(msg);
 				

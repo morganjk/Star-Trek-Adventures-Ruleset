@@ -37,7 +37,19 @@
 	<icon name="darksidechit5" file="graphics/chits/darkside5.png" />
 	<icon name="darksidechit6" file="graphics/chits/darkside6.png" />
 	<icon name="darksidechit7" file="graphics/chits/darkside7.png" />
-	<icon name="darksidechit8more" file="graphics/chits/darkside8more.png" />
+	<icon name="darksidechit8" file="graphics/chits/darkside8.png" />
+	<icon name="darksidechit9" file="graphics/chits/darkside9.png" />
+	<icon name="darksidechit10" file="graphics/chits/darkside10.png" />
+	<icon name="darksidechit11" file="graphics/chits/darkside11.png" />
+	<icon name="darksidechit12" file="graphics/chits/darkside12.png" />
+	<icon name="darksidechit13" file="graphics/chits/darkside13.png" />
+	<icon name="darksidechit14" file="graphics/chits/darkside14.png" />
+	<icon name="darksidechit15" file="graphics/chits/darkside15.png" />
+	<icon name="darksidechit16" file="graphics/chits/darkside16.png" />
+	<icon name="darksidechit17" file="graphics/chits/darkside17.png" />
+	<icon name="darksidechit18" file="graphics/chits/darkside18.png" />
+	<icon name="darksidechit19" file="graphics/chits/darkside19.png" />
+	<icon name="darksidechit20" file="graphics/chits/darkside20.png" />
 	<icon name="darksidechit0" file="graphics/chits/darkside0.png" />
 
 	<!-- Dice tower -->
