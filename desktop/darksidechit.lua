@@ -69,10 +69,10 @@ function handleRefreshDarksideChits(servermsg)
 --    Debug.console("chit.lua: handleRefreshDarksideChits() darksidenode.getValue = " .. darksidenode.getValue());
     if darksidenode.getValue()<=0 then
       setIcon("darksidechit0");
-    elseif darksidenode.getValue()<8 then
+    elseif darksidenode.getValue()<20 then
       setIcon("darksidechit" .. darksidenode.getValue());
     else
-      setIcon("darksidechit8more");
+      setIcon("darksidechit20");
     end
   end
 end

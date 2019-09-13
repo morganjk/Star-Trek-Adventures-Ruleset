@@ -10,15 +10,15 @@
 	<!-- Reference -->
 <!--
 	<font name="reference-section">
-		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="22" />
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajoran" size="22" />
 		<color value="3B2C21" />
 	</font>
 	<font name="reference-chapter">
-		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="18" />
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajoran" size="18" />
 		<color value="3B2C21" />
 	</font>
 	<font name="reference-title">
-		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="26" />
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajoran" size="26" />
 		<color value="000000" />
 		<bold />
 	</font>
@@ -28,7 +28,7 @@
 		<bold />
 	</font>
 	<font name="reference-header">
-		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajorin" size="26" />
+		<ttf file="graphics/fonts/Bajoran.ttf" name="Bajoran" size="26" />
 		<color value="FFFFFF" />
 		<bold />
 	</font>
@@ -130,32 +130,52 @@
 -->
 	
 <!-- Language Fonts -->
-	<font name="Vulcan">
-		<fgffile name="graphics/fonts/vulcan.fgf" />
-		<color value="#000000" />
-	</font>
 	<font name="Andorian">
 		<fgffile name="graphics/fonts/andorian.fgf" />
-			<color value="#000000" />
-	</font>
-	<font name="Tellarite">
-		<fgffile name="graphics/fonts/tellarite.fgf" />
 		<color value="#000000" />
 	</font>
-	<font name="Klingon">
-		<fgffile name="graphics/fonts/klingon.fgf" />
+	<font name="Bajoran">
+		<ttf file="graphics/fonts/Bajoran.ttf" name="ST Bajoran Ideogram" size="20" />
 		<color value="#000000" />
 	</font>
-	<font name="Romulan">
-		<fgffile name="graphics/fonts/romulan.fgf" />
+	<font name="Borg">
+		<ttf file="graphics/fonts/Borg.ttf" name="Borg" size="20" />
 		<color value="#000000" />
 	</font>
 	<font name="Cardassian">
 		<ttf file="graphics/fonts/Cardassian.ttf" name="ST Cardassian" size="20" />
 		<color value="#000000" />
 	</font>
-	<font name="Bajoran">
-		<fgffile name="graphics/fonts/bajoran.fgf" />
+	<font name="Dominion">
+		<ttf file="graphics/fonts/Dominion.ttf" name="ST Dominion" size="20" />
+		<color value="#000000" />
+	</font>
+	<font name="Ferengi">
+		<ttf file="graphics/fonts/Ferengi.ttf" name="ST Ferengi R" size="20" />
+		<color value="#000000" />
+	</font>
+	<font name="Klingon">
+		<ttf file="graphics/fonts/Klingon.ttf" name="KlingonTNG" size="20" />
+		<color value="#000000" />
+	</font>
+	<font name="Romulan">
+		<ttf file="graphics/fonts/Romulan.ttf" name="Romulan" size="20" />
+		<color value="#000000" />
+	</font>
+	<font name="Tellarite">
+		<fgffile name="graphics/fonts/tellarite.fgf" />
+		<color value="#000000" />
+	</font>
+	<font name="Tholian">
+		<ttf file="graphics/fonts/Tholian.ttf" name="Tholian" size="20" />
+		<color value="#000000" />
+	</font>
+	<font name="Trill">
+		<ttf file="graphics/fonts/Trill.ttf" name="Trill" size="20" />
+		<color value="#000000" />
+	</font>
+	<font name="Vulcan">
+		<ttf file="graphics/fonts/Vulcan.ttf" name="Modern vulcan 1.1" size="20" />
 		<color value="#000000" />
 	</font>
 	<font name="noneoftheabove">
