@@ -98,11 +98,19 @@ function rankchange(draginfo, winFrame)
 	local curRank = DB.getValue(nodeWin, "rank");
 	DB.setValue(nodeWin, "reputation.rank", "string", curRank);
 	DB.setValue(nodeWin, "reputation.reputation", "number", 10);
+	DB.setValue(nodeWin, "reputation.privilege", "number", 1);
+	DB.setValue(nodeWin, "reputation.responsibility", "number", 20);
 	
 	if DB.getValue(nodeWin, "reputation.rank") == "Ensign" then
 		nodeWin.getChild("reputation.privilege").setValue(1);
 		nodeWin.getChild("reputation.responsibility").setValue(20);
+	elseif DB.getValue(nodeWin, "reputation.rank") == "Lieutenant JG" then
+		nodeWin.getChild("reputation.privilege").setValue(1);
+		nodeWin.getChild("reputation.responsibility").setValue(20);
 	elseif DB.getValue(nodeWin, "reputation.rank") == "Lieutenant" then
+		nodeWin.getChild("reputation.privilege").setValue(2);
+		nodeWin.getChild("reputation.responsibility").setValue(19);
+	elseif DB.getValue(nodeWin, "reputation.rank") == "Lieutenant Commander" then
 		nodeWin.getChild("reputation.privilege").setValue(2);
 		nodeWin.getChild("reputation.responsibility").setValue(19);
 	elseif DB.getValue(nodeWin, "reputation.rank") == "Commander" then
