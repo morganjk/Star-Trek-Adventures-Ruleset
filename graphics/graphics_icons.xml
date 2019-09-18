@@ -111,4 +111,90 @@
 	<icon name="button_tokencase" file="graphics/sidebar/button_tokencase.png" />
 	<icon name="button_tokencase_down" file="graphics/sidebar/button_tokencase_down.png" />
   
+  	<!-- Common -->
+	<icon name="window_resize" file="graphics/icons/window_resize.png" />
+	<icon name="window_resize_filled" file="graphics/icons/window_resize_filled.png" />
+	<icon name="button_expand" file="graphics/buttons/button_expand.png" />
+	<icon name="button_collapse" file="graphics/buttons/button_collapse.png" />
+	<icon name="button_expand_w" file="graphics/buttons/button_expand_w.png" />
+	<icon name="button_collapse_w" file="graphics/buttons/button_collapse_w.png" />
+	<icon name="footer_wide" file="graphics/icons/footer_wide.png" />
+	<icon name="footer_narrow" file="graphics/icons/footer_narrow.png" />
+	<icon name="button_close" file="graphics/buttons/button_close.png" />
+	<icon name="button_close_down" file="graphics/buttons/button_close_down.png" />
+	<icon name="button_close_hover" file="graphics/buttons/button_close_hover.png" />
+	<icon name="button_help" file="graphics/buttons/button_help.png" />
+	<icon name="button_help_down" file="graphics/buttons/button_help_down.png" />
+	<icon name="button_help_hover" file="graphics/buttons/button_help_hover.png" />
+	<icon name="button_sizeup" file="graphics/buttons/button_sizeup.png" />
+	<icon name="button_sizeup_down" file="graphics/buttons/button_sizeup_down.png" />
+	<icon name="button_sizeup_hover" file="graphics/buttons/button_sizeup_hover.png" />
+	<icon name="button_sizedown" file="graphics/buttons/button_sizedown.png" />
+	<icon name="button_sizedown_down" file="graphics/buttons/button_sizedown_down.png" />
+	<icon name="button_sizedown_hover" file="graphics/buttons/button_sizedown_hover.png" />
+	<icon name="button_link" file="graphics/buttons/button_link.png" />
+	<icon name="button_link_down" file="graphics/buttons/button_link_down.png" />
+	<icon name="button_link_empty" file="graphics/buttons/button_link_empty.png" />
+	<icon name="button_link_share" file="graphics/buttons/button_link_share.png" />
+	<icon name="button_link_share_down" file="graphics/buttons/button_link_share_down.png" />
+	<icon name="tabtop" file="graphics/tabs/tabtop.png" />
+	<icon name="button_checkon" file="graphics/buttons/button_checkon.png" />
+	<icon name="button_checkoff" file="graphics/buttons/button_checkoff.png" />
+	<icon name="token_empty" file="graphics/icons/token_empty.png" />
+	<icon name="button_arrowdown" file="graphics/buttons/button_arrowdown.png" />
+	<icon name="button_arrowdown_down" file="graphics/buttons/button_arrowdown_down.png" />
+	<icon name="tempmod" file="graphics/icons/tempmod.png" />
+	<icon name="coins" file="graphics/icons/coins.png" />
+	<icon name="xp" file="graphics/icons/xp.png" />
+	<icon name="blank" file="graphics/icons/blank.png" />
+	<icon name="shopping" file="graphics/icons/shopping.png" />
+
+	<icon name="button_add" file="graphics/buttons/button_add.png" />
+	<icon name="button_add_down" file="graphics/buttons/button_add_down.png" />
+	<icon name="button_edit" file="graphics/buttons/button_edit.png" />
+	<icon name="button_edit_down" file="graphics/buttons/button_edit_down.png" />
+	<icon name="button_delete" file="graphics/buttons/button_delete.png" />
+	<icon name="button_delete_down" file="graphics/buttons/button_delete_down.png" />
+	<icon name="button_deleteconfirm" file="graphics/buttons/button_deleteconfirm.png" />
+	<icon name="button_deleteconfirm_down" file="graphics/buttons/button_deleteconfirm_down.png" />
+	<icon name="button_back" file="graphics/buttons/button_back.png" />
+	<icon name="button_back_down" file="graphics/buttons/button_back_down.png" />
+	<icon name="button_import" file="graphics/buttons/button_import.png" />
+	<icon name="button_import_down" file="graphics/buttons/button_import_down.png" />
+	<icon name="button_export" file="graphics/buttons/button_export.png" />
+	<icon name="button_export_down" file="graphics/buttons/button_export_down.png" />
+	<icon name="button_zoomin" file="graphics/buttons/button_zoomin.png" />
+	<icon name="button_zoomin_down" file="graphics/buttons/button_zoomin_down.png" />
+	<icon name="button_zoomout" file="graphics/buttons/button_zoomout.png" />
+	<icon name="button_zoomout_down" file="graphics/buttons/button_zoomout_down.png" />
+
+	<icon name="button_action_attack" file="graphics/buttons/button_action_attack.png" />
+	<icon name="button_action_attack_down" file="graphics/buttons/button_action_attack_down.png" />
+	<icon name="button_action_damage" file="graphics/buttons/button_action_damage.png" />
+	<icon name="button_action_damage_down" file="graphics/buttons/button_action_damage_down.png" />
+	<icon name="button_action_heal" file="graphics/buttons/button_action_heal.png" />
+	<icon name="button_action_heal_down" file="graphics/buttons/button_action_heal_down.png" />
+	<icon name="button_action_effect" file="graphics/buttons/button_action_effect.png" />
+	<icon name="button_action_effect_down" file="graphics/buttons/button_action_effect_down.png" />
+	<icon name="button_action_modifier" file="graphics/buttons/button_action_modifier.png" />
+	<icon name="button_action_modifier_down" file="graphics/buttons/button_action_modifier_down.png" />
+	
+	<icon name="button_clear" file="graphics/buttons/button_clear.png" />
+	<icon name="button_clear_down" file="graphics/buttons/button_clear_down.png" />
+
+	<icon name="combobox_button" file="graphics/icons/combobox_button.png" />
+	<icon name="combobox_button_active" file="graphics/icons/combobox_button_active.png" />
+
+	<icon name="button_dialog_ok" file="graphics/buttons/button_dialog_ok.png" />
+	<icon name="button_dialog_ok_down" file="graphics/buttons/button_dialog_ok_down.png" />
+	<icon name="button_dialog_cancel" file="graphics/buttons/button_dialog_cancel.png" />
+	<icon name="button_dialog_cancel_down" file="graphics/buttons/button_dialog_cancel_down.png" />
+	<icon name="button_dialog_roll" file="graphics/buttons/button_dialog_roll.png" />
+	<icon name="button_dialog_roll_down" file="graphics/buttons/button_dialog_roll_down.png" />
+	<icon name="button_dialog_fauxroll" file="graphics/buttons/button_dialog_fauxroll.png" />
+	<icon name="button_dialog_fauxroll_down" file="graphics/buttons/button_dialog_fauxroll_down.png" />
+
+	<icon name="button_details" file="graphics/buttons/button_details.png" />
+	<icon name="button_details_down" file="graphics/buttons/button_details_down.png" />
+
 </root>
