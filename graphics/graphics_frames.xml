@@ -18,6 +18,10 @@
 	</framedef>
   
 	<!-- Tooltips -->
+	<framedef name="tooltipbox">
+		<bitmap file="graphics/frames/tooltipbox.png" />
+		<offset>6,4,9,7</offset>
+	</framedef>
 	
 	<!-- Windows -->
 	<framedef name="windowtitle">
@@ -30,10 +34,6 @@
 		<left rect="0,73,25,335" />
 		<bottomleft rect="0,408,25,86" />
 	</framedef>
-
-	<!-- Headers -->
-
-	<!-- Lists -->
 
 	<!-- Buttons -->
 	<framedef name="buttonup">
@@ -58,6 +58,31 @@
 		<bitmap file="graphics/frames/fieldlight.png" />
 		<offset>12,12,12,12</offset>
 	</framedef>
+	<framedef name="durationadjustment">
+		<bitmap file="graphics/frames/durationadjustment.png" />
+		<topleft rect="0,0,12,12" />
+		<top rect="12,0,200,12" />
+		<topright rect="212,0,12,12" />
+		<left rect="0,12,12,187" />
+		<middle rect="12,12,200,187" />
+		<right rect="212,12,12,187" />
+		<bottomleft rect="0,199,12,12" />
+		<bottom rect="12,199,200,12" />
+		<bottomright rect="212,199,12,12" />
+		<decal rect="207,212,17,14" />
+	</framedef>
+	<framedef name="tempmodsmall">
+		<bitmap file="graphics/frames/tempmodsmall.png" />
+		<offset>12,12,11,12</offset>
+	</framedef>
+	<framedef name="tempmodmini">
+		<bitmap file="graphics/frames/tempmodmini.png" />
+		<offset>7,7,9,9</offset>
+	</framedef>
+	<framedef name="required">
+		<bitmap file="graphics/frames/required.png" />
+		<offset>12,12,12,12</offset>
+	</framedef>
 
 	<!-- Scrollbar -->
 	<framedef name="scrollbar_base">
@@ -72,8 +97,6 @@
 		<middle rect="-6,22,20,4" />
 		<bottom rect="-6,25,20,23" />
 	</framedef>
-
-	<!-- Drop down list -->
 
 	<!-- Chat window -->
 	<framedef name="chatbox">
@@ -105,10 +128,6 @@
 		<offset>16,16,16,16</offset>
 	</framedef>
 
-	<!-- Identity List -->
-
-	<!-- Modifier Stack -->
-	
 	<!-- Dice Tower -->
 	<framedef name="dicetower_normal">
 		<bitmap>graphics/frames/dicetower_normal.png</bitmap>
@@ -146,10 +165,6 @@
 		<offset>12,12,12,12</offset>
 	</framedef>
 
-	<!-- Reference -->
-
-	<!-- Reference Blocks -->
-
 	<!-- Utility windows -->
 	<framedef name="utilitybox">
 		<bitmap file="graphics/frames/utilitybox.png" />
@@ -163,10 +178,9 @@
 	</framedef>
 	<framedef name="utilitybox3">
 		<bitmap file="graphics/frames/utilitybox3.png" />
-		<offset>20,20,20,20</offset>
+		<offset>20,50,20,20</offset>
 		<insideoffset>0,0,5,7</insideoffset>
 	</framedef>	
-	
 	<framedef name="referencepage">
 		<bitmap file="graphics/frames/referencepage.png" />
 		<offset>25,80,25,25</offset>
@@ -184,7 +198,6 @@
 		<offset>19,19,24,24</offset>
 		<insideoffset>0,0,13,13</insideoffset>
 	</framedef>
-	
 
 	<!-- Calendar -->
 	<framedef name="calendar">
@@ -260,6 +273,10 @@
 	</framedef>
 
 	<!-- Manual Roll -->
+	<framedef name="manualroll_entry">
+		<bitmap file="graphics/frames/manualroll_entry.png" />
+		<offset>6,4,9,7</offset>
+	</framedef>
 
 	<!-- Characters -->
 	<framedef name="charsheet">
@@ -269,18 +286,34 @@
 	</framedef>
 
 	<!-- Images -->
+	<framedef name="imagebox">
+		<bitmap file="graphics/frames/imagebox.png" />
+		<offset>60,60,60,60</offset>
+		<insideoffset>0,0,20,22</insideoffset>
+	</framedef>
+	<framedef name="imagebox_header">
+		<bitmap file="graphics/frames/imagebox_header.png" />
+		<offset>0,0,0,0</offset>
+	</framedef>
 
 	<!-- Story and Notes -->
+	<framedef name="storybox">
+		<bitmap file="graphics/frames/storybox.png" />
+		<offset>41,172,41,49</offset>
+		<insideoffset>0,0,10,5</insideoffset>
+	</framedef>
 
 	<!-- Other Campaign Records -->
 	<framedef name="recordsheet">
 		<bitmap file="graphics/frames/charsheet.png" />
-		<offset>20,80,20,20</offset>
+		<offset>40,80,40,40</offset>
 		<insideoffset>0,0,7,7</insideoffset>
 	</framedef>
 
 	<!-- Tokens -->
-
-	<!-- Misc frames -->
+	<framedef name="tokennumber">
+		<bitmap file="graphics/frames/tokennumber.png" />
+		<offset>6,6,6,6</offset>
+	</framedef>
 
 </root>
