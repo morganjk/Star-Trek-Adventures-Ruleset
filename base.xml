@@ -28,6 +28,7 @@
 	<includefile source="campaign/template_vehicle.xml" />
 	<includefile source="campaign/template_npc.xml" />
 	<includefile source="campaign/template_item.xml" />
+	<includefile source="common/template_toolbar.xml" />
 	
 <!-- Tabletop Chits -->
 	<includefile source="desktop/darksidechit.xml" />
