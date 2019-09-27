@@ -88,9 +88,8 @@ function createRoll(sParams)
 end
 
 ---
---- This function first sorts the dice rolls in ascending order, then it splits
---- the dice results into kept and dropped dice, and stores them as rRoll.aDice
---- and rRoll.aDropped.
+--- This function calulates the total number rolled and the total number of
+--- effects if any.
 ---
 function getDiceResults(rRoll)
 nTotal = 0;

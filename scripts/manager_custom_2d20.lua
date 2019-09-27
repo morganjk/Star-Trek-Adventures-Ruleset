@@ -88,9 +88,11 @@ function createRoll(sParams)
 end
 
 ---
---- This function first sorts the dice rolls in ascending order, then it splits
---- the dice results into kept and dropped dice, and stores them as rRoll.aDice
---- and rRoll.aDropped.
+--- This function checks each dice rolled to see if it succeeds or not.
+--- If it succseeds, it adds 1 success, and if it rolls under the focus
+--- it adds a second success. It then checks the rolls against the 
+--- complication range to see if a complication was rolled and adds those
+--- to the number of complications.
 ---
 function getDiceResults(rRoll)
 
@@ -141,10 +143,10 @@ end
 function createHelpMessage()  
 	local rMessage = ChatManager.createBaseMessage(nil, nil);
 	rMessage.text = rMessage.text .. "The \"/"..sCmd.."\" command is used to roll a set of dice, removing a number of the lowest results.\n"; 
-	rMessage.text = rMessage.text .. "You can specify the number of dice to roll, the type of dice, and the number of results to be dropped "; 
-	rMessage.text = rMessage.text .. "by supplying the \"/rolld\" command with parameters in the format of \"#d#x#\", where the first # is the "; 
-	rMessage.text = rMessage.text .. "number of dice to be rolled, the second number is the number of dice sides, and the number following the "; 
-	rMessage.text = rMessage.text .. "x being the number of results to be dropped.\n"; 
-	rMessage.text = rMessage.text .. "If no parameters are supplied, the default parameters of \"4d6x1\" are used."; 
+	rMessage.text = rMessage.text .. "You can specify the number of dice to roll, the type of dice, the target number, the focus level, and the complication range "; 
+	rMessage.text = rMessage.text .. "by supplying the \"/rolld\" command with parameters in the format of \"#d#x#y#c#\", where the first # is the "; 
+	rMessage.text = rMessage.text .. "number of dice to be rolled, the second number is the number of dice sides, the number following the "; 
+	rMessage.text = rMessage.text .. "x being the target number you are looking to roll under, the number after the y is the focus range, and the final "; 
+	rMessage.text = rMessage.text .. "number being the complication range. /n If no parameters are supplied, the default parameters of \"2d20x8y1\" are used."; 
 	Comm.deliverChatMessage(rMessage);
 end
